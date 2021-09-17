@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="zsim"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/code/zsim/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="zsim">
+				<Option output="D:/code/zsim/cmake-build-debug/zsim.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/code/zsim/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/code/zsim/HATS"/>
+					<Add directory="D:/code/zsim/misc/hooks"/>
+					<Add directory="D:/code/zsim/src"/>
+					<Add directory="D:/code/zsim/src/g_std"/>
+					<Add directory="D:/code/zsim/src/virt"/>
+					<Add directory="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 zsim"/>
+					<CompileFile command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="zsim/fast">
+				<Option output="D:/code/zsim/cmake-build-debug/zsim.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/code/zsim/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/code/zsim/HATS"/>
+					<Add directory="D:/code/zsim/misc/hooks"/>
+					<Add directory="D:/code/zsim/src"/>
+					<Add directory="D:/code/zsim/src/g_std"/>
+					<Add directory="D:/code/zsim/src/virt"/>
+					<Add directory="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 zsim/fast"/>
+					<CompileFile command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="D:/code/zsim/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="D:/code/zsim/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/mingw32-make.exe -f &quot;D:/code/zsim/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/code/zsim/HATS/BDFS.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/HATS/BDFS.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/misc/hooks/fortran_hooks.c">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/misc/hooks/test.c">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/misc/hooks/test.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/misc/hooks/zsim_hooks.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/misc/hooks/zsim_jni.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/access_tracing.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/access_tracing.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/barrier.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/bithacks.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/breakdown_stats.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/cache.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/cache.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/cache_arrays.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/cache_arrays.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/coherence_ctrls.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/coherence_ctrls.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/config.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/config.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/constants.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/contention_sim.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/contention_sim.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/core.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/core_recorder.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/core_recorder.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/cpuenum.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/cpuid.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/ddr_mem.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/ddr_mem.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/debug.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/debug_harness.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/debug_harness.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/debug_zsim.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/debug_zsim.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/decoder.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/decoder.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/detailed_mem.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/detailed_mem.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/detailed_mem_params.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/detailed_mem_params.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/dramsim_mem_ctrl.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/dramsim_mem_ctrl.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/dumptrace.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/event_queue.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/event_recorder.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/fftoggle.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/filter_cache.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/g_heap/dlmalloc.h.c">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/g_std/g_list.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/g_std/g_multimap.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/g_std/g_string.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/g_std/g_unordered_map.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/g_std/g_unordered_set.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/g_std/g_vector.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/g_std/stl_galloc.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/galloc.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/galloc.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/hash.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/hash.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/hdf5_stats.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/ideal_arrays.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/init.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/init.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/intrusive_list.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/locks.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/log.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/log.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/lookahead.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/mem_ctrls.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/mem_ctrls.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/memory_hierarchy.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/memory_hierarchy.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/monitor.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/mtrand.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/mutex.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/network.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/network.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/null_core.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/null_core.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/ooo_core.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/ooo_core.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/ooo_core_recorder.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/ooo_core_recorder.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/pad.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/parse_vdso.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/part_repl_policies.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/partition_mapper.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/partition_mapper.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/partitioner.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/pin_cmd.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/pin_cmd.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/prefetcher.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/prefetcher.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/prio_queue.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/proc_stats.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/proc_stats.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/process_stats.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/process_stats.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/process_tree.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/process_tree.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/profile_stats.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/rdtsc.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/repl_policies.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/scheduler.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/scheduler.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/simple_core.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/simple_core.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/slab_alloc.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/sorttrace.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/stats.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/stats_filter.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/stats_filter.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/str.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/text_stats.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/tick_event.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/timing_cache.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/timing_cache.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/timing_core.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/timing_core.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/timing_event.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/timing_event.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/trace_driver.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/trace_driver.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/tracing_cache.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/tracing_cache.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/utility_monitor.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/utility_monitor.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/virt/common.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/virt/cpu.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/virt/fs.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/virt/patchdefs.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/virt/port_virtualizer.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/virt/ports.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/virt/syscall_name.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/virt/time.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/virt/time_conv.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/virt/timeout.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/virt/virt.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/virt/virt.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/weave_md1_mem.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/zsim.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/zsim.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/src/zsim_harness.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
