@@ -5,7 +5,7 @@
       <paths name="实验室">
         <serverdata>
           <mappings>
-            <mapping deploy="/jzh/zsim" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/zsim_en/zsim" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

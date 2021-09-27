@@ -1429,6 +1429,11 @@ static EXCEPT_HANDLING_RESULT InternalExceptionHandler(THREADID tid, EXCEPTION_I
 
 int main(int argc, char *argv[]) {
     PIN_InitSymbols();
+//    std::cout << "=================" << std::endl;
+//    for (int j = 0; j < argc; ++j) {
+//        std::cout << argv[j] << std::endl;
+//    }
+//    std::cout << "=================" << std::endl;
     if (PIN_Init(argc, argv)) return Usage();
 
     //Register an internal exception handler (ASAP, to catch segfaults in init)
@@ -1504,6 +1509,7 @@ int main(int argc, char *argv[]) {
     procMask = ((uint64_t)procIdx) << (64-lineBits);
 
     //Initialize process-local per-thread state, even if ThreadStart does so later
+    //fPtrs储存每个线程的指令处理函数，包括load，store，bbl，分支，预测读，预测写等函数，这里先初始化
     for (uint32_t i = 0; i < MAX_THREADS; i++) {
         fPtrs[i] = joinPtrs;
         cids[i] = UNINITIALIZED_CID;

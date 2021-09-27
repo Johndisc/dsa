@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="632bade7-673e-44fb-b2dd-93de81bada4c" name="实验室">
-        <fileTransfer rootFolder="/home/liangyuxuan" accessType="SFTP" host="222.20.95.34" port="50022" sshConfigId="23ca8a19-319c-4046-900e-62ba7f481b02" sshConfig="liangyuxuan@222.20.95.34:50022 password">
+        <fileTransfer rootFolder="/home/jzh" accessType="SFTP" host="222.20.95.34" port="50020" sshConfigId="e478fd22-beaf-4a8b-938b-d5a43e48cd8f" sshConfig="jzh@222.20.95.34:50020 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
