@@ -96,6 +96,21 @@
 		<Unit filename="D:/code/zsim/HATS/BDFS.h">
 			<Option target="zsim"/>
 		</Unit>
+		<Unit filename="D:/code/zsim/HATS/VA.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/HATS/VA.h">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/HATS/test.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/cpp_test/multi_thread.cpp">
+			<Option target="zsim"/>
+		</Unit>
+		<Unit filename="D:/code/zsim/cpp_test/thread.cpp">
+			<Option target="zsim"/>
+		</Unit>
 		<Unit filename="D:/code/zsim/misc/hooks/fortran_hooks.c">
 			<Option target="zsim"/>
 		</Unit>

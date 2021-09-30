@@ -6,21 +6,17 @@
 
 using namespace std;
 
-template <typename T>
-BDFS<T>::BDFS() {}
+template<typename T>
+BDFS<T>::BDFS(vector<int> _offset, vector<int> _neighbor, vector <T> _vertex_data, bool _isPush, int _start_v,
+              int _end_v):offset(_offset), neighbor(_neighbor), vertex_data(_vertex_data), isPush(_isPush),
+                          start_v(_start_v) {}
 
 template <typename T>
 BDFS<T>::~BDFS<T>() = default;
 
 template <typename T>
-void BDFS<T>::hats_configure(vector<int> offset, vector<int> neighbor, vector <T> vertex_data, bool isPush, int start_v,
-                             int end_v) {
-    offset = offset;
-    neighbor = neighbor;
-    vertex_data = vertex_data;
-    isPush = isPush;
-    start_v = start_v;
-    end_v = end_v;
+void BDFS<T>::hats_configure(v) {
+
 }
 
 template <typename T>

@@ -19,7 +19,8 @@ private:
     bool isPush;
     int start_v, end_v;
 public:
-    BDFS();
+    BDFS(vector<int> _offset, vector<int> _neighbor, vector <T> _vertex_data, bool _isPush, int _start_v,
+         int _end_v);
     ~BDFS();
     void hats_configure(vector<int> offset, vector<int> neighbor, vector<T> vertex_data, bool isPush, int start_v, int end_v);
     void hats_fetch_edges();
