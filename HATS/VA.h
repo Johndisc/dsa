@@ -15,8 +15,8 @@
 
 using namespace std;
 
-mutex active_mutex;
-mutex fifo_mutex;
+extern mutex active_mutex;
+extern mutex fifo_mutex;
 
 struct Edge {
     int u;

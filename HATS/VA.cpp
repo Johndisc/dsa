@@ -6,6 +6,9 @@
 
 using namespace std;
 
+mutex active_mutex;
+mutex fifo_mutex;
+
 template<typename T>
 VA<T>::VA(){}
 
