@@ -152,30 +152,6 @@ HATS/BDFS.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/HATS/BDFS.cpp.s
 .PHONY : HATS/BDFS.cpp.s
 
-HATS/VA.obj: HATS/VA.cpp.obj
-.PHONY : HATS/VA.obj
-
-# target to build an object file
-HATS/VA.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/HATS/VA.cpp.obj
-.PHONY : HATS/VA.cpp.obj
-
-HATS/VA.i: HATS/VA.cpp.i
-.PHONY : HATS/VA.i
-
-# target to preprocess a source file
-HATS/VA.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/HATS/VA.cpp.i
-.PHONY : HATS/VA.cpp.i
-
-HATS/VA.s: HATS/VA.cpp.s
-.PHONY : HATS/VA.s
-
-# target to generate assembly for a file
-HATS/VA.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/HATS/VA.cpp.s
-.PHONY : HATS/VA.cpp.s
-
 HATS/test.obj: HATS/test.cpp.obj
 .PHONY : HATS/test.obj
 
@@ -1700,9 +1676,6 @@ help:
 	@echo ... HATS/BDFS.obj
 	@echo ... HATS/BDFS.i
 	@echo ... HATS/BDFS.s
-	@echo ... HATS/VA.obj
-	@echo ... HATS/VA.i
-	@echo ... HATS/VA.s
 	@echo ... HATS/test.obj
 	@echo ... HATS/test.i
 	@echo ... HATS/test.s

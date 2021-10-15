@@ -14,7 +14,6 @@ add_executable(zsim
         cpp_test/thread.cpp
         HATS/BDFS.cpp
         HATS/BDFS.h
-        HATS/VA.cpp
         HATS/VA.h
         misc/hooks/fortran_hooks.c
         misc/hooks/test.c

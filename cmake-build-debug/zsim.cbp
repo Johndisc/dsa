@@ -96,9 +96,6 @@
 		<Unit filename="D:/code/zsim/HATS/BDFS.h">
 			<Option target="zsim"/>
 		</Unit>
-		<Unit filename="D:/code/zsim/HATS/VA.cpp">
-			<Option target="zsim"/>
-		</Unit>
 		<Unit filename="D:/code/zsim/HATS/VA.h">
 			<Option target="zsim"/>
 		</Unit>

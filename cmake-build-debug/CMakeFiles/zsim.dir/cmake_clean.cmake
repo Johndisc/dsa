@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/zsim.dir/HATS/BDFS.cpp.obj"
-  "CMakeFiles/zsim.dir/HATS/VA.cpp.obj"
   "CMakeFiles/zsim.dir/HATS/test.cpp.obj"
   "CMakeFiles/zsim.dir/cpp_test/multi_thread.cpp.obj"
   "CMakeFiles/zsim.dir/cpp_test/thread.cpp.obj"
