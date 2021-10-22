@@ -11,32 +11,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.15 lab">
-      <change afterPath="$PROJECT_DIR$/cpp_test/instruction.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HATS/VA.h" afterDir="false" />
+    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.22 lab &#10;1.尝试静态变量传参失败，VA.h和test.cpp回滚。&#10;2.将gmutex.h中的mutex类更名为gmutex。&#10;3.在zsim.cpp中定义了tid到VA的unordered map，定义了configure和fetch的指令函数映射。">
+      <change afterPath="$PROJECT_DIR$/src/HATS/shared_memory.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HATS/BDFS.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HATS/BDFS.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/BDFS.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HATS/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_test/test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/includes_C.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/includes_C.rsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/includes_CXX.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/includes_CXX.rsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/objects1.rsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/zsim.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/zsim.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/access_tracing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/access_tracing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decoder.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/decoder.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/g_heap/dlmalloc.h.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/g_heap/dlmalloc.h.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mutex.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/gmutex.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parse_vdso.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/parse_vdso.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/slab_alloc.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/slab_alloc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HATS/VA.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/VA.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/zsim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zsim.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,19 +59,14 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="zsim" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="zsim" TARGET_NAME="zsim" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="zsim" RUN_TARGET_NAME="zsim">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="NimRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
@@ -108,7 +85,9 @@
       <updated>1632820180205</updated>
       <workItem from="1632820181749" duration="9805000" />
       <workItem from="1633653055168" duration="30950000" />
-      <workItem from="1634259194621" duration="69587000" />
+      <workItem from="1634259194621" duration="76434000" />
+      <workItem from="1634895210644" duration="962000" />
+      <workItem from="1634896249835" duration="296000" />
     </task>
     <task id="LOCAL-00001" summary="10.8 lab">
       <created>1633686246212</created>
@@ -124,7 +103,21 @@
       <option name="project" value="LOCAL" />
       <updated>1634295138644</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="10.22 lab &#10;尝试静态变量传参失败，VA.h和test.cpp回滚。&#10;zsim.cpp中定义了tid到VA的unordered map，定义了configure和fetch的指令映射。">
+      <created>1634874547688</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1634874547688</updated>
+    </task>
+    <task id="LOCAL-00004" summary="10.22 lab &#10;1.尝试静态变量传参失败，VA.h和test.cpp回滚。&#10;2.将gmutex.h中的mutex类更名为gmutex。&#10;3.在zsim.cpp中定义了tid到VA的unordered map，定义了configure和fetch的指令函数映射。">
+      <created>1634874679682</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1634874679682</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +149,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="10.8 lab" />
     <MESSAGE value="10.15 lab" />
-    <option name="LAST_COMMIT_MESSAGE" value="10.15 lab" />
+    <MESSAGE value="10.22 lab &#10;尝试静态变量传参失败，VA.h和test.cpp回滚。&#10;zsim.cpp中定义了tid到VA的unordered map，定义了configure和fetch的指令映射。" />
+    <MESSAGE value="10.22 lab &#10;1.尝试静态变量传参失败，VA.h和test.cpp回滚。&#10;2.将gmutex.h中的mutex类更名为gmutex。&#10;3.在zsim.cpp中定义了tid到VA的unordered map，定义了configure和fetch的指令函数映射。" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.22 lab &#10;1.尝试静态变量传参失败，VA.h和test.cpp回滚。&#10;2.将gmutex.h中的mutex类更名为gmutex。&#10;3.在zsim.cpp中定义了tid到VA的unordered map，定义了configure和fetch的指令函数映射。" />
   </component>
 </project>

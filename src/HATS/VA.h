@@ -9,6 +9,7 @@
 #include <queue>
 #include <thread>
 #include <mutex>
+#include "shared_memory.h"
 
 #define MAX_DEPTH 10
 #define THREAD_NUM 10
@@ -122,5 +123,21 @@ public:
     }
 };
 
+void configure(vector<int> _offset, vector<int> _neighbor, vector<bool> *_active, bool _isPush, int _start_v, int _end_v)
+{
+    unsigned data[9];
+    data[0] = (int) &_offset;
+    data[1] = sizeof(_offset);
+    data[2] = (int) &_neighbor;
+    data[3] = sizeof(_neighbor);
+    data[4] = (int) &_active;
+    data[5] = sizeof(_active);
+    data[6] = (int) _isPush;
+    data[7] = _start_v;
+    data[8] = _end_v;
+
+    void *addr = getSharedMemAddr();
+    memcpy(addr, data, sizeof(data));
+}
 
 #endif //ZSIM_VA_H

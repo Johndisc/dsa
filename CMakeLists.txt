@@ -155,4 +155,4 @@ add_executable(zsim
         src/weave_md1_mem.h
         src/zsim.cpp
         src/zsim.h
-        src/zsim_harness.cpp cpp_test/test.cpp cpp_test/instruction.cpp)
+        src/zsim_harness.cpp cpp_test/test.cpp cpp_test/instruction.cpp src/HATS/shared_memory.h)

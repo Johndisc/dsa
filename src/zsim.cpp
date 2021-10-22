@@ -1140,6 +1140,28 @@ VOID SimEnd() {
 
 VOID HandleConfig(THREADID tid) {
     va_map[tid] = new VA<int>();
+    void *address = getSharedMemAddr();
+    vector<int> *_offset;
+    unsigned offset_size, neighbor_size, active_size;
+    vector<int> *_neighbor;
+    vector<bool> *_active;
+    bool _isPush;
+    int _start_v;
+    int _end_v;
+
+    memcpy((char *)address, &_offset, 4);
+    memcpy((char *)address + 4, &offset_size, 4);
+    memcpy((char *)address + 8, &_neighbor, 4);
+    memcpy((char *)address + 12, &neighbor_size, 4);
+    memcpy((char *)address + 16, &_active, 4);
+    memcpy((char *)address + 20, &active_size, 4);
+    memcpy((char *)address + 24, &_isPush, 4);
+    memcpy((char *)address + 28, &_start_v, 4);
+    memcpy((char *)address + 32, &_end_v, 4);
+
+
+    va_map[tid]->hats_configure(_offset,_neighbor,_active,_isPush)
+
 //    va_map[tid]->start();
 }
 
@@ -1475,6 +1497,8 @@ int main(int argc, char *argv[]) {
     if (prctl(PR_SET_PDEATHSIG, 9 /*SIGKILL*/) != 0) {
         panic("prctl() failed");
     }
+
+    createSharedMem();
 
     info("Started instance");
 

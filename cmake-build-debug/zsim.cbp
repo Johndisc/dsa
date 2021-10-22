@@ -123,6 +123,9 @@
 		<Unit filename="D:/code/zsim/src/HATS/VA.h">
 			<Option target="zsim"/>
 		</Unit>
+		<Unit filename="D:/code/zsim/src/HATS/shared_memory.h">
+			<Option target="zsim"/>
+		</Unit>
 		<Unit filename="D:/code/zsim/src/access_tracing.cpp">
 			<Option target="zsim"/>
 		</Unit>
