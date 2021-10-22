@@ -93,24 +93,10 @@ CMakeFiles/zsim.dir/cpp_test/thread.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zsim.dir/cpp_test/thread.cpp.s"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\code\zsim\cpp_test\thread.cpp -o CMakeFiles\zsim.dir\cpp_test\thread.cpp.s
 
-CMakeFiles/zsim.dir/HATS/BDFS.cpp.obj: CMakeFiles/zsim.dir/flags.make
-CMakeFiles/zsim.dir/HATS/BDFS.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
-CMakeFiles/zsim.dir/HATS/BDFS.cpp.obj: ../HATS/BDFS.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/zsim.dir/HATS/BDFS.cpp.obj"
-	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\HATS\BDFS.cpp.obj -c D:\code\zsim\HATS\BDFS.cpp
-
-CMakeFiles/zsim.dir/HATS/BDFS.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zsim.dir/HATS/BDFS.cpp.i"
-	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\code\zsim\HATS\BDFS.cpp > CMakeFiles\zsim.dir\HATS\BDFS.cpp.i
-
-CMakeFiles/zsim.dir/HATS/BDFS.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zsim.dir/HATS/BDFS.cpp.s"
-	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\code\zsim\HATS\BDFS.cpp -o CMakeFiles\zsim.dir\HATS\BDFS.cpp.s
-
 CMakeFiles/zsim.dir/misc/hooks/fortran_hooks.c.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/misc/hooks/fortran_hooks.c.obj: CMakeFiles/zsim.dir/includes_C.rsp
 CMakeFiles/zsim.dir/misc/hooks/fortran_hooks.c.obj: ../misc/hooks/fortran_hooks.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/zsim.dir/misc/hooks/fortran_hooks.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/zsim.dir/misc/hooks/fortran_hooks.c.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\zsim.dir\misc\hooks\fortran_hooks.c.obj -c D:\code\zsim\misc\hooks\fortran_hooks.c
 
 CMakeFiles/zsim.dir/misc/hooks/fortran_hooks.c.i: cmake_force
@@ -124,7 +110,7 @@ CMakeFiles/zsim.dir/misc/hooks/fortran_hooks.c.s: cmake_force
 CMakeFiles/zsim.dir/misc/hooks/test.c.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/misc/hooks/test.c.obj: CMakeFiles/zsim.dir/includes_C.rsp
 CMakeFiles/zsim.dir/misc/hooks/test.c.obj: ../misc/hooks/test.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/zsim.dir/misc/hooks/test.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/zsim.dir/misc/hooks/test.c.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\zsim.dir\misc\hooks\test.c.obj -c D:\code\zsim\misc\hooks\test.c
 
 CMakeFiles/zsim.dir/misc/hooks/test.c.i: cmake_force
@@ -138,7 +124,7 @@ CMakeFiles/zsim.dir/misc/hooks/test.c.s: cmake_force
 CMakeFiles/zsim.dir/misc/hooks/test.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/misc/hooks/test.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/misc/hooks/test.cpp.obj: ../misc/hooks/test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/zsim.dir/misc/hooks/test.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/zsim.dir/misc/hooks/test.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\misc\hooks\test.cpp.obj -c D:\code\zsim\misc\hooks\test.cpp
 
 CMakeFiles/zsim.dir/misc/hooks/test.cpp.i: cmake_force
@@ -152,7 +138,7 @@ CMakeFiles/zsim.dir/misc/hooks/test.cpp.s: cmake_force
 CMakeFiles/zsim.dir/misc/hooks/zsim_jni.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/misc/hooks/zsim_jni.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/misc/hooks/zsim_jni.cpp.obj: ../misc/hooks/zsim_jni.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/zsim.dir/misc/hooks/zsim_jni.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/zsim.dir/misc/hooks/zsim_jni.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\misc\hooks\zsim_jni.cpp.obj -c D:\code\zsim\misc\hooks\zsim_jni.cpp
 
 CMakeFiles/zsim.dir/misc/hooks/zsim_jni.cpp.i: cmake_force
@@ -166,7 +152,7 @@ CMakeFiles/zsim.dir/misc/hooks/zsim_jni.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/g_heap/dlmalloc.h.c.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/g_heap/dlmalloc.h.c.obj: CMakeFiles/zsim.dir/includes_C.rsp
 CMakeFiles/zsim.dir/src/g_heap/dlmalloc.h.c.obj: ../src/g_heap/dlmalloc.h.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/zsim.dir/src/g_heap/dlmalloc.h.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/zsim.dir/src/g_heap/dlmalloc.h.c.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\zsim.dir\src\g_heap\dlmalloc.h.c.obj -c D:\code\zsim\src\g_heap\dlmalloc.h.c
 
 CMakeFiles/zsim.dir/src/g_heap/dlmalloc.h.c.i: cmake_force
@@ -180,7 +166,7 @@ CMakeFiles/zsim.dir/src/g_heap/dlmalloc.h.c.s: cmake_force
 CMakeFiles/zsim.dir/src/virt/cpu.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/virt/cpu.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/virt/cpu.cpp.obj: ../src/virt/cpu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/zsim.dir/src/virt/cpu.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/zsim.dir/src/virt/cpu.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\virt\cpu.cpp.obj -c D:\code\zsim\src\virt\cpu.cpp
 
 CMakeFiles/zsim.dir/src/virt/cpu.cpp.i: cmake_force
@@ -194,7 +180,7 @@ CMakeFiles/zsim.dir/src/virt/cpu.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/virt/fs.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/virt/fs.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/virt/fs.cpp.obj: ../src/virt/fs.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/zsim.dir/src/virt/fs.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/zsim.dir/src/virt/fs.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\virt\fs.cpp.obj -c D:\code\zsim\src\virt\fs.cpp
 
 CMakeFiles/zsim.dir/src/virt/fs.cpp.i: cmake_force
@@ -208,7 +194,7 @@ CMakeFiles/zsim.dir/src/virt/fs.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/virt/ports.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/virt/ports.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/virt/ports.cpp.obj: ../src/virt/ports.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/zsim.dir/src/virt/ports.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/zsim.dir/src/virt/ports.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\virt\ports.cpp.obj -c D:\code\zsim\src\virt\ports.cpp
 
 CMakeFiles/zsim.dir/src/virt/ports.cpp.i: cmake_force
@@ -222,7 +208,7 @@ CMakeFiles/zsim.dir/src/virt/ports.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/virt/time.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/virt/time.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/virt/time.cpp.obj: ../src/virt/time.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/zsim.dir/src/virt/time.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/zsim.dir/src/virt/time.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\virt\time.cpp.obj -c D:\code\zsim\src\virt\time.cpp
 
 CMakeFiles/zsim.dir/src/virt/time.cpp.i: cmake_force
@@ -236,7 +222,7 @@ CMakeFiles/zsim.dir/src/virt/time.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/virt/timeout.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/virt/timeout.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/virt/timeout.cpp.obj: ../src/virt/timeout.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/zsim.dir/src/virt/timeout.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/zsim.dir/src/virt/timeout.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\virt\timeout.cpp.obj -c D:\code\zsim\src\virt\timeout.cpp
 
 CMakeFiles/zsim.dir/src/virt/timeout.cpp.i: cmake_force
@@ -250,7 +236,7 @@ CMakeFiles/zsim.dir/src/virt/timeout.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/virt/virt.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/virt/virt.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/virt/virt.cpp.obj: ../src/virt/virt.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/zsim.dir/src/virt/virt.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/zsim.dir/src/virt/virt.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\virt\virt.cpp.obj -c D:\code\zsim\src\virt\virt.cpp
 
 CMakeFiles/zsim.dir/src/virt/virt.cpp.i: cmake_force
@@ -264,7 +250,7 @@ CMakeFiles/zsim.dir/src/virt/virt.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/access_tracing.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/access_tracing.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/access_tracing.cpp.obj: ../src/access_tracing.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/zsim.dir/src/access_tracing.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/zsim.dir/src/access_tracing.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\access_tracing.cpp.obj -c D:\code\zsim\src\access_tracing.cpp
 
 CMakeFiles/zsim.dir/src/access_tracing.cpp.i: cmake_force
@@ -278,7 +264,7 @@ CMakeFiles/zsim.dir/src/access_tracing.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/cache.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/cache.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/cache.cpp.obj: ../src/cache.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/zsim.dir/src/cache.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/zsim.dir/src/cache.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\cache.cpp.obj -c D:\code\zsim\src\cache.cpp
 
 CMakeFiles/zsim.dir/src/cache.cpp.i: cmake_force
@@ -292,7 +278,7 @@ CMakeFiles/zsim.dir/src/cache.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/cache_arrays.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/cache_arrays.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/cache_arrays.cpp.obj: ../src/cache_arrays.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/zsim.dir/src/cache_arrays.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/zsim.dir/src/cache_arrays.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\cache_arrays.cpp.obj -c D:\code\zsim\src\cache_arrays.cpp
 
 CMakeFiles/zsim.dir/src/cache_arrays.cpp.i: cmake_force
@@ -306,7 +292,7 @@ CMakeFiles/zsim.dir/src/cache_arrays.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/coherence_ctrls.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/coherence_ctrls.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/coherence_ctrls.cpp.obj: ../src/coherence_ctrls.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/zsim.dir/src/coherence_ctrls.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/zsim.dir/src/coherence_ctrls.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\coherence_ctrls.cpp.obj -c D:\code\zsim\src\coherence_ctrls.cpp
 
 CMakeFiles/zsim.dir/src/coherence_ctrls.cpp.i: cmake_force
@@ -320,7 +306,7 @@ CMakeFiles/zsim.dir/src/coherence_ctrls.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/config.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/config.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/config.cpp.obj: ../src/config.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/zsim.dir/src/config.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/zsim.dir/src/config.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\config.cpp.obj -c D:\code\zsim\src\config.cpp
 
 CMakeFiles/zsim.dir/src/config.cpp.i: cmake_force
@@ -334,7 +320,7 @@ CMakeFiles/zsim.dir/src/config.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/contention_sim.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/contention_sim.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/contention_sim.cpp.obj: ../src/contention_sim.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/zsim.dir/src/contention_sim.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/zsim.dir/src/contention_sim.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\contention_sim.cpp.obj -c D:\code\zsim\src\contention_sim.cpp
 
 CMakeFiles/zsim.dir/src/contention_sim.cpp.i: cmake_force
@@ -348,7 +334,7 @@ CMakeFiles/zsim.dir/src/contention_sim.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/core_recorder.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/core_recorder.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/core_recorder.cpp.obj: ../src/core_recorder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/zsim.dir/src/core_recorder.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/zsim.dir/src/core_recorder.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\core_recorder.cpp.obj -c D:\code\zsim\src\core_recorder.cpp
 
 CMakeFiles/zsim.dir/src/core_recorder.cpp.i: cmake_force
@@ -362,7 +348,7 @@ CMakeFiles/zsim.dir/src/core_recorder.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/ddr_mem.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/ddr_mem.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/ddr_mem.cpp.obj: ../src/ddr_mem.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/zsim.dir/src/ddr_mem.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/zsim.dir/src/ddr_mem.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\ddr_mem.cpp.obj -c D:\code\zsim\src\ddr_mem.cpp
 
 CMakeFiles/zsim.dir/src/ddr_mem.cpp.i: cmake_force
@@ -376,7 +362,7 @@ CMakeFiles/zsim.dir/src/ddr_mem.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/debug_harness.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/debug_harness.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/debug_harness.cpp.obj: ../src/debug_harness.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/zsim.dir/src/debug_harness.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/zsim.dir/src/debug_harness.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\debug_harness.cpp.obj -c D:\code\zsim\src\debug_harness.cpp
 
 CMakeFiles/zsim.dir/src/debug_harness.cpp.i: cmake_force
@@ -390,7 +376,7 @@ CMakeFiles/zsim.dir/src/debug_harness.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/debug_zsim.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/debug_zsim.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/debug_zsim.cpp.obj: ../src/debug_zsim.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/zsim.dir/src/debug_zsim.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/zsim.dir/src/debug_zsim.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\debug_zsim.cpp.obj -c D:\code\zsim\src\debug_zsim.cpp
 
 CMakeFiles/zsim.dir/src/debug_zsim.cpp.i: cmake_force
@@ -404,7 +390,7 @@ CMakeFiles/zsim.dir/src/debug_zsim.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/decoder.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/decoder.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/decoder.cpp.obj: ../src/decoder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/zsim.dir/src/decoder.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/zsim.dir/src/decoder.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\decoder.cpp.obj -c D:\code\zsim\src\decoder.cpp
 
 CMakeFiles/zsim.dir/src/decoder.cpp.i: cmake_force
@@ -418,7 +404,7 @@ CMakeFiles/zsim.dir/src/decoder.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/detailed_mem.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/detailed_mem.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/detailed_mem.cpp.obj: ../src/detailed_mem.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/zsim.dir/src/detailed_mem.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/zsim.dir/src/detailed_mem.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\detailed_mem.cpp.obj -c D:\code\zsim\src\detailed_mem.cpp
 
 CMakeFiles/zsim.dir/src/detailed_mem.cpp.i: cmake_force
@@ -432,7 +418,7 @@ CMakeFiles/zsim.dir/src/detailed_mem.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/detailed_mem_params.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/detailed_mem_params.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/detailed_mem_params.cpp.obj: ../src/detailed_mem_params.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/zsim.dir/src/detailed_mem_params.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/zsim.dir/src/detailed_mem_params.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\detailed_mem_params.cpp.obj -c D:\code\zsim\src\detailed_mem_params.cpp
 
 CMakeFiles/zsim.dir/src/detailed_mem_params.cpp.i: cmake_force
@@ -446,7 +432,7 @@ CMakeFiles/zsim.dir/src/detailed_mem_params.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/dramsim_mem_ctrl.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/dramsim_mem_ctrl.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/dramsim_mem_ctrl.cpp.obj: ../src/dramsim_mem_ctrl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/zsim.dir/src/dramsim_mem_ctrl.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/zsim.dir/src/dramsim_mem_ctrl.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\dramsim_mem_ctrl.cpp.obj -c D:\code\zsim\src\dramsim_mem_ctrl.cpp
 
 CMakeFiles/zsim.dir/src/dramsim_mem_ctrl.cpp.i: cmake_force
@@ -460,7 +446,7 @@ CMakeFiles/zsim.dir/src/dramsim_mem_ctrl.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/dumptrace.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/dumptrace.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/dumptrace.cpp.obj: ../src/dumptrace.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/zsim.dir/src/dumptrace.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/zsim.dir/src/dumptrace.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\dumptrace.cpp.obj -c D:\code\zsim\src\dumptrace.cpp
 
 CMakeFiles/zsim.dir/src/dumptrace.cpp.i: cmake_force
@@ -474,7 +460,7 @@ CMakeFiles/zsim.dir/src/dumptrace.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/fftoggle.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/fftoggle.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/fftoggle.cpp.obj: ../src/fftoggle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/zsim.dir/src/fftoggle.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/zsim.dir/src/fftoggle.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\fftoggle.cpp.obj -c D:\code\zsim\src\fftoggle.cpp
 
 CMakeFiles/zsim.dir/src/fftoggle.cpp.i: cmake_force
@@ -488,7 +474,7 @@ CMakeFiles/zsim.dir/src/fftoggle.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/galloc.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/galloc.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/galloc.cpp.obj: ../src/galloc.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/zsim.dir/src/galloc.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/zsim.dir/src/galloc.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\galloc.cpp.obj -c D:\code\zsim\src\galloc.cpp
 
 CMakeFiles/zsim.dir/src/galloc.cpp.i: cmake_force
@@ -502,7 +488,7 @@ CMakeFiles/zsim.dir/src/galloc.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/hash.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/hash.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/hash.cpp.obj: ../src/hash.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/zsim.dir/src/hash.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/zsim.dir/src/hash.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\hash.cpp.obj -c D:\code\zsim\src\hash.cpp
 
 CMakeFiles/zsim.dir/src/hash.cpp.i: cmake_force
@@ -516,7 +502,7 @@ CMakeFiles/zsim.dir/src/hash.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/hdf5_stats.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/hdf5_stats.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/hdf5_stats.cpp.obj: ../src/hdf5_stats.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/zsim.dir/src/hdf5_stats.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/zsim.dir/src/hdf5_stats.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\hdf5_stats.cpp.obj -c D:\code\zsim\src\hdf5_stats.cpp
 
 CMakeFiles/zsim.dir/src/hdf5_stats.cpp.i: cmake_force
@@ -530,7 +516,7 @@ CMakeFiles/zsim.dir/src/hdf5_stats.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/init.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/init.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/init.cpp.obj: ../src/init.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/zsim.dir/src/init.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/zsim.dir/src/init.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\init.cpp.obj -c D:\code\zsim\src\init.cpp
 
 CMakeFiles/zsim.dir/src/init.cpp.i: cmake_force
@@ -544,7 +530,7 @@ CMakeFiles/zsim.dir/src/init.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/log.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/log.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/log.cpp.obj: ../src/log.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/zsim.dir/src/log.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/zsim.dir/src/log.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\log.cpp.obj -c D:\code\zsim\src\log.cpp
 
 CMakeFiles/zsim.dir/src/log.cpp.i: cmake_force
@@ -558,7 +544,7 @@ CMakeFiles/zsim.dir/src/log.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/lookahead.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/lookahead.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/lookahead.cpp.obj: ../src/lookahead.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/zsim.dir/src/lookahead.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/zsim.dir/src/lookahead.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\lookahead.cpp.obj -c D:\code\zsim\src\lookahead.cpp
 
 CMakeFiles/zsim.dir/src/lookahead.cpp.i: cmake_force
@@ -572,7 +558,7 @@ CMakeFiles/zsim.dir/src/lookahead.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/mem_ctrls.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/mem_ctrls.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/mem_ctrls.cpp.obj: ../src/mem_ctrls.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/zsim.dir/src/mem_ctrls.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/zsim.dir/src/mem_ctrls.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\mem_ctrls.cpp.obj -c D:\code\zsim\src\mem_ctrls.cpp
 
 CMakeFiles/zsim.dir/src/mem_ctrls.cpp.i: cmake_force
@@ -586,7 +572,7 @@ CMakeFiles/zsim.dir/src/mem_ctrls.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/memory_hierarchy.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/memory_hierarchy.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/memory_hierarchy.cpp.obj: ../src/memory_hierarchy.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/zsim.dir/src/memory_hierarchy.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/zsim.dir/src/memory_hierarchy.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\memory_hierarchy.cpp.obj -c D:\code\zsim\src\memory_hierarchy.cpp
 
 CMakeFiles/zsim.dir/src/memory_hierarchy.cpp.i: cmake_force
@@ -600,7 +586,7 @@ CMakeFiles/zsim.dir/src/memory_hierarchy.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/monitor.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/monitor.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/monitor.cpp.obj: ../src/monitor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/zsim.dir/src/monitor.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/zsim.dir/src/monitor.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\monitor.cpp.obj -c D:\code\zsim\src\monitor.cpp
 
 CMakeFiles/zsim.dir/src/monitor.cpp.i: cmake_force
@@ -614,7 +600,7 @@ CMakeFiles/zsim.dir/src/monitor.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/network.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/network.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/network.cpp.obj: ../src/network.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/zsim.dir/src/network.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/zsim.dir/src/network.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\network.cpp.obj -c D:\code\zsim\src\network.cpp
 
 CMakeFiles/zsim.dir/src/network.cpp.i: cmake_force
@@ -628,7 +614,7 @@ CMakeFiles/zsim.dir/src/network.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/null_core.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/null_core.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/null_core.cpp.obj: ../src/null_core.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/zsim.dir/src/null_core.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/zsim.dir/src/null_core.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\null_core.cpp.obj -c D:\code\zsim\src\null_core.cpp
 
 CMakeFiles/zsim.dir/src/null_core.cpp.i: cmake_force
@@ -642,7 +628,7 @@ CMakeFiles/zsim.dir/src/null_core.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/ooo_core.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/ooo_core.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/ooo_core.cpp.obj: ../src/ooo_core.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/zsim.dir/src/ooo_core.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/zsim.dir/src/ooo_core.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\ooo_core.cpp.obj -c D:\code\zsim\src\ooo_core.cpp
 
 CMakeFiles/zsim.dir/src/ooo_core.cpp.i: cmake_force
@@ -656,7 +642,7 @@ CMakeFiles/zsim.dir/src/ooo_core.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/ooo_core_recorder.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/ooo_core_recorder.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/ooo_core_recorder.cpp.obj: ../src/ooo_core_recorder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/zsim.dir/src/ooo_core_recorder.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/zsim.dir/src/ooo_core_recorder.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\ooo_core_recorder.cpp.obj -c D:\code\zsim\src\ooo_core_recorder.cpp
 
 CMakeFiles/zsim.dir/src/ooo_core_recorder.cpp.i: cmake_force
@@ -670,7 +656,7 @@ CMakeFiles/zsim.dir/src/ooo_core_recorder.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/parse_vdso.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/parse_vdso.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/parse_vdso.cpp.obj: ../src/parse_vdso.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/zsim.dir/src/parse_vdso.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/zsim.dir/src/parse_vdso.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\parse_vdso.cpp.obj -c D:\code\zsim\src\parse_vdso.cpp
 
 CMakeFiles/zsim.dir/src/parse_vdso.cpp.i: cmake_force
@@ -684,7 +670,7 @@ CMakeFiles/zsim.dir/src/parse_vdso.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/partition_mapper.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/partition_mapper.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/partition_mapper.cpp.obj: ../src/partition_mapper.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/zsim.dir/src/partition_mapper.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/zsim.dir/src/partition_mapper.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\partition_mapper.cpp.obj -c D:\code\zsim\src\partition_mapper.cpp
 
 CMakeFiles/zsim.dir/src/partition_mapper.cpp.i: cmake_force
@@ -698,7 +684,7 @@ CMakeFiles/zsim.dir/src/partition_mapper.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/pin_cmd.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/pin_cmd.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/pin_cmd.cpp.obj: ../src/pin_cmd.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/zsim.dir/src/pin_cmd.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/zsim.dir/src/pin_cmd.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\pin_cmd.cpp.obj -c D:\code\zsim\src\pin_cmd.cpp
 
 CMakeFiles/zsim.dir/src/pin_cmd.cpp.i: cmake_force
@@ -712,7 +698,7 @@ CMakeFiles/zsim.dir/src/pin_cmd.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/prefetcher.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/prefetcher.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/prefetcher.cpp.obj: ../src/prefetcher.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/zsim.dir/src/prefetcher.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/zsim.dir/src/prefetcher.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\prefetcher.cpp.obj -c D:\code\zsim\src\prefetcher.cpp
 
 CMakeFiles/zsim.dir/src/prefetcher.cpp.i: cmake_force
@@ -726,7 +712,7 @@ CMakeFiles/zsim.dir/src/prefetcher.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/proc_stats.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/proc_stats.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/proc_stats.cpp.obj: ../src/proc_stats.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/zsim.dir/src/proc_stats.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/zsim.dir/src/proc_stats.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\proc_stats.cpp.obj -c D:\code\zsim\src\proc_stats.cpp
 
 CMakeFiles/zsim.dir/src/proc_stats.cpp.i: cmake_force
@@ -740,7 +726,7 @@ CMakeFiles/zsim.dir/src/proc_stats.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/process_stats.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/process_stats.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/process_stats.cpp.obj: ../src/process_stats.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/zsim.dir/src/process_stats.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/zsim.dir/src/process_stats.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\process_stats.cpp.obj -c D:\code\zsim\src\process_stats.cpp
 
 CMakeFiles/zsim.dir/src/process_stats.cpp.i: cmake_force
@@ -754,7 +740,7 @@ CMakeFiles/zsim.dir/src/process_stats.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/process_tree.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/process_tree.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/process_tree.cpp.obj: ../src/process_tree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/zsim.dir/src/process_tree.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/zsim.dir/src/process_tree.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\process_tree.cpp.obj -c D:\code\zsim\src\process_tree.cpp
 
 CMakeFiles/zsim.dir/src/process_tree.cpp.i: cmake_force
@@ -768,7 +754,7 @@ CMakeFiles/zsim.dir/src/process_tree.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/scheduler.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/scheduler.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/scheduler.cpp.obj: ../src/scheduler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/zsim.dir/src/scheduler.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/zsim.dir/src/scheduler.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\scheduler.cpp.obj -c D:\code\zsim\src\scheduler.cpp
 
 CMakeFiles/zsim.dir/src/scheduler.cpp.i: cmake_force
@@ -782,7 +768,7 @@ CMakeFiles/zsim.dir/src/scheduler.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/simple_core.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/simple_core.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/simple_core.cpp.obj: ../src/simple_core.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/zsim.dir/src/simple_core.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/zsim.dir/src/simple_core.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\simple_core.cpp.obj -c D:\code\zsim\src\simple_core.cpp
 
 CMakeFiles/zsim.dir/src/simple_core.cpp.i: cmake_force
@@ -796,7 +782,7 @@ CMakeFiles/zsim.dir/src/simple_core.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/sorttrace.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/sorttrace.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/sorttrace.cpp.obj: ../src/sorttrace.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/zsim.dir/src/sorttrace.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/zsim.dir/src/sorttrace.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\sorttrace.cpp.obj -c D:\code\zsim\src\sorttrace.cpp
 
 CMakeFiles/zsim.dir/src/sorttrace.cpp.i: cmake_force
@@ -810,7 +796,7 @@ CMakeFiles/zsim.dir/src/sorttrace.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/stats_filter.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/stats_filter.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/stats_filter.cpp.obj: ../src/stats_filter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/zsim.dir/src/stats_filter.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/zsim.dir/src/stats_filter.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\stats_filter.cpp.obj -c D:\code\zsim\src\stats_filter.cpp
 
 CMakeFiles/zsim.dir/src/stats_filter.cpp.i: cmake_force
@@ -824,7 +810,7 @@ CMakeFiles/zsim.dir/src/stats_filter.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/text_stats.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/text_stats.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/text_stats.cpp.obj: ../src/text_stats.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/zsim.dir/src/text_stats.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/zsim.dir/src/text_stats.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\text_stats.cpp.obj -c D:\code\zsim\src\text_stats.cpp
 
 CMakeFiles/zsim.dir/src/text_stats.cpp.i: cmake_force
@@ -838,7 +824,7 @@ CMakeFiles/zsim.dir/src/text_stats.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/timing_cache.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/timing_cache.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/timing_cache.cpp.obj: ../src/timing_cache.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/zsim.dir/src/timing_cache.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/zsim.dir/src/timing_cache.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\timing_cache.cpp.obj -c D:\code\zsim\src\timing_cache.cpp
 
 CMakeFiles/zsim.dir/src/timing_cache.cpp.i: cmake_force
@@ -852,7 +838,7 @@ CMakeFiles/zsim.dir/src/timing_cache.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/timing_core.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/timing_core.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/timing_core.cpp.obj: ../src/timing_core.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/zsim.dir/src/timing_core.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/zsim.dir/src/timing_core.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\timing_core.cpp.obj -c D:\code\zsim\src\timing_core.cpp
 
 CMakeFiles/zsim.dir/src/timing_core.cpp.i: cmake_force
@@ -866,7 +852,7 @@ CMakeFiles/zsim.dir/src/timing_core.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/timing_event.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/timing_event.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/timing_event.cpp.obj: ../src/timing_event.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/zsim.dir/src/timing_event.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/zsim.dir/src/timing_event.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\timing_event.cpp.obj -c D:\code\zsim\src\timing_event.cpp
 
 CMakeFiles/zsim.dir/src/timing_event.cpp.i: cmake_force
@@ -880,7 +866,7 @@ CMakeFiles/zsim.dir/src/timing_event.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/trace_driver.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/trace_driver.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/trace_driver.cpp.obj: ../src/trace_driver.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/zsim.dir/src/trace_driver.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/zsim.dir/src/trace_driver.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\trace_driver.cpp.obj -c D:\code\zsim\src\trace_driver.cpp
 
 CMakeFiles/zsim.dir/src/trace_driver.cpp.i: cmake_force
@@ -894,7 +880,7 @@ CMakeFiles/zsim.dir/src/trace_driver.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/tracing_cache.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/tracing_cache.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/tracing_cache.cpp.obj: ../src/tracing_cache.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/zsim.dir/src/tracing_cache.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/zsim.dir/src/tracing_cache.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\tracing_cache.cpp.obj -c D:\code\zsim\src\tracing_cache.cpp
 
 CMakeFiles/zsim.dir/src/tracing_cache.cpp.i: cmake_force
@@ -908,7 +894,7 @@ CMakeFiles/zsim.dir/src/tracing_cache.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/utility_monitor.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/utility_monitor.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/utility_monitor.cpp.obj: ../src/utility_monitor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/zsim.dir/src/utility_monitor.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/zsim.dir/src/utility_monitor.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\utility_monitor.cpp.obj -c D:\code\zsim\src\utility_monitor.cpp
 
 CMakeFiles/zsim.dir/src/utility_monitor.cpp.i: cmake_force
@@ -922,7 +908,7 @@ CMakeFiles/zsim.dir/src/utility_monitor.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/zsim.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/zsim.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/zsim.cpp.obj: ../src/zsim.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/zsim.dir/src/zsim.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/zsim.dir/src/zsim.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\zsim.cpp.obj -c D:\code\zsim\src\zsim.cpp
 
 CMakeFiles/zsim.dir/src/zsim.cpp.i: cmake_force
@@ -936,7 +922,7 @@ CMakeFiles/zsim.dir/src/zsim.cpp.s: cmake_force
 CMakeFiles/zsim.dir/src/zsim_harness.cpp.obj: CMakeFiles/zsim.dir/flags.make
 CMakeFiles/zsim.dir/src/zsim_harness.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
 CMakeFiles/zsim.dir/src/zsim_harness.cpp.obj: ../src/zsim_harness.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/zsim.dir/src/zsim_harness.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/zsim.dir/src/zsim_harness.cpp.obj"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\src\zsim_harness.cpp.obj -c D:\code\zsim\src\zsim_harness.cpp
 
 CMakeFiles/zsim.dir/src/zsim_harness.cpp.i: cmake_force
@@ -947,25 +933,38 @@ CMakeFiles/zsim.dir/src/zsim_harness.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zsim.dir/src/zsim_harness.cpp.s"
 	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\code\zsim\src\zsim_harness.cpp -o CMakeFiles\zsim.dir\src\zsim_harness.cpp.s
 
-CMakeFiles/zsim.dir/HATS/test.cpp.obj: CMakeFiles/zsim.dir/flags.make
-CMakeFiles/zsim.dir/HATS/test.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
-CMakeFiles/zsim.dir/HATS/test.cpp.obj: ../HATS/test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/zsim.dir/HATS/test.cpp.obj"
-	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\HATS\test.cpp.obj -c D:\code\zsim\HATS\test.cpp
+CMakeFiles/zsim.dir/cpp_test/test.cpp.obj: CMakeFiles/zsim.dir/flags.make
+CMakeFiles/zsim.dir/cpp_test/test.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
+CMakeFiles/zsim.dir/cpp_test/test.cpp.obj: ../cpp_test/test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/zsim.dir/cpp_test/test.cpp.obj"
+	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\cpp_test\test.cpp.obj -c D:\code\zsim\cpp_test\test.cpp
 
-CMakeFiles/zsim.dir/HATS/test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zsim.dir/HATS/test.cpp.i"
-	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\code\zsim\HATS\test.cpp > CMakeFiles\zsim.dir\HATS\test.cpp.i
+CMakeFiles/zsim.dir/cpp_test/test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zsim.dir/cpp_test/test.cpp.i"
+	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\code\zsim\cpp_test\test.cpp > CMakeFiles\zsim.dir\cpp_test\test.cpp.i
 
-CMakeFiles/zsim.dir/HATS/test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zsim.dir/HATS/test.cpp.s"
-	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\code\zsim\HATS\test.cpp -o CMakeFiles\zsim.dir\HATS\test.cpp.s
+CMakeFiles/zsim.dir/cpp_test/test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zsim.dir/cpp_test/test.cpp.s"
+	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\code\zsim\cpp_test\test.cpp -o CMakeFiles\zsim.dir\cpp_test\test.cpp.s
+
+CMakeFiles/zsim.dir/cpp_test/instruction.cpp.obj: CMakeFiles/zsim.dir/flags.make
+CMakeFiles/zsim.dir/cpp_test/instruction.cpp.obj: CMakeFiles/zsim.dir/includes_CXX.rsp
+CMakeFiles/zsim.dir/cpp_test/instruction.cpp.obj: ../cpp_test/instruction.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\code\zsim\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/zsim.dir/cpp_test/instruction.cpp.obj"
+	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\zsim.dir\cpp_test\instruction.cpp.obj -c D:\code\zsim\cpp_test\instruction.cpp
+
+CMakeFiles/zsim.dir/cpp_test/instruction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/zsim.dir/cpp_test/instruction.cpp.i"
+	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\code\zsim\cpp_test\instruction.cpp > CMakeFiles\zsim.dir\cpp_test\instruction.cpp.i
+
+CMakeFiles/zsim.dir/cpp_test/instruction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/zsim.dir/cpp_test/instruction.cpp.s"
+	"D:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\code\zsim\cpp_test\instruction.cpp -o CMakeFiles\zsim.dir\cpp_test\instruction.cpp.s
 
 # Object files for target zsim
 zsim_OBJECTS = \
 "CMakeFiles/zsim.dir/cpp_test/multi_thread.cpp.obj" \
 "CMakeFiles/zsim.dir/cpp_test/thread.cpp.obj" \
-"CMakeFiles/zsim.dir/HATS/BDFS.cpp.obj" \
 "CMakeFiles/zsim.dir/misc/hooks/fortran_hooks.c.obj" \
 "CMakeFiles/zsim.dir/misc/hooks/test.c.obj" \
 "CMakeFiles/zsim.dir/misc/hooks/test.cpp.obj" \
@@ -1026,14 +1025,14 @@ zsim_OBJECTS = \
 "CMakeFiles/zsim.dir/src/utility_monitor.cpp.obj" \
 "CMakeFiles/zsim.dir/src/zsim.cpp.obj" \
 "CMakeFiles/zsim.dir/src/zsim_harness.cpp.obj" \
-"CMakeFiles/zsim.dir/HATS/test.cpp.obj"
+"CMakeFiles/zsim.dir/cpp_test/test.cpp.obj" \
+"CMakeFiles/zsim.dir/cpp_test/instruction.cpp.obj"
 
 # External object files for target zsim
 zsim_EXTERNAL_OBJECTS =
 
 zsim.exe: CMakeFiles/zsim.dir/cpp_test/multi_thread.cpp.obj
 zsim.exe: CMakeFiles/zsim.dir/cpp_test/thread.cpp.obj
-zsim.exe: CMakeFiles/zsim.dir/HATS/BDFS.cpp.obj
 zsim.exe: CMakeFiles/zsim.dir/misc/hooks/fortran_hooks.c.obj
 zsim.exe: CMakeFiles/zsim.dir/misc/hooks/test.c.obj
 zsim.exe: CMakeFiles/zsim.dir/misc/hooks/test.cpp.obj
@@ -1094,7 +1093,8 @@ zsim.exe: CMakeFiles/zsim.dir/src/tracing_cache.cpp.obj
 zsim.exe: CMakeFiles/zsim.dir/src/utility_monitor.cpp.obj
 zsim.exe: CMakeFiles/zsim.dir/src/zsim.cpp.obj
 zsim.exe: CMakeFiles/zsim.dir/src/zsim_harness.cpp.obj
-zsim.exe: CMakeFiles/zsim.dir/HATS/test.cpp.obj
+zsim.exe: CMakeFiles/zsim.dir/cpp_test/test.cpp.obj
+zsim.exe: CMakeFiles/zsim.dir/cpp_test/instruction.cpp.obj
 zsim.exe: CMakeFiles/zsim.dir/build.make
 zsim.exe: CMakeFiles/zsim.dir/linklibs.rsp
 zsim.exe: CMakeFiles/zsim.dir/objects1.rsp

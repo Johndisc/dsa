@@ -128,53 +128,29 @@ zsim/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/build
 .PHONY : zsim/fast
 
-HATS/BDFS.obj: HATS/BDFS.cpp.obj
-.PHONY : HATS/BDFS.obj
+cpp_test/instruction.obj: cpp_test/instruction.cpp.obj
+.PHONY : cpp_test/instruction.obj
 
 # target to build an object file
-HATS/BDFS.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/HATS/BDFS.cpp.obj
-.PHONY : HATS/BDFS.cpp.obj
+cpp_test/instruction.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/cpp_test/instruction.cpp.obj
+.PHONY : cpp_test/instruction.cpp.obj
 
-HATS/BDFS.i: HATS/BDFS.cpp.i
-.PHONY : HATS/BDFS.i
-
-# target to preprocess a source file
-HATS/BDFS.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/HATS/BDFS.cpp.i
-.PHONY : HATS/BDFS.cpp.i
-
-HATS/BDFS.s: HATS/BDFS.cpp.s
-.PHONY : HATS/BDFS.s
-
-# target to generate assembly for a file
-HATS/BDFS.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/HATS/BDFS.cpp.s
-.PHONY : HATS/BDFS.cpp.s
-
-HATS/test.obj: HATS/test.cpp.obj
-.PHONY : HATS/test.obj
-
-# target to build an object file
-HATS/test.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/HATS/test.cpp.obj
-.PHONY : HATS/test.cpp.obj
-
-HATS/test.i: HATS/test.cpp.i
-.PHONY : HATS/test.i
+cpp_test/instruction.i: cpp_test/instruction.cpp.i
+.PHONY : cpp_test/instruction.i
 
 # target to preprocess a source file
-HATS/test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/HATS/test.cpp.i
-.PHONY : HATS/test.cpp.i
+cpp_test/instruction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/cpp_test/instruction.cpp.i
+.PHONY : cpp_test/instruction.cpp.i
 
-HATS/test.s: HATS/test.cpp.s
-.PHONY : HATS/test.s
+cpp_test/instruction.s: cpp_test/instruction.cpp.s
+.PHONY : cpp_test/instruction.s
 
 # target to generate assembly for a file
-HATS/test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/HATS/test.cpp.s
-.PHONY : HATS/test.cpp.s
+cpp_test/instruction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/cpp_test/instruction.cpp.s
+.PHONY : cpp_test/instruction.cpp.s
 
 cpp_test/multi_thread.obj: cpp_test/multi_thread.cpp.obj
 .PHONY : cpp_test/multi_thread.obj
@@ -199,6 +175,30 @@ cpp_test/multi_thread.s: cpp_test/multi_thread.cpp.s
 cpp_test/multi_thread.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/cpp_test/multi_thread.cpp.s
 .PHONY : cpp_test/multi_thread.cpp.s
+
+cpp_test/test.obj: cpp_test/test.cpp.obj
+.PHONY : cpp_test/test.obj
+
+# target to build an object file
+cpp_test/test.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/cpp_test/test.cpp.obj
+.PHONY : cpp_test/test.cpp.obj
+
+cpp_test/test.i: cpp_test/test.cpp.i
+.PHONY : cpp_test/test.i
+
+# target to preprocess a source file
+cpp_test/test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/cpp_test/test.cpp.i
+.PHONY : cpp_test/test.cpp.i
+
+cpp_test/test.s: cpp_test/test.cpp.s
+.PHONY : cpp_test/test.s
+
+# target to generate assembly for a file
+cpp_test/test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/cpp_test/test.cpp.s
+.PHONY : cpp_test/test.cpp.s
 
 cpp_test/thread.obj: cpp_test/thread.cpp.obj
 .PHONY : cpp_test/thread.obj
@@ -1673,15 +1673,15 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... zsim
-	@echo ... HATS/BDFS.obj
-	@echo ... HATS/BDFS.i
-	@echo ... HATS/BDFS.s
-	@echo ... HATS/test.obj
-	@echo ... HATS/test.i
-	@echo ... HATS/test.s
+	@echo ... cpp_test/instruction.obj
+	@echo ... cpp_test/instruction.i
+	@echo ... cpp_test/instruction.s
 	@echo ... cpp_test/multi_thread.obj
 	@echo ... cpp_test/multi_thread.i
 	@echo ... cpp_test/multi_thread.s
+	@echo ... cpp_test/test.obj
+	@echo ... cpp_test/test.i
+	@echo ... cpp_test/test.s
 	@echo ... cpp_test/thread.obj
 	@echo ... cpp_test/thread.i
 	@echo ... cpp_test/thread.s

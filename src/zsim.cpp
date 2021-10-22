@@ -91,6 +91,8 @@ INT32 Usage() {
     return -1;
 }
 
+std::unordered_map<uint32_t, VA<int>*> va_map;
+
 /* Global Variables */
 
 GlobSimInfo* zinfo;
@@ -142,6 +144,8 @@ VOID SimThreadStart(THREADID tid);
 VOID SimThreadFini(THREADID tid);
 VOID SimEnd();
 
+VOID HandleConfig(THREADID tid);
+VOID HandleFetch(THREADID tid);
 VOID HandleMagicOp(THREADID tid, ADDRINT op);
 
 VOID FakeCPUIDPre(THREADID tid, REG eax, REG ecx);
@@ -589,6 +593,16 @@ VOID Instruction(INS ins) {
     if (INS_IsRDTSC(ins)) {
         //No pre; note that this also instruments RDTSCP
         INS_InsertCall(ins, IPOINT_AFTER, (AFUNPTR) FakeRDTSCPost, IARG_THREAD_ID, IARG_REG_REFERENCE, REG_EAX, IARG_REG_REFERENCE, REG_EDX, IARG_END);
+    }
+
+    if (INS_IsXchg(ins) && INS_OperandReg(ins, 0) == REG_R15 && INS_OperandReg(ins, 1) == REG_R15) {
+        info("configure");
+        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) HandleConfig, IARG_THREAD_ID, IARG_END);
+    }
+
+    if (INS_IsXchg(ins) && INS_OperandReg(ins, 0) == REG_RDX && INS_OperandReg(ins, 1) == REG_RDX) {
+        info("fetch");
+        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) HandleFetch, IARG_THREAD_ID, IARG_END);
     }
 
     //Must run for every instruction
@@ -1124,6 +1138,15 @@ VOID SimEnd() {
     exit(0);
 }
 
+VOID HandleConfig(THREADID tid) {
+    va_map[tid] = new VA<int>();
+//    va_map[tid]->start();
+}
+
+VOID HandleFetch(THREADID tid)
+{
+//    va_map[tid]->hats_fetch_edges();
+}
 
 // Magic ops interface
 /* TODO: In the future, we might want to return values to the program.

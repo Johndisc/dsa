@@ -16,7 +16,7 @@
 
 using namespace std;
 
-mutex fifo_mutex;
+mutex fif_mutex;
 
 struct Edge {
     int u;

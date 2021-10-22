@@ -11,21 +11,32 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.8 lab">
+    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.15 lab">
+      <change afterPath="$PROJECT_DIR$/cpp_test/instruction.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HATS/VA.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HATS/BDFS.h" beforeDir="false" afterPath="$PROJECT_DIR$/HATS/BDFS.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HATS/VA.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HATS/BDFS.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HATS/BDFS.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/BDFS.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HATS/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_test/test.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/includes_C.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/includes_C.rsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/includes_CXX.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/includes_CXX.rsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/objects1.rsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/zsim.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/zsim.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/access_tracing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/access_tracing.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decoder.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/decoder.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/g_heap/dlmalloc.h.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/g_heap/dlmalloc.h.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mutex.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/gmutex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parse_vdso.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/parse_vdso.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/slab_alloc.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/slab_alloc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/zsim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/zsim.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +67,14 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../grasp" />
     <property name="settings.editor.selected.configurable" value="CMakeSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\code\zsim\cpp_test" />
+      <recent name="D:\code\zsim\src" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
@@ -90,7 +108,7 @@
       <updated>1632820180205</updated>
       <workItem from="1632820181749" duration="9805000" />
       <workItem from="1633653055168" duration="30950000" />
-      <workItem from="1634259194621" duration="7793000" />
+      <workItem from="1634259194621" duration="69587000" />
     </task>
     <task id="LOCAL-00001" summary="10.8 lab">
       <created>1633686246212</created>
@@ -99,11 +117,28 @@
       <option name="project" value="LOCAL" />
       <updated>1633686246212</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="10.15 lab">
+      <created>1634295138644</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1634295138644</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -120,6 +155,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="10.8 lab" />
-    <option name="LAST_COMMIT_MESSAGE" value="10.8 lab" />
+    <MESSAGE value="10.15 lab" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.15 lab" />
   </component>
 </project>

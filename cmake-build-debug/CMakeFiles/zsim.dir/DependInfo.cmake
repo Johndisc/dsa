@@ -17,16 +17,16 @@ set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "../HATS"
+  "../src/HATS"
   "../misc/hooks"
   "../src"
   "../src/g_std"
   "../src/virt"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/code/zsim/HATS/BDFS.cpp" "D:/code/zsim/cmake-build-debug/CMakeFiles/zsim.dir/HATS/BDFS.cpp.obj"
-  "D:/code/zsim/HATS/test.cpp" "D:/code/zsim/cmake-build-debug/CMakeFiles/zsim.dir/HATS/test.cpp.obj"
+  "D:/code/zsim/cpp_test/instruction.cpp" "D:/code/zsim/cmake-build-debug/CMakeFiles/zsim.dir/cpp_test/instruction.cpp.obj"
   "D:/code/zsim/cpp_test/multi_thread.cpp" "D:/code/zsim/cmake-build-debug/CMakeFiles/zsim.dir/cpp_test/multi_thread.cpp.obj"
+  "D:/code/zsim/cpp_test/test.cpp" "D:/code/zsim/cmake-build-debug/CMakeFiles/zsim.dir/cpp_test/test.cpp.obj"
   "D:/code/zsim/cpp_test/thread.cpp" "D:/code/zsim/cmake-build-debug/CMakeFiles/zsim.dir/cpp_test/thread.cpp.obj"
   "D:/code/zsim/misc/hooks/test.cpp" "D:/code/zsim/cmake-build-debug/CMakeFiles/zsim.dir/misc/hooks/test.cpp.obj"
   "D:/code/zsim/misc/hooks/zsim_jni.cpp" "D:/code/zsim/cmake-build-debug/CMakeFiles/zsim.dir/misc/hooks/zsim_jni.cpp.obj"
@@ -90,7 +90,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../HATS"
+  "../src/HATS"
   "../misc/hooks"
   "../src"
   "../src/g_std"
