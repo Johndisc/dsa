@@ -129,7 +129,7 @@ AccessTraceWriter::AccessTraceWriter(g_string _fname, uint32_t numChildren) : fn
     if (table == H5I_INVALID_HID) panic("Could not create HDF5 dataset");
     H5Dclose(table);
 
-    // info("%ld %ld %ld %ld", sizeof(PackedAccessRecord), size, offset_, H5Tget_size(recType));
+    // info("%ld %ld %ld %ld", sizeof(PackedAccessRecord), size, offset, H5Tget_size(recType));
     assert(offset == size);
     assert(size == sizeof(PackedAccessRecord));
 

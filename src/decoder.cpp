@@ -216,8 +216,6 @@ void Decoder::emitBasicMove(Instr& instr, DynUopVec& uops, uint32_t lat, uint8_t
     uint32_t inReg = (instr.numInRegs == 1)? instr.inRegs[0] : 0;
     if (!instr.numLoads && !instr.numStores) { //reg->reg
         emitExecUop(inReg, 0, instr.outRegs[0], 0, uops, lat, ports);
-//        if (inReg == instr.outRegs[0] && inReg == REG_RBX)
-//            std::cout << inReg << std::endl;
     } else if (instr.numLoads && !instr.numStores) { //mem->reg
         emitLoad(instr, 0, uops, instr.outRegs[0]);
     } else if (!instr.numLoads && instr.numStores) { //reg->mem

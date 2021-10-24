@@ -161,7 +161,7 @@
 
   Thread-safety: NOT thread-safe unless USE_LOCKS defined
        When USE_LOCKS is defined, each public call to malloc, free,
-       etc is surrounded with either a pthread gmutex or a win32
+       etc is surrounded with either a pthread mutex or a win32
        spinlock (depending on WIN32). This is not especially fast, and
        can be a major bottleneck.  It is designed only to provide
        minimal protection in concurrent environments, and to provide a
@@ -297,7 +297,7 @@ ONLY_MSPACES             default: 0 (false)
 
 USE_LOCKS                default: 0 (false)
   Causes each call to each public routine to be surrounded with
-  pthread or WIN32 gmutex lock/unlock. (If set true, this can be
+  pthread or WIN32 mutex lock/unlock. (If set true, this can be
   overridden on a per-mspace basis for mspace versions.) If set to a
   non-zero value other than 1, locks are used, but their
   implementation is left out, so lock functions must be supplied manually,
@@ -1508,7 +1508,7 @@ unsigned char _BitScanReverse(unsigned long *index, unsigned long mask);
 /* True if address a has acceptable alignment */
 #define is_aligned(A)       (((size_t)((A)) & (CHUNK_ALIGN_MASK)) == 0)
 
-/* the number of bytes to offset_ an address to align it */
+/* the number of bytes to offset an address to align it */
 #define align_offset(A)\
  ((((size_t)(A) & CHUNK_ALIGN_MASK) == 0)? 0 :\
   ((MALLOC_ALIGNMENT - ((size_t)(A) & CHUNK_ALIGN_MASK)) & CHUNK_ALIGN_MASK))
@@ -2137,7 +2137,7 @@ static void init_malloc_global_mutex() {
      3. Chunks allocated via mmap, have both cinuse and pinuse bits
         cleared in their head fields.  Because they are allocated
         one-by-one, each must carry its own prev_foot field, which is
-        also used to hold the offset_ this chunk has within its mmapped
+        also used to hold the offset this chunk has within its mmapped
         region, which is needed to preserve alignment. Each mmapped
         chunk is trailed by the first two fields of a fake next-chunk
         for sake of usage checks.
@@ -2225,7 +2225,7 @@ typedef unsigned int flag_t;           /* The type of various bit flag sets */
 
 #define clear_pinuse(p)     ((p)->head &= ~PINUSE_BIT)
 
-/* Treat space at ptr +/- offset_ as a chunk */
+/* Treat space at ptr +/- offset as a chunk */
 #define chunk_plus_offset(p, s)  ((mchunkptr)(((char*)(p)) + (s)))
 #define chunk_minus_offset(p, s) ((mchunkptr)(((char*)(p)) - (s)))
 
@@ -2515,7 +2515,7 @@ typedef struct malloc_segment* msegmentptr;
     non-topmost segments.
 
   Locking
-    If USE_LOCKS is defined, the "gmutex" lock is acquired and released
+    If USE_LOCKS is defined, the "mutex" lock is acquired and released
     around every public call using this mspace.
 
   Extension support
@@ -2550,7 +2550,7 @@ struct malloc_state {
   size_t     max_footprint;
   flag_t     mflags;
 #if USE_LOCKS
-  MLOCK_T    gmutex;     /* locate lock among fields that rarely change */
+  MLOCK_T    mutex;     /* locate lock among fields that rarely change */
 #endif /* USE_LOCKS */
   msegment   seg;
   void*      extp;      /* Unused but available for extensions */
@@ -2690,8 +2690,8 @@ static int has_segment_link(mstate m, msegmentptr ss) {
 
 #if USE_LOCKS
 
-#define PREACTION(M)  ((use_lock(M))? ACQUIRE_LOCK(&(M)->gmutex) : 0)
-#define POSTACTION(M) { if (use_lock(M)) RELEASE_LOCK(&(M)->gmutex); }
+#define PREACTION(M)  ((use_lock(M))? ACQUIRE_LOCK(&(M)->mutex) : 0)
+#define POSTACTION(M) { if (use_lock(M)) RELEASE_LOCK(&(M)->mutex); }
 #else /* USE_LOCKS */
 
 #ifndef PREACTION
@@ -2950,7 +2950,7 @@ static size_t traverse_and_check(mstate m);
   computed by any code successfully malloc'ing any chunk, so does not
   itself provide protection against code that has already broken
   security through some other means.  Unlike Robertson et al, we
-  always dynamically check addresses of all offset_ chunks (previous,
+  always dynamically check addresses of all offset chunks (previous,
   next, etc). This turns out to be cheaper than relying on hashes.
 */
 
@@ -3095,7 +3095,7 @@ static int init_mparams(void) {
 #if !ONLY_MSPACES
     /* Set up lock for main malloc area */
     gm->mflags = mparams.default_mflags;
-    INITIAL_LOCK(&gm->gmutex);
+    INITIAL_LOCK(&gm->mutex);
 #endif
 
     {
@@ -3194,7 +3194,7 @@ static void do_check_inuse_chunk(mstate m, mchunkptr p) {
   do_check_any_chunk(m, p);
   assert(is_inuse(p));
   assert(next_pinuse(p));
-  /* If not pinuse and not mmapped, previous chunk has OK offset_ */
+  /* If not pinuse and not mmapped, previous chunk has OK offset */
   assert(is_mmapped(p) || pinuse(p) || next_chunk(prev_chunk(p)) == p);
   if (is_mmapped(p))
     do_check_mmapped_chunk(m, p);
@@ -3749,7 +3749,7 @@ static void internal_malloc_stats(mstate m) {
 /* -----------------------  Direct-mmapping chunks ----------------------- */
 
 /*
-  Directly mmapped chunks are set up with an offset_ to the start of
+  Directly mmapped chunks are set up with an offset to the start of
   the mmapped region stored in the prev_foot field of the chunk. This
   allows reconstruction of the required argument to MUNMAP when freed,
   and also allows adjustment of the returned chunk to meet alignment
@@ -4510,7 +4510,7 @@ static void* internal_memalign(mstate m, size_t alignment, size_t bytes) {
         size_t leadsize = pos - (char*)(p);
         size_t newsize = chunksize(p) - leadsize;
 
-        if (is_mmapped(p)) { /* For mmapped chunks, just adjust offset_ */
+        if (is_mmapped(p)) { /* For mmapped chunks, just adjust offset */
           newp->prev_foot = p->prev_foot + leadsize;
           newp->head = newsize;
         }

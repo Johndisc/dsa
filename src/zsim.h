@@ -32,8 +32,6 @@
 #include "debug.h"
 #include "locks.h"
 #include "pad.h"
-#include "unordered_map"
-#include "HATS/VA.h"
 
 class Core;
 class Scheduler;

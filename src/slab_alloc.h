@@ -40,7 +40,7 @@
 #include <stdint.h>
 #include "g_std/g_vector.h"
 #include "log.h"
-#include "gmutex.h"
+#include "mutex.h"
 
 #define SLAB_SIZE (1<<16)  // 64KB; must be a power of two
 #define SLAB_MASK (~(SLAB_SIZE - 1))
@@ -96,7 +96,7 @@ class SlabAlloc {
         Slab* curSlab;
         g_vector<Slab*> freeList;
         uint32_t liveSlabs;
-        gmutex freeLock;  // used because slab frees may be concurrent
+        mutex freeLock;  // used because slab frees may be concurrent
 
     public:
         SlabAlloc() : curSlab(nullptr), liveSlabs(0) {

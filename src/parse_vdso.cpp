@@ -98,7 +98,7 @@ void vdso_init_from_sysinfo_ehdr(uintptr_t base)
   Elf64_Dyn *dyn = 0;
 
   /*
-   * We need two things from the segment table: the load offset_
+   * We need two things from the segment table: the load offset
    * and the dynamic table.
    */
   for (i = 0; i < hdr->e_phnum; i++)
