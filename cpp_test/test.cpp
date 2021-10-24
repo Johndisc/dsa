@@ -2,7 +2,7 @@
 // Created by CGCL on 2021/9/30.
 //
 
-#include "VA.h"
+#include "../src/HATS/VA.h"
 #include <cstdlib>
 #include <thread>
 #include <iostream>
@@ -64,9 +64,11 @@ int main()
 
     generate();
 
+    cout << offsets.size() << " : ";
     for (int i:offsets)
         cout << i << " ";
     cout << endl;
+    cout << neighbors.size() << " : ";
     for (int i:neighbors)
         cout << i << " ";
     printf("\n---------------\n");
@@ -75,13 +77,14 @@ int main()
     for (int i = 0; i < active.size(); ++i)
         vertex_data.push_back(100 * i);
     bool isPush = true;
-    thread t[4];
-    for (int i = 0; i < 4; ++i) {
-        t[i] = thread(traverse, &active, vertex_data, isPush, i * 5, (i + 1) * 5);
-    }
-    printf("\nwaiting...\n");
-    for (auto & i : t) {
-        i.join();
-    }
+    configure(&offsets, &neighbors, &active, isPush, 0, 20);
+//    thread t[4];
+//    for (int i = 0; i < 4; ++i) {
+//        t[i] = thread(traverse, &active, vertex_data, isPush, i * 5, (i + 1) * 5);
+//    }
+//    printf("\nwaiting...\n");
+//    for (auto & i : t) {
+//        i.join();
+//    }
     return 0;
 }

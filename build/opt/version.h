@@ -1,0 +1,2 @@
+#define ZSIM_BUILDDATE "2021年 10月 24日 星期日 18:22:43 CST"
+#define ZSIM_BUILDVERSION "master:89:fb4d6e0:174fc 39635+ 39570- 675b8e27"

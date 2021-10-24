@@ -1,3 +1,3 @@
-D:/code/zsim/cmake-build-debug/CMakeFiles/zsim.dir
-D:/code/zsim/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/code/zsim/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/codes/myZsim/cmake-build-debug/CMakeFiles/zsim.dir
+D:/codes/myZsim/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/codes/myZsim/cmake-build-debug/CMakeFiles/rebuild_cache.dir
