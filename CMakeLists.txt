@@ -3,7 +3,7 @@ project(zsim)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(HATS)
+include_directories(src/HATS)
 include_directories(misc/hooks)
 include_directories(src)
 include_directories(src/g_std)
@@ -12,10 +12,8 @@ include_directories(src/virt)
 add_executable(zsim
         cpp_test/multi_thread.cpp
         cpp_test/thread.cpp
-        HATS/BDFS.cpp
-        HATS/BDFS.h
-        HATS/VA.cpp
-        HATS/VA.h
+        src/HATS/BDFS.h
+        src/HATS/VA.h
         misc/hooks/fortran_hooks.c
         misc/hooks/test.c
         misc/hooks/test.cpp
@@ -101,7 +99,7 @@ add_executable(zsim
         src/memory_hierarchy.h
         src/monitor.cpp
         src/mtrand.h
-        src/mutex.h
+        src/gmutex.h
         src/network.cpp
         src/network.h
         src/null_core.cpp
@@ -157,4 +155,4 @@ add_executable(zsim
         src/weave_md1_mem.h
         src/zsim.cpp
         src/zsim.h
-        src/zsim_harness.cpp HATS/test.cpp)
+        src/zsim_harness.cpp cpp_test/test.cpp cpp_test/instruction.cpp src/HATS/shared_memory.h)

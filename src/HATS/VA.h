@@ -10,7 +10,9 @@
 #include <queue>
 #include <thread>
 #include <mutex>
-#include "shared_memory.h"
+#include <iostream>
+#include <sys/ipc.h>
+#include <sys/shm.h>
 
 #define MAX_DEPTH 10
 #define THREAD_NUM 10
@@ -126,41 +128,24 @@ public:
 
 inline void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, bool _isPush, int _start_v, int _end_v)
 {
-    createSharedMem();
-//    unsigned data[9];
-//    unsigned offset_size, neighbor_size, active_size;
-//    int temp = (int) _isPush;
-//    offset_size = sizeof(*_offset);
-//    neighbor_size = sizeof(*_neighbor);
-//    active_size = sizeof(*_active);
-//    data[0] = (unsigned) &_offset;
-//    data[1] = sizeof(_offset);
-//    data[2] = (unsigned) &_neighbor;
-//    data[3] = sizeof(_neighbor);
-//    data[4] = (unsigned) &_active;
-//    data[5] = sizeof(_active);
-//    data[6] = (unsigned) _isPush;
-//    data[7] = _start_v;
-//    data[8] = _end_v;
+    int temp = (int) _isPush;
+    vector<int> vertex_data(10, 5), *p = &vertex_data;
 
-    void *addr = getSharedMemAddr();
+    int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
+    void *addr = shmat(shmId, NULL, 0); //获取共享内存地址
     if (!addr)
     {
         printf("failed!!!\n");
         return;
     }
-//    memcpy(addr, data, sizeof(data));
 
-//    memcpy((char *)addr, &_offset, 4);
-//    memcpy((char *)addr + 4, &offset_size, 4);
-//    memcpy((char *)addr + 8, &_neighbor, 4);
-//    memcpy((char *)addr + 12, &neighbor_size, 4);
-//    memcpy((char *)addr + 16, &_active, 4);
-//    memcpy((char *)addr + 20, &active_size, 4);
-//    memcpy((char *)addr + 24, &temp, 4);
-//    memcpy((char *)addr + 28, &_start_v, 4);
+    memcpy((char *)addr, (void*)&_offset, 8);
+    memcpy((char *)addr + 8, &_neighbor, 8);
+    memcpy((char *)addr + 16, &_active, 8);
+    memcpy((char *)addr + 24, &temp, 4);
+    memcpy((char *)addr + 28, &_start_v, 4);
     memcpy((char *)addr + 32, &_end_v, 4);
-    cout << _end_v << endl;
+    memcpy((char *)addr + 36, &p, 8);
     __asm__ __volatile__("xchg %r15, %r15");
 }
 

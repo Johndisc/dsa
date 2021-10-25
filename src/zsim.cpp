@@ -59,6 +59,9 @@
 #include "stats.h"
 #include "trace_driver.h"
 #include "virt/virt.h"
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <iostream>
 
 //#include <signal.h> //can't include this, conflicts with PIN's
 
@@ -1140,32 +1143,28 @@ VOID SimEnd() {
 
 VOID HandleConfig(THREADID tid) {
     va_map[tid] = new VA<int>();
-    void *address = getSharedMemAddr();
-//    vector<int> *_offset;
-//    unsigned offset_size, neighbor_size, active_size;
-//    vector<int> *_neighbor;
-//    vector<bool> *_active;
-////    bool _isPush;
-//    int temp=0;
-//    int _start_v=0;
+    int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
+    void *address = shmat(shmId, NULL, 0); //获取共享内存地址
+    address = (char *) address + 0x3000;
+    vector<int> *_offset, *_neighbor, *vertex_data;
+    vector<bool> *_active;
+//    bool _isPush;
+    int temp=0;
+    int _start_v=0;
     int _end_v=0;
 
-//    memcpy((char *)address, &_offset, 4);
-//    memcpy((char *)address + 4, &offset_size, 4);
-//    memcpy((char *)address + 8, &_neighbor, 4);
-//    memcpy((char *)address + 12, &neighbor_size, 4);
-//    memcpy((char *)address + 16, &_active, 4);
-//    memcpy((char *)address + 20, &active_size, 4);
-//    memcpy((char *)address + 24, &temp, 4);
-//    memcpy((char *)address + 28, &_start_v, 4);
-    memcpy((char *)address + 32, &_end_v, 4);
-info("--------%d",_end_v);
+    memcpy(&_offset, (char *)address, 8);
+    memcpy(&_neighbor, (char *)address + 8, 8);
+    memcpy(&_active, (char *)address + 16, 8);
+    memcpy(&temp, (char *)address + 24, 4);
+    memcpy(&_start_v, (char *)address + 28, 4);
+    memcpy(&_end_v,(char *)address + 32, 4);
+    memcpy(&vertex_data,(char *)address + 36, 8);
 
 //    _isPush = (bool) temp;
 
-//info("%d,%d,%d,%d,%d,%d",(int)_offset->size(),(int)_neighbor->size(),(int)_active->size(),temp,_start_v,_end_v);
-//    va_map[tid]->hats_configure(_offset,_neighbor,_active,_isPush)
-
+//    va_map[tid]->hats_configure(*_offset,*_neighbor,_active,_isPush)
+//
 //    va_map[tid]->start();
 }
 
@@ -1502,7 +1501,7 @@ int main(int argc, char *argv[]) {
         panic("prctl() failed");
     }
 
-    createSharedMem();
+//    createSharedMem();
 
     info("Started instance");
 
