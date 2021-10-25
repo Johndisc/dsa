@@ -11,113 +11,22 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/cpp_test/instruction.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HATS/BDFS.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gmutex.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.25 lab&#10;1.删除shared_memory.cpp，集成到代码中&#10;2.解决数据传输bug，现已完成两个程序之间的数据传输&#10;3.还有一个问题是两个进程之间相同key的共享内存地址是不同的，目前仅知道相差0x3000，通过直接相加的方式弥补，尚待解决">
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HATS/BDFS.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HATS/BDFS.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HATS/VA.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HATS/VA.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HATS/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_test/test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/access_tracing.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/access_tracing.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/cache.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/cache.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/cache_arrays.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/cache_arrays.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/coherence_ctrls.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/coherence_ctrls.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/config.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/config.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/contention_sim.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/contention_sim.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/core_recorder.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/core_recorder.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/ddr_mem.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/ddr_mem.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/debug_harness.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/debug_harness.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/debug_zsim.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/debug_zsim.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/decoder.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/decoder.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/detailed_mem.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/detailed_mem.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/detailed_mem_params.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/detailed_mem_params.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/dramsim_mem_ctrl.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/dramsim_mem_ctrl.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/dumptrace.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/dumptrace.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/fftoggle.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/fftoggle.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/galloc.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/galloc.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/hash.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/hash.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/hdf5_stats.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/hdf5_stats.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/init.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/init.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/log.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/log.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/lookahead.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/lookahead.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/mem_ctrls.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/mem_ctrls.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/memory_hierarchy.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/memory_hierarchy.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/monitor.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/monitor.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/network.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/network.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/null_core.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/null_core.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/ooo_core.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/ooo_core.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/ooo_core_recorder.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/ooo_core_recorder.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/parse_vdso.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/parse_vdso.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/partition_mapper.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/partition_mapper.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/pin_cmd.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/pin_cmd.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/prefetcher.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/prefetcher.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/proc_stats.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/proc_stats.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/process_stats.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/process_stats.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/process_tree.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/process_tree.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/scheduler.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/scheduler.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/simple_core.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/simple_core.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/sorttrace.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/sorttrace.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/stats_filter.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/stats_filter.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/text_stats.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/text_stats.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/timing_cache.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/timing_cache.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/timing_core.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/timing_core.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/timing_event.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/timing_event.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/trace_driver.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/trace_driver.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/tracing_cache.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/tracing_cache.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/utility_monitor.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/utility_monitor.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/version.h" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/version.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/virt/cpu.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/virt/cpu.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/virt/fs.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/virt/fs.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/virt/ports.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/virt/ports.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/virt/syscall_name.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/virt/syscall_name.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/virt/syscall_name.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/virt/syscall_name.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/virt/time.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/virt/time.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/virt/timeout.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/virt/timeout.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/virt/virt.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/virt/virt.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/zsim.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/zsim.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/zsim_harness.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/zsim_harness.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/flags.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/includes_C.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/includes_C.rsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/includes_CXX.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/includes_CXX.rsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/objects1.rsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/zsim.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/zsim.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp_test/hats" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp_test/ins" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp_test/mthread" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp_test/thread" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/heartbeat" beforeDir="false" afterPath="$PROJECT_DIR$/heartbeat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/out.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pin.log" beforeDir="false" afterPath="$PROJECT_DIR$/pin.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp_test/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_test/test.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HATS/VA.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/VA.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HATS/shared_memory.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/shared_memory.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/access_tracing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/access_tracing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decoder.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/decoder.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/g_heap/dlmalloc.h.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/g_heap/dlmalloc.h.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parse_vdso.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/parse_vdso.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/slab_alloc.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/slab_alloc.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/zsim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zsim.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zsim.out" beforeDir="false" afterPath="$PROJECT_DIR$/zsim.out" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,9 +69,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="zsim" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="zsim" TARGET_NAME="zsim" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="zsim" RUN_TARGET_NAME="zsim">
@@ -194,6 +103,7 @@
       <workItem from="1634259194621" duration="76434000" />
       <workItem from="1634895210644" duration="962000" />
       <workItem from="1634896249835" duration="296000" />
+      <workItem from="1635147789716" duration="2992000" />
     </task>
     <task id="LOCAL-00001" summary="10.8 lab">
       <created>1633686246212</created>
@@ -223,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634874679682</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="10.25 lab&#10;1.删除shared_memory.cpp，集成到代码中&#10;2.解决数据传输bug，现已完成两个程序之间的数据传输&#10;3.还有一个问题是两个进程之间相同key的共享内存地址是不同的，目前仅知道相差0x3000，通过直接相加的方式弥补，尚待解决">
+      <created>1635134422036</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1635134422036</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +204,7 @@
     <MESSAGE value="10.15 lab" />
     <MESSAGE value="10.22 lab &#10;尝试静态变量传参失败，VA.h和test.cpp回滚。&#10;zsim.cpp中定义了tid到VA的unordered map，定义了configure和fetch的指令映射。" />
     <MESSAGE value="10.22 lab &#10;1.尝试静态变量传参失败，VA.h和test.cpp回滚。&#10;2.将gmutex.h中的mutex类更名为gmutex。&#10;3.在zsim.cpp中定义了tid到VA的unordered map，定义了configure和fetch的指令函数映射。" />
-    <option name="LAST_COMMIT_MESSAGE" value="10.22 lab &#10;1.尝试静态变量传参失败，VA.h和test.cpp回滚。&#10;2.将gmutex.h中的mutex类更名为gmutex。&#10;3.在zsim.cpp中定义了tid到VA的unordered map，定义了configure和fetch的指令函数映射。" />
+    <MESSAGE value="10.25 lab&#10;1.删除shared_memory.cpp，集成到代码中&#10;2.解决数据传输bug，现已完成两个程序之间的数据传输&#10;3.还有一个问题是两个进程之间相同key的共享内存地址是不同的，目前仅知道相差0x3000，通过直接相加的方式弥补，尚待解决" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.25 lab&#10;1.删除shared_memory.cpp，集成到代码中&#10;2.解决数据传输bug，现已完成两个程序之间的数据传输&#10;3.还有一个问题是两个进程之间相同key的共享内存地址是不同的，目前仅知道相差0x3000，通过直接相加的方式弥补，尚待解决" />
   </component>
 </project>

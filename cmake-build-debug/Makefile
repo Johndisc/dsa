@@ -176,6 +176,30 @@ cpp_test/multi_thread.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/cpp_test/multi_thread.cpp.s
 .PHONY : cpp_test/multi_thread.cpp.s
 
+cpp_test/test.obj: cpp_test/test.cpp.obj
+.PHONY : cpp_test/test.obj
+
+# target to build an object file
+cpp_test/test.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/cpp_test/test.cpp.obj
+.PHONY : cpp_test/test.cpp.obj
+
+cpp_test/test.i: cpp_test/test.cpp.i
+.PHONY : cpp_test/test.i
+
+# target to preprocess a source file
+cpp_test/test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/cpp_test/test.cpp.i
+.PHONY : cpp_test/test.cpp.i
+
+cpp_test/test.s: cpp_test/test.cpp.s
+.PHONY : cpp_test/test.s
+
+# target to generate assembly for a file
+cpp_test/test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/cpp_test/test.cpp.s
+.PHONY : cpp_test/test.cpp.s
+
 cpp_test/thread.obj: cpp_test/thread.cpp.obj
 .PHONY : cpp_test/thread.obj
 
@@ -295,54 +319,6 @@ misc/hooks/zsim_jni.s: misc/hooks/zsim_jni.cpp.s
 misc/hooks/zsim_jni.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/misc/hooks/zsim_jni.cpp.s
 .PHONY : misc/hooks/zsim_jni.cpp.s
-
-src/HATS/BDFS.obj: src/HATS/BDFS.cpp.obj
-.PHONY : src/HATS/BDFS.obj
-
-# target to build an object file
-src/HATS/BDFS.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/src/HATS/BDFS.cpp.obj
-.PHONY : src/HATS/BDFS.cpp.obj
-
-src/HATS/BDFS.i: src/HATS/BDFS.cpp.i
-.PHONY : src/HATS/BDFS.i
-
-# target to preprocess a source file
-src/HATS/BDFS.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/src/HATS/BDFS.cpp.i
-.PHONY : src/HATS/BDFS.cpp.i
-
-src/HATS/BDFS.s: src/HATS/BDFS.cpp.s
-.PHONY : src/HATS/BDFS.s
-
-# target to generate assembly for a file
-src/HATS/BDFS.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/src/HATS/BDFS.cpp.s
-.PHONY : src/HATS/BDFS.cpp.s
-
-src/HATS/test.obj: src/HATS/test.cpp.obj
-.PHONY : src/HATS/test.obj
-
-# target to build an object file
-src/HATS/test.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/src/HATS/test.cpp.obj
-.PHONY : src/HATS/test.cpp.obj
-
-src/HATS/test.i: src/HATS/test.cpp.i
-.PHONY : src/HATS/test.i
-
-# target to preprocess a source file
-src/HATS/test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/src/HATS/test.cpp.i
-.PHONY : src/HATS/test.cpp.i
-
-src/HATS/test.s: src/HATS/test.cpp.s
-.PHONY : src/HATS/test.s
-
-# target to generate assembly for a file
-src/HATS/test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\zsim.dir\build.make CMakeFiles/zsim.dir/src/HATS/test.cpp.s
-.PHONY : src/HATS/test.cpp.s
 
 src/access_tracing.obj: src/access_tracing.cpp.obj
 .PHONY : src/access_tracing.obj
@@ -1703,6 +1679,9 @@ help:
 	@echo ... cpp_test/multi_thread.obj
 	@echo ... cpp_test/multi_thread.i
 	@echo ... cpp_test/multi_thread.s
+	@echo ... cpp_test/test.obj
+	@echo ... cpp_test/test.i
+	@echo ... cpp_test/test.s
 	@echo ... cpp_test/thread.obj
 	@echo ... cpp_test/thread.i
 	@echo ... cpp_test/thread.s
@@ -1718,12 +1697,6 @@ help:
 	@echo ... misc/hooks/zsim_jni.obj
 	@echo ... misc/hooks/zsim_jni.i
 	@echo ... misc/hooks/zsim_jni.s
-	@echo ... src/HATS/BDFS.obj
-	@echo ... src/HATS/BDFS.i
-	@echo ... src/HATS/BDFS.s
-	@echo ... src/HATS/test.obj
-	@echo ... src/HATS/test.i
-	@echo ... src/HATS/test.s
 	@echo ... src/access_tracing.obj
 	@echo ... src/access_tracing.i
 	@echo ... src/access_tracing.s

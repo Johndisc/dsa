@@ -96,6 +96,9 @@
 		<Unit filename="D:/code/zsim/cpp_test/multi_thread.cpp">
 			<Option target="zsim"/>
 		</Unit>
+		<Unit filename="D:/code/zsim/cpp_test/test.cpp">
+			<Option target="zsim"/>
+		</Unit>
 		<Unit filename="D:/code/zsim/cpp_test/thread.cpp">
 			<Option target="zsim"/>
 		</Unit>
@@ -114,16 +117,13 @@
 		<Unit filename="D:/code/zsim/misc/hooks/zsim_jni.cpp">
 			<Option target="zsim"/>
 		</Unit>
-		<Unit filename="D:/code/zsim/src/HATS/BDFS.cpp">
-			<Option target="zsim"/>
-		</Unit>
 		<Unit filename="D:/code/zsim/src/HATS/BDFS.h">
 			<Option target="zsim"/>
 		</Unit>
 		<Unit filename="D:/code/zsim/src/HATS/VA.h">
 			<Option target="zsim"/>
 		</Unit>
-		<Unit filename="D:/code/zsim/src/HATS/test.cpp">
+		<Unit filename="D:/code/zsim/src/HATS/shared_memory.h">
 			<Option target="zsim"/>
 		</Unit>
 		<Unit filename="D:/code/zsim/src/access_tracing.cpp">
@@ -279,6 +279,9 @@
 		<Unit filename="D:/code/zsim/src/galloc.h">
 			<Option target="zsim"/>
 		</Unit>
+		<Unit filename="D:/code/zsim/src/gmutex.h">
+			<Option target="zsim"/>
+		</Unit>
 		<Unit filename="D:/code/zsim/src/hash.cpp">
 			<Option target="zsim"/>
 		</Unit>
@@ -328,9 +331,6 @@
 			<Option target="zsim"/>
 		</Unit>
 		<Unit filename="D:/code/zsim/src/mtrand.h">
-			<Option target="zsim"/>
-		</Unit>
-		<Unit filename="D:/code/zsim/src/mutex.h">
 			<Option target="zsim"/>
 		</Unit>
 		<Unit filename="D:/code/zsim/src/network.cpp">

@@ -96,6 +96,8 @@ INT32 Usage() {
 
 std::unordered_map<uint32_t, VA<int>*> va_map;
 
+void fetchEdge();
+
 /* Global Variables */
 
 GlobSimInfo* zinfo;
@@ -1141,11 +1143,15 @@ VOID SimEnd() {
     exit(0);
 }
 
+void fetchEdge(VA<int> *va)
+{
+    Edge edge;
+}
+
 VOID HandleConfig(THREADID tid) {
     va_map[tid] = new VA<int>();
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
-    address = (char *) address + 0x3000;
     vector<int> *_offset, *_neighbor, *vertex_data;
     vector<bool> *_active;
 //    bool _isPush;
@@ -1163,14 +1169,19 @@ VOID HandleConfig(THREADID tid) {
 
 //    _isPush = (bool) temp;
 
-//    va_map[tid]->hats_configure(*_offset,*_neighbor,_active,_isPush)
-//
+    shmdt(address);
+//    va_map[tid]->hats_configure(*_offset,*_neighbor,_active,*vertex_data,_isPush,_start_v,_end_v);
+//    thread wthread(&VA<int>::hats_configure, va_map[tid], *_offset, *_neighbor, _active, *vertex_data, _isPush, _start_v, _end_v);
+
 //    va_map[tid]->start();
 }
 
 VOID HandleFetch(THREADID tid)
 {
-//    va_map[tid]->hats_fetch_edges();
+//    Edge edge;
+////    thread tthread(&VA<int>::hats_fetch_edges,va_map[tid], ref(edge));
+//    va_map[tid]->hats_fetch_edges(&edge);
+
 }
 
 // Magic ops interface

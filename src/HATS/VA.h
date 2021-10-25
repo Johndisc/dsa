@@ -146,6 +146,7 @@ inline void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool>
     memcpy((char *)addr + 28, &_start_v, 4);
     memcpy((char *)addr + 32, &_end_v, 4);
     memcpy((char *)addr + 36, &p, 8);
+    shmdt(addr);
     __asm__ __volatile__("xchg %r15, %r15");
 }
 
