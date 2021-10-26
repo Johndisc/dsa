@@ -78,13 +78,13 @@ int main()
         vertex_data.push_back(100 * i);
     bool isPush = true;
     configure(&offsets, &neighbors, &active, isPush, 0, 20);
-//    int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
-//    void *address = shmat(shmId, NULL, 0); //获取共享内存地址
-//    cout << address << endl;
-//    shmdt(address);
-//    shmId = shmget((key_t) 1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
-//    address = shmat(shmId, NULL, 0); //获取共享内存地址
-//    cout << address << endl;
+    Edge edge(0, 0);
+    int cnt = 0;
+    while (edge.u != -1 && edge.v != -1) {
+        edge = fetchEdge();
+        cnt++;
+        cout << cnt << ":" << "(" << edge.u << "," << edge.v << ")" << endl;
+    }
 //    thread t[4];
 //    for (int i = 0; i < 4; ++i) {
 //        t[i] = thread(traverse, &active, vertex_data, isPush, i * 5, (i + 1) * 5);

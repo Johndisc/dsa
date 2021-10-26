@@ -26,6 +26,7 @@
 
 /* The Pin-facing part of the simulator */
 
+#include <pthread.h>
 #include "zsim.h"
 #include <algorithm>
 #include <bits/signum.h>
@@ -95,8 +96,6 @@ INT32 Usage() {
 }
 
 std::unordered_map<uint32_t, VA<int>*> va_map;
-
-void fetchEdge();
 
 /* Global Variables */
 
@@ -1143,18 +1142,23 @@ VOID SimEnd() {
     exit(0);
 }
 
-void fetchEdge(VA<int> *va)
+void * prt(void *pVoid)
 {
-    Edge edge;
+    info("zsim thread");
+    THREADID tid=*((THREADID*)pVoid);
+    va_map[tid]->start();
+
+    pthread_exit(NULL);
 }
 
 VOID HandleConfig(THREADID tid) {
     va_map[tid] = new VA<int>();
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
+
     vector<int> *_offset, *_neighbor, *vertex_data;
     vector<bool> *_active;
-//    bool _isPush;
+    bool _isPush;
     int temp=0;
     int _start_v=0;
     int _end_v=0;
@@ -1167,21 +1171,26 @@ VOID HandleConfig(THREADID tid) {
     memcpy(&_end_v,(char *)address + 32, 4);
     memcpy(&vertex_data,(char *)address + 36, 8);
 
-//    _isPush = (bool) temp;
+    _isPush = (bool) temp;
 
     shmdt(address);
-//    va_map[tid]->hats_configure(*_offset,*_neighbor,_active,*vertex_data,_isPush,_start_v,_end_v);
-//    thread wthread(&VA<int>::hats_configure, va_map[tid], *_offset, *_neighbor, _active, *vertex_data, _isPush, _start_v, _end_v);
-
-//    va_map[tid]->start();
+    info("%d %d %d %d %d",(int)_offset->size(), (int)_neighbor->size(), _start_v, _end_v,(int)_isPush);
+    va_map[tid]->hats_configure(*_offset, *_neighbor, _active, *vertex_data, _isPush, _start_v, _end_v);
+    pthread_t pt;
+    pthread_create(&pt,NULL,prt,(void *)&tid);
 }
 
 VOID HandleFetch(THREADID tid)
 {
-//    Edge edge;
-////    thread tthread(&VA<int>::hats_fetch_edges,va_map[tid], ref(edge));
-//    va_map[tid]->hats_fetch_edges(&edge);
+    Edge edge;
+//    thread tthread(&VA<int>::hats_fetch_edges,va_map[tid], ref(edge));
+    va_map[tid]->hats_fetch_edges(edge);
+    int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
+    void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
+    memcpy((char*)address+80,&edge.u,4);
+    memcpy((char*)address+84,&edge.v,4);
+    shmdt(address);
 }
 
 // Magic ops interface

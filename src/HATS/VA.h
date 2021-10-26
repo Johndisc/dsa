@@ -81,6 +81,7 @@ private:
         return vertex_data[vid];
     }
 
+public:
     void start()
     {
         int vid, start_offset, end_offset;
@@ -91,9 +92,9 @@ private:
             edges = fetch_neighbors(vid, start_offset, end_offset);
         }
         current_vid++;
+        cout << "traverse end" << endl;
     }
 
-public:
     VA(){};
     ~VA()= default;
 
@@ -107,7 +108,8 @@ public:
         isPush = _isPush;
         current_vid = _start_v;
         last_vid = _end_v;
-        start();
+        cout << offset.size() << " " << neighbor.size() << " " << current_vid << " " << last_vid << endl;
+//        start();
         //thread
     }
 
@@ -148,6 +150,19 @@ inline void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool>
     memcpy((char *)addr + 36, &p, 8);
     shmdt(addr);
     __asm__ __volatile__("xchg %r15, %r15");
+}
+
+inline Edge fetchEdge()
+{
+    __asm__ __volatile__("xchg %rdx, %rdx");
+    Edge edge;
+    int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
+    void *address = shmat(shmId, NULL, 0); //获取共享内存地址
+
+    memcpy(&edge.u,(char *)address+80,4);
+    memcpy(&edge.v,(char *)address+84,4);
+    shmdt(address);
+    return edge;
 }
 
 #endif //ZSIM_VA_H
