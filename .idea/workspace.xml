@@ -11,11 +11,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.25 lab&#10;1.解决两个进程之间共享内存地址位置不对的问题，原因在于没有在使用共享内存后断开连接。加上shmdt(addr)之后解决。">
+    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.26 lab&#10;1.解决HATS线程调用问题。thread类不行，pthread可以。现已跑通VA遍历方式。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cpp_test/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_test/test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HATS/VA.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/VA.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zsim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HATS/BDFS.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/BDFS.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HATS/shared_memory.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HATS/tempIpc" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +93,7 @@
       <workItem from="1634259194621" duration="76434000" />
       <workItem from="1634895210644" duration="962000" />
       <workItem from="1634896249835" duration="296000" />
-      <workItem from="1635147789716" duration="9820000" />
+      <workItem from="1635147789716" duration="13765000" />
     </task>
     <task id="LOCAL-00001" summary="10.8 lab">
       <created>1633686246212</created>
@@ -136,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635152412572</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="10.26 lab&#10;1.解决HATS线程调用问题。thread类不行，pthread可以。现已跑通VA遍历方式。">
+      <created>1635214790888</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1635214790888</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +210,7 @@
     <MESSAGE value="10.22 lab &#10;1.尝试静态变量传参失败，VA.h和test.cpp回滚。&#10;2.将gmutex.h中的mutex类更名为gmutex。&#10;3.在zsim.cpp中定义了tid到VA的unordered map，定义了configure和fetch的指令函数映射。" />
     <MESSAGE value="10.25 lab&#10;1.删除shared_memory.cpp，集成到代码中&#10;2.解决数据传输bug，现已完成两个程序之间的数据传输&#10;3.还有一个问题是两个进程之间相同key的共享内存地址是不同的，目前仅知道相差0x3000，通过直接相加的方式弥补，尚待解决" />
     <MESSAGE value="10.25 lab&#10;1.解决两个进程之间共享内存地址位置不对的问题，原因在于没有在使用共享内存后断开连接。加上shmdt(addr)之后解决。" />
-    <option name="LAST_COMMIT_MESSAGE" value="10.25 lab&#10;1.解决两个进程之间共享内存地址位置不对的问题，原因在于没有在使用共享内存后断开连接。加上shmdt(addr)之后解决。" />
+    <MESSAGE value="10.26 lab&#10;1.解决HATS线程调用问题。thread类不行，pthread可以。现已跑通VA遍历方式。" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.26 lab&#10;1.解决HATS线程调用问题。thread类不行，pthread可以。现已跑通VA遍历方式。" />
   </component>
 </project>

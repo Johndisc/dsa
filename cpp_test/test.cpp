@@ -11,6 +11,7 @@
 using namespace std;
 
 vector<int> offsets, neighbors, values;
+mutex sm;
 
 void generate()
 {
@@ -56,6 +57,18 @@ void traverse(vector<bool> *active, vector<int> vertex_data, bool isPush, int st
     printf("wt(%d,%d) end, num=%d\n", start_id, end_id, num);
 }
 
+void newTraverse(vector<bool> *active, bool isPush, int start_id, int end_id, int tid)
+{
+    configure(&offsets, &neighbors, active, isPush, start_id, end_id);
+    Edge edge(0, 0);
+    int cnt = 0;
+    while (edge.u != -1 && edge.v != -1) {
+        edge = fetchEdge();
+        cnt++;
+        cout << tid << ":" << cnt << ":" << "(" << edge.u << "," << edge.v << ")" << endl;
+    }
+}
+
 int main()
 {
 //    vector<int> offsets = {0, 2, 4, 7, 9};
@@ -77,21 +90,21 @@ int main()
     for (int i = 0; i < active.size(); ++i)
         vertex_data.push_back(100 * i);
     bool isPush = true;
-    configure(&offsets, &neighbors, &active, isPush, 0, 20);
-    Edge edge(0, 0);
-    int cnt = 0;
-    while (edge.u != -1 && edge.v != -1) {
-        edge = fetchEdge();
-        cnt++;
-        cout << cnt << ":" << "(" << edge.u << "," << edge.v << ")" << endl;
+//    configure(&offsets, &neighbors, &active, isPush, 0, 20);
+//    Edge edge(0, 0);
+//    int cnt = 0;
+//    while (edge.u != -1 && edge.v != -1) {
+//        edge = fetchEdge();
+//        cnt++;
+//        cout << cnt << ":" << "(" << edge.u << "," << edge.v << ")" << endl;
+//    }
+    thread t[4];
+    for (int i = 0; i < 4; ++i) {
+        t[i] = thread(newTraverse, &active, isPush, i * 5, (i + 1) * 5, i + 1);
     }
-//    thread t[4];
-//    for (int i = 0; i < 4; ++i) {
-//        t[i] = thread(traverse, &active, vertex_data, isPush, i * 5, (i + 1) * 5);
-//    }
-//    printf("\nwaiting...\n");
-//    for (auto & i : t) {
-//        i.join();
-//    }
+    printf("\nwaiting...\n");
+    for (auto & i : t) {
+        i.join();
+    }
     return 0;
 }
