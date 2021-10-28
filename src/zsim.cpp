@@ -1142,11 +1142,10 @@ VOID SimEnd() {
     exit(0);
 }
 
-void * prt(void *pVoid)
+void * StartTraverse(void *pVoid)
 {
-    info("zsim thread");
-    THREADID tid=*((THREADID*)pVoid);
-    va_map[tid]->start();
+    auto *sva = (VA<int> *) pVoid;
+    sva->start();
 
     pthread_exit(NULL);
 }
@@ -1177,13 +1176,12 @@ VOID HandleConfig(THREADID tid) {
     info("%d %d %d %d %d",(int)_offset->size(), (int)_neighbor->size(), _start_v, _end_v,(int)_isPush);
     va_map[tid]->hats_configure(*_offset, *_neighbor, _active, *vertex_data, _isPush, _start_v, _end_v);
     pthread_t pt;
-    pthread_create(&pt,NULL,prt,(void *)&tid);
+    pthread_create(&pt, NULL, StartTraverse, (void *)va_map[tid]);
 }
 
 VOID HandleFetch(THREADID tid)
 {
     Edge edge;
-//    thread tthread(&VA<int>::hats_fetch_edges,va_map[tid], ref(edge));
     va_map[tid]->hats_fetch_edges(edge);
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址

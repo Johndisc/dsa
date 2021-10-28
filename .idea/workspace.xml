@@ -14,9 +14,8 @@
     <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.26 lab&#10;1.解决HATS线程调用问题。thread类不行，pthread可以。现已跑通VA遍历方式。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cpp_test/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_test/test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HATS/BDFS.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/BDFS.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HATS/shared_memory.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HATS/tempIpc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HATS/VA.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/VA.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/zsim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +92,7 @@
       <workItem from="1634259194621" duration="76434000" />
       <workItem from="1634895210644" duration="962000" />
       <workItem from="1634896249835" duration="296000" />
-      <workItem from="1635147789716" duration="13765000" />
+      <workItem from="1635147789716" duration="24403000" />
     </task>
     <task id="LOCAL-00001" summary="10.8 lab">
       <created>1633686246212</created>
@@ -144,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635214790888</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="10.26 lab&#10;1.解决HATS线程调用问题。thread类不行，pthread可以。现已跑通VA遍历方式。">
+      <created>1635230774615</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1635230774615</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

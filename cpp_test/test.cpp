@@ -12,6 +12,7 @@ using namespace std;
 
 vector<int> offsets, neighbors, values;
 mutex sm;
+pthread_mutex_t pmutex;
 
 void generate()
 {
@@ -57,24 +58,23 @@ void traverse(vector<bool> *active, vector<int> vertex_data, bool isPush, int st
     printf("wt(%d,%d) end, num=%d\n", start_id, end_id, num);
 }
 
-void newTraverse(vector<bool> *active, bool isPush, int start_id, int end_id, int tid)
+void newTraverse(vector<bool> *active, bool isPush, int start_id, int end_id, int tid, int &cnt)
 {
     configure(&offsets, &neighbors, active, isPush, start_id, end_id);
     Edge edge(0, 0);
-    int cnt = 0;
+    cnt = 0;
     while (edge.u != -1 && edge.v != -1) {
         edge = fetchEdge();
         cnt++;
+        pthread_mutex_lock(&pmutex);
         cout << tid << ":" << cnt << ":" << "(" << edge.u << "," << edge.v << ")" << endl;
+        pthread_mutex_unlock(&pmutex);
     }
+    cnt--;
 }
 
 int main()
 {
-//    vector<int> offsets = {0, 2, 4, 7, 9};
-//    vector<int> neighbors = {0, 1, 1, 2, 0, 2, 3, 1, 3};
-//    vector<int> values = {1, 7, 2, 8, 5, 3, 9, 6, 4};
-
     generate();
 
     cout << offsets.size() << " : ";
@@ -98,13 +98,20 @@ int main()
 //        cnt++;
 //        cout << cnt << ":" << "(" << edge.u << "," << edge.v << ")" << endl;
 //    }
-    thread t[4];
-    for (int i = 0; i < 4; ++i) {
-        t[i] = thread(newTraverse, &active, isPush, i * 5, (i + 1) * 5, i + 1);
-    }
+    int tnum = 4, tsize = 20 / tnum;
+    thread t[tnum];
+    int cnt[tnum], total = 0;
+    for (int i = 0; i < tnum; ++i)
+        t[i] = thread(newTraverse, &active, isPush, i * tsize, (i + 1) * tsize, i + 1, ref(cnt[i]));
     printf("\nwaiting...\n");
-    for (auto & i : t) {
+    for (auto & i : t)
         i.join();
-    }
+    for (int i = 0; i < tnum; ++i)
+        total += cnt[i];
+    cout << "total:" << total << endl;
+    if (total==neighbors.size())
+        cout << "correct" << endl;
+    else
+        cout << "wrong " << "total:" << total << " size:" << neighbors.size() << endl;
     return 0;
 }
