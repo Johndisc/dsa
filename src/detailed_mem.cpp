@@ -715,7 +715,7 @@ void MemChannelBase::AddressMap(Address addr, uint32_t& row, uint32_t& col, uint
     row = addr;
     //row != addr & ((1L<<mParam->rowAddrWidth)-1);
     // row address may contains large number, even if it exceed memory capacity size.
-    // Becase memory model receives PID + VA as a access address.
+    // Becase memory model receives PID + VO as a access address.
     // But it's OK. row address is only used for checking row buffer hit,
     // and no address translation is almost same as ideotically address translation.
 }

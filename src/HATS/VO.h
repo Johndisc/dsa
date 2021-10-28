@@ -2,8 +2,8 @@
 // Created by CGCL on 2021/9/28.
 //
 
-#ifndef ZSIM_VA_H
-#define ZSIM_VA_H
+#ifndef ZSIM_VO_H
+#define ZSIM_VO_H
 
 #include <cstring>
 #include <vector>
@@ -19,7 +19,7 @@
 
 using namespace std;
 
-static pthread_mutex_t mtx, rtx;
+static pthread_mutex_t cmtx, fmtx;
 
 struct Edge {
     int u;
@@ -29,7 +29,7 @@ struct Edge {
 };
 
 template <typename T>
-class VA {
+class VO {
 private:
     vector<int> offset;
     vector<int> neighbor;
@@ -96,8 +96,8 @@ public:
         cout << "traverse end" << endl;
     }
 
-    VA(){};
-    ~VA()= default;
+    VO(){};
+    ~VO()= default;
 
     void hats_configure(vector<int> _offset, vector<int> _neighbor, vector<bool> *_active, vector<T> _vertex_data, bool _isPush,
                         int _start_v, int _end_v)
@@ -109,9 +109,7 @@ public:
         isPush = _isPush;
         current_vid = _start_v;
         last_vid = _end_v;
-        cout << offset.size() << " " << neighbor.size() << " " << current_vid << " " << last_vid << endl;
-//        start();
-        //thread
+//        cout << offset.size() << " " << neighbor.size() << " " << current_vid << " " << last_vid << endl;
     }
 
     void hats_fetch_edges(Edge &edge)
@@ -142,7 +140,7 @@ inline void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool>
         return;
     }
 
-    pthread_mutex_lock(&mtx);
+    pthread_mutex_lock(&cmtx);
     memcpy((char *)addr, (void*)&_offset, 8);
     memcpy((char *)addr + 8, &_neighbor, 8);
     memcpy((char *)addr + 16, &_active, 8);
@@ -152,12 +150,12 @@ inline void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool>
     memcpy((char *)addr + 36, &p, 8);
     shmdt(addr);
     __asm__ __volatile__("xchg %r15, %r15");
-    pthread_mutex_unlock(&mtx);
+    pthread_mutex_unlock(&cmtx);
 }
 
 inline Edge fetchEdge()
 {
-    pthread_mutex_lock(&rtx);
+    pthread_mutex_lock(&fmtx);
     __asm__ __volatile__("xchg %rdx, %rdx");
     Edge edge;
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
@@ -166,8 +164,8 @@ inline Edge fetchEdge()
     memcpy(&edge.u,(char *)address+80,4);
     memcpy(&edge.v,(char *)address+84,4);
     shmdt(address);
-    pthread_mutex_unlock(&rtx);
+    pthread_mutex_unlock(&fmtx);
     return edge;
 }
 
-#endif //ZSIM_VA_H
+#endif //ZSIM_VO_H

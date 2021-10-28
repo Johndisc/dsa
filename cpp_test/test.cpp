@@ -2,7 +2,7 @@
 // Created by CGCL on 2021/9/30.
 //
 
-#include "../src/HATS/VA.h"
+#include "../src/HATS/VO.h"
 #include <cstdlib>
 #include <thread>
 #include <iostream>
@@ -36,7 +36,7 @@ void generate()
     }
 }
 
-void fetch(VA<int> &VAs, int start, int end, int &num)
+void fetch(VO<int> &VAs, int start, int end, int &num)
 {
     Edge edge(1, 1);
     while (edge.v != -1) {
@@ -49,9 +49,9 @@ void fetch(VA<int> &VAs, int start, int end, int &num)
 
 void traverse(vector<bool> *active, vector<int> vertex_data, bool isPush, int start_id, int end_id)
 {
-    VA<int> VAs;
+    VO<int> VAs;
     int num = 0;
-    thread wthread(&VA<int>::hats_configure, &VAs, offsets, neighbors, active, vertex_data, isPush, start_id, end_id);
+    thread wthread(&VO<int>::hats_configure, &VAs, offsets, neighbors, active, vertex_data, isPush, start_id, end_id);
     thread rthread(fetch, ref(VAs), start_id, end_id, ref(num));
     wthread.join();
     rthread.join();
@@ -90,14 +90,7 @@ int main()
     for (int i = 0; i < active.size(); ++i)
         vertex_data.push_back(100 * i);
     bool isPush = true;
-//    configure(&offsets, &neighbors, &active, isPush, 0, 20);
-//    Edge edge(0, 0);
-//    int cnt = 0;
-//    while (edge.u != -1 && edge.v != -1) {
-//        edge = fetchEdge();
-//        cnt++;
-//        cout << cnt << ":" << "(" << edge.u << "," << edge.v << ")" << endl;
-//    }
+
     int tnum = 4, tsize = 20 / tnum;
     thread t[tnum];
     int cnt[tnum], total = 0;

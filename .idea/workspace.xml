@@ -11,9 +11,17 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.28 lab&#10;1.解决在以线程调用情况下无法进行遍历，产生signal 11错误的问题。原因在于zsim.cpp中遍历线程函数参数为tid，换成VA*就好了&#10;2.在少数线程并行时已能完成遍历，多数线程时会出现死锁(？)情况">
+    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.28 lab&#10;现已能正确在多线程情况下并行遍历并获得正确结果。&#10;1.解决多线程死锁问题。原因在于VA.h的configure中将memcpy和xchg指令用unlock分开了，但它们是不可分开的原子操作。&#10;2.解决遍历结果错误的问题。原因在于VA.h的fetch中将xchg和memcpy分开了，原因同上。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HATS/VA.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/VA.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/zsim.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/zsim.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpp_test/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_test/test.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HATS/BDFS.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/BDFS.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HATS/VA.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/VO.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/detailed_mem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/detailed_mem.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/zsim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/zsim.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +98,7 @@
       <workItem from="1634259194621" duration="76434000" />
       <workItem from="1634895210644" duration="962000" />
       <workItem from="1634896249835" duration="296000" />
-      <workItem from="1635147789716" duration="26027000" />
+      <workItem from="1635147789716" duration="26921000" />
     </task>
     <task id="LOCAL-00001" summary="10.8 lab">
       <created>1633686246212</created>
@@ -155,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635387904563</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="10.28 lab&#10;现已能正确在多线程情况下并行遍历并获得正确结果。&#10;1.解决多线程死锁问题。原因在于VA.h的configure中将memcpy和xchg指令用unlock分开了，但它们是不可分开的原子操作。&#10;2.解决遍历结果错误的问题。原因在于VA.h的fetch中将xchg和memcpy分开了，原因同上。">
+      <created>1635389860862</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1635389860862</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +238,7 @@
     <MESSAGE value="10.25 lab&#10;1.解决两个进程之间共享内存地址位置不对的问题，原因在于没有在使用共享内存后断开连接。加上shmdt(addr)之后解决。" />
     <MESSAGE value="10.26 lab&#10;1.解决HATS线程调用问题。thread类不行，pthread可以。现已跑通VA遍历方式。" />
     <MESSAGE value="10.28 lab&#10;1.解决在以线程调用情况下无法进行遍历，产生signal 11错误的问题。原因在于zsim.cpp中遍历线程函数参数为tid，换成VA*就好了&#10;2.在少数线程并行时已能完成遍历，多数线程时会出现死锁(？)情况" />
-    <option name="LAST_COMMIT_MESSAGE" value="10.28 lab&#10;1.解决在以线程调用情况下无法进行遍历，产生signal 11错误的问题。原因在于zsim.cpp中遍历线程函数参数为tid，换成VA*就好了&#10;2.在少数线程并行时已能完成遍历，多数线程时会出现死锁(？)情况" />
+    <MESSAGE value="10.28 lab&#10;现已能正确在多线程情况下并行遍历并获得正确结果。&#10;1.解决多线程死锁问题。原因在于VA.h的configure中将memcpy和xchg指令用unlock分开了，但它们是不可分开的原子操作。&#10;2.解决遍历结果错误的问题。原因在于VA.h的fetch中将xchg和memcpy分开了，原因同上。" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.28 lab&#10;现已能正确在多线程情况下并行遍历并获得正确结果。&#10;1.解决多线程死锁问题。原因在于VA.h的configure中将memcpy和xchg指令用unlock分开了，但它们是不可分开的原子操作。&#10;2.解决遍历结果错误的问题。原因在于VA.h的fetch中将xchg和memcpy分开了，原因同上。" />
   </component>
 </project>

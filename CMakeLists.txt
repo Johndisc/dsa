@@ -13,7 +13,7 @@ add_executable(zsim
         cpp_test/multi_thread.cpp
         cpp_test/thread.cpp
         src/HATS/BDFS.h
-        src/HATS/VA.h
+        src/HATS/VO.h
         misc/hooks/fortran_hooks.c
         misc/hooks/test.c
         misc/hooks/test.cpp
@@ -155,4 +155,6 @@ add_executable(zsim
         src/weave_md1_mem.h
         src/zsim.cpp
         src/zsim.h
-        src/zsim_harness.cpp cpp_test/test.cpp cpp_test/instruction.cpp src/HATS/shared_memory.h)
+        src/zsim_harness.cpp
+        cpp_test/test.cpp
+        cpp_test/instruction.cpp)

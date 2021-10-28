@@ -29,7 +29,7 @@ struct Edge {
 };
 
 template <typename T>
-class VA {
+class VO {
 private:
     vector<int> offset;
     vector<int> neighbor;
@@ -95,8 +95,8 @@ public:
         cout << "traverse end" << endl;
     }
 
-    VA(){};
-    ~VA()= default;
+    VO(){};
+    ~VO()= default;
 
     void hats_configure(vector<int> _offset, vector<int> _neighbor, vector<bool> *_active, vector<T> _vertex_data, bool _isPush,
                         int _start_v, int _end_v)
@@ -165,4 +165,4 @@ inline Edge fetchEdge()
     return edge;
 }
 
-#endif //ZSIM_VA_H
+#endif //ZSIM_VO_H

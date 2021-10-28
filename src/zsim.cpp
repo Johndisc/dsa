@@ -95,7 +95,7 @@ INT32 Usage() {
     return -1;
 }
 
-std::unordered_map<uint32_t, VA<int>*> va_map;
+std::unordered_map<uint32_t, VO<int>*> va_map;
 
 /* Global Variables */
 
@@ -1144,14 +1144,14 @@ VOID SimEnd() {
 
 void * StartTraverse(void *pVoid)
 {
-    auto *sva = (VA<int> *) pVoid;
+    auto *sva = (VO<int> *) pVoid;
     sva->start();
 
     pthread_exit(NULL);
 }
 
 VOID HandleConfig(THREADID tid) {
-    va_map[tid] = new VA<int>();
+    va_map[tid] = new VO<int>();
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
@@ -1173,7 +1173,6 @@ VOID HandleConfig(THREADID tid) {
     _isPush = (bool) temp;
 
     shmdt(address);
-    info("%d %d %d %d %d",(int)_offset->size(), (int)_neighbor->size(), _start_v, _end_v,(int)_isPush);
     va_map[tid]->hats_configure(*_offset, *_neighbor, _active, *vertex_data, _isPush, _start_v, _end_v);
     pthread_t pt;
     pthread_create(&pt, NULL, StartTraverse, (void *)va_map[tid]);
