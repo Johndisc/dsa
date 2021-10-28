@@ -7,6 +7,7 @@
 
 #include <cstring>
 #include <vector>
+#include <map>
 #include <stack>
 #include <queue>
 #include <thread>
@@ -17,11 +18,10 @@
 #include <sys/shm.h>
 
 #define MAX_DEPTH 10
-#define THREAD_NUM 10
 
 using namespace std;
 
-static pthread_mutex_t bcmtx, bfmtx;
+static pthread_mutex_t bcmtx, bfmtx, amtx;
 
 template <typename T>
 class BDFS {
@@ -34,6 +34,7 @@ private:
 
     int current_vid;
     int last_vid;
+    int cur_depth;
 
     stack<int> dfs_stack;
     queue<Edge> FIFO;
@@ -42,40 +43,66 @@ private:
     thread threads[THREAD_NUM];
 
 private:
+    // 将要以某个节点为u时，将其设置为unactive
     int scan()
     {
         for (int i = current_vid; i < last_vid; i++) {
             if ((*active_bits)[i]) {
                 (*active_bits)[i] = false;
                 current_vid++;
+                dfs_stack.push(i);
                 return i;
             }
         }
         return -1;
     }
 
-    void fetch_offsets(int vid, int &start_offset, int &end_offset)
+    void fetch_neighbors()
     {
-        start_offset = offset[vid];
-        end_offset = offset[vid + 1];
-    }
-
-    vector<Edge> fetch_neighbors(int vid, int start_offset, int end_offset)
-    {
-        vector <Edge> neighbors;
-        for (int i = start_offset; i < end_offset; ++i) {
-            while (this->FIFO.size() > MAX_DEPTH)
-                this_thread::yield();               //fifo满时HATS停止
-            lock_guard<mutex> lock(fifo_mutex);
-            FIFO.push(Edge(vid, neighbor[i]));
-            neighbors.emplace_back(vid, i);
+        int vid, start_offset, end_offset, last_level = -1;
+        bool depin;
+        cur_depth = 0;
+        while (!dfs_stack.empty())
+        {
+            vid = dfs_stack.top();
+            start_offset = offset[vid];
+            end_offset = offset[vid + 1];
+            depin = false;
+            for (int i = start_offset; i < end_offset; ++i) {
+                while (this->FIFO.size() > MAX_DEPTH)
+                    this_thread::yield();               //fifo满时HATS停止
+                lock_guard<mutex> lock(fifo_mutex);
+                FIFO.push(Edge(vid, neighbor[i]));
+                pthread_mutex_lock(&amtx);
+                if (cur_depth < MAX_DEPTH && (*active_bits)[neighbor[i]]) {
+                    (*active_bits)[neighbor[i]] = false;
+                    dfs_stack.push(neighbor[i]);
+                    depin = true;
+                }
+                pthread_mutex_unlock(&amtx);
+            }
+            if (depin)
+                cur_depth++;
+            else
+            {
+                dfs_stack.pop();
+                cur_depth--;
+            }
         }
-        return neighbors;
     }
 
     T prefetch(int vid)
     {
         return vertex_data[vid];
+    }
+
+    void bdfs()
+    {
+        int top_id;
+        while (dfs_stack.size() <= MAX_DEPTH) {
+            top_id = dfs_stack.top();
+
+        }
     }
 
 public:
@@ -85,8 +112,7 @@ public:
         vector <Edge> edges;
         while (current_vid < last_vid) {
             vid = scan();
-            fetch_offsets(vid, start_offset, end_offset);
-            edges = fetch_neighbors(vid, start_offset, end_offset);
+            edges = fetch_neighbors(vid);
         }
         current_vid++;
         cout << "traverse end" << endl;

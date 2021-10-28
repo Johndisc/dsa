@@ -12,19 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.28 lab&#10;现已能正确在多线程情况下并行遍历并获得正确结果。&#10;1.解决多线程死锁问题。原因在于VA.h的configure中将memcpy和xchg指令用unlock分开了，但它们是不可分开的原子操作。&#10;2.解决遍历结果错误的问题。原因在于VA.h的fetch中将xchg和memcpy分开了，原因同上。">
-      <change afterPath="$PROJECT_DIR$/src/HATS/Edge.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/HATS/VA.h" beforeDir="false" afterPath="$PROJECT_DIR$/build/opt/HATS/VA.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/zsim.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/zsim.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/zsim.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp_test/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_test/test.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HATS/BDFS.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/BDFS.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HATS/VO.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/VO.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zsim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +90,7 @@
       <workItem from="1634259194621" duration="76434000" />
       <workItem from="1634895210644" duration="962000" />
       <workItem from="1634896249835" duration="296000" />
-      <workItem from="1635147789716" duration="30652000" />
+      <workItem from="1635147789716" duration="36894000" />
     </task>
     <task id="LOCAL-00001" summary="10.8 lab">
       <created>1633686246212</created>
@@ -180,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635391003053</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="10.28 lab&#10;现已能正确在多线程情况下并行遍历并获得正确结果。&#10;1.解决多线程死锁问题。原因在于VA.h的configure中将memcpy和xchg指令用unlock分开了，但它们是不可分开的原子操作。&#10;2.解决遍历结果错误的问题。原因在于VA.h的fetch中将xchg和memcpy分开了，原因同上。">
+      <created>1635408288822</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1635408288822</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
