@@ -19,7 +19,7 @@
 
 using namespace std;
 
-static pthread_mutex_t mtx;
+static pthread_mutex_t mtx, rtx;
 
 struct Edge {
     int u;
@@ -151,22 +151,22 @@ inline void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool>
     memcpy((char *)addr + 32, &_end_v, 4);
     memcpy((char *)addr + 36, &p, 8);
     shmdt(addr);
-    pthread_mutex_unlock(&mtx);
     __asm__ __volatile__("xchg %r15, %r15");
+    pthread_mutex_unlock(&mtx);
 }
 
 inline Edge fetchEdge()
 {
+    pthread_mutex_lock(&rtx);
     __asm__ __volatile__("xchg %rdx, %rdx");
     Edge edge;
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
-    pthread_mutex_lock(&mtx);
     memcpy(&edge.u,(char *)address+80,4);
     memcpy(&edge.v,(char *)address+84,4);
     shmdt(address);
-    pthread_mutex_unlock(&mtx);
+    pthread_mutex_unlock(&rtx);
     return edge;
 }
 
