@@ -28,7 +28,7 @@
 
 #include <stdint.h>
 
-/* Read configuration options, configure system */
+/* Read configuration options, hats_vo_configure system */
 void SimInit(const char* configFile, const char* outputDir, uint32_t shmid);
 
 #endif  // INIT_H_

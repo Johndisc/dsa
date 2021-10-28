@@ -600,7 +600,7 @@ VOID Instruction(INS ins) {
     }
 
     if (INS_IsXchg(ins) && INS_OperandReg(ins, 0) == REG_R15 && INS_OperandReg(ins, 1) == REG_R15) {
-        info("configure ");
+        info("hats_vo_configure ");
         INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) HandleConfig, IARG_THREAD_ID, IARG_END);
     }
 
@@ -1173,7 +1173,7 @@ VOID HandleConfig(THREADID tid) {
     _isPush = (bool) temp;
 
     shmdt(address);
-    va_map[tid]->hats_configure(*_offset, *_neighbor, _active, *vertex_data, _isPush, _start_v, _end_v);
+    va_map[tid]->configure(*_offset, *_neighbor, _active, *vertex_data, _isPush, _start_v, _end_v);
     pthread_t pt;
     pthread_create(&pt, NULL, StartTraverse, (void *)va_map[tid]);
 }
@@ -1181,7 +1181,7 @@ VOID HandleConfig(THREADID tid) {
 VOID HandleFetch(THREADID tid)
 {
     Edge edge;
-    va_map[tid]->hats_fetch_edges(edge);
+    va_map[tid]->fetchEdges(edge);
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 

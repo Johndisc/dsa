@@ -40,7 +40,7 @@ void fetch(VO<int> &VAs, int start, int end, int &num)
 {
     Edge edge(1, 1);
     while (edge.v != -1) {
-        VAs.hats_fetch_edges(edge);
+        VAs.fetchEdges(edge);
         printf("(%d,%d):%d, %d\n", start, end, edge.u, edge.v);
         num++;
     }
@@ -51,7 +51,7 @@ void traverse(vector<bool> *active, vector<int> vertex_data, bool isPush, int st
 {
     VO<int> VAs;
     int num = 0;
-    thread wthread(&VO<int>::hats_configure, &VAs, offsets, neighbors, active, vertex_data, isPush, start_id, end_id);
+    thread wthread(&VO<int>::configure, &VAs, offsets, neighbors, active, vertex_data, isPush, start_id, end_id);
     thread rthread(fetch, ref(VAs), start_id, end_id, ref(num));
     wthread.join();
     rthread.join();
@@ -60,11 +60,11 @@ void traverse(vector<bool> *active, vector<int> vertex_data, bool isPush, int st
 
 void newTraverse(vector<bool> *active, bool isPush, int start_id, int end_id, int tid, int &cnt)
 {
-    configure(&offsets, &neighbors, active, isPush, start_id, end_id);
+    hats_vo_configure(&offsets, &neighbors, active, isPush, start_id, end_id);
     Edge edge(0, 0);
     cnt = 0;
     while (edge.u != -1 && edge.v != -1) {
-        edge = fetchEdge();
+        edge = hats_va_fetch_edge();
         cnt++;
         pthread_mutex_lock(&pmutex);
         cout << tid << ":" << cnt << ":" << "(" << edge.u << "," << edge.v << ")" << endl;

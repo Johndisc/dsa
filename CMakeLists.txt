@@ -157,4 +157,4 @@ add_executable(zsim
         src/zsim.h
         src/zsim_harness.cpp
         cpp_test/test.cpp
-        cpp_test/instruction.cpp)
+        cpp_test/instruction.cpp src/HATS/Edge.h)

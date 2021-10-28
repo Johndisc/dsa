@@ -124,7 +124,7 @@ public:
     }
 };
 
-inline void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, bool _isPush, int _start_v, int _end_v)
+inline void hats_vo_configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, bool _isPush, int _start_v, int _end_v)
 {
     createSharedMem();
 //    unsigned data[9];

@@ -11,22 +11,15 @@
 #include <thread>
 #include <mutex>
 #include <iostream>
+#include "Edge.h"
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
 #define MAX_DEPTH 10
-#define THREAD_NUM 10
 
 using namespace std;
 
-static pthread_mutex_t cmtx, fmtx;
-
-struct Edge {
-    int u;
-    int v;
-    Edge() {};
-    Edge(int _u, int _v):u(_u),v(_v) {};
-};
+static pthread_mutex_t vcmtx, vfmtx;
 
 template <typename T>
 class VO {
@@ -42,8 +35,6 @@ private:
 
     queue<Edge> FIFO;
     mutex fifo_mutex;
-
-    thread threads[THREAD_NUM];
 
 private:
     int scan()
@@ -99,8 +90,8 @@ public:
     VO(){};
     ~VO()= default;
 
-    void hats_configure(vector<int> _offset, vector<int> _neighbor, vector<bool> *_active, vector<T> _vertex_data, bool _isPush,
-                        int _start_v, int _end_v)
+    void configure(vector<int> _offset, vector<int> _neighbor, vector<bool> *_active, vector<T> _vertex_data, bool _isPush,
+                   int _start_v, int _end_v)
     {
         offset = _offset;
         neighbor = _neighbor;
@@ -112,7 +103,7 @@ public:
 //        cout << offset.size() << " " << neighbor.size() << " " << current_vid << " " << last_vid << endl;
     }
 
-    void hats_fetch_edges(Edge &edge)
+    void fetchEdges(Edge &edge)
     {
         while (this->FIFO.empty() && current_vid <= last_vid)
             this_thread::yield();           //fifo为空时fetch停止
@@ -127,7 +118,7 @@ public:
     }
 };
 
-inline void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, bool _isPush, int _start_v, int _end_v)
+inline void hats_vo_configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, bool _isPush, int _start_v, int _end_v)
 {
     int temp = (int) _isPush;
     vector<int> vertex_data(10, 5), *p = &vertex_data;
@@ -140,7 +131,7 @@ inline void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool>
         return;
     }
 
-    pthread_mutex_lock(&cmtx);
+    pthread_mutex_lock(&vcmtx);
     memcpy((char *)addr, (void*)&_offset, 8);
     memcpy((char *)addr + 8, &_neighbor, 8);
     memcpy((char *)addr + 16, &_active, 8);
@@ -150,12 +141,12 @@ inline void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool>
     memcpy((char *)addr + 36, &p, 8);
     shmdt(addr);
     __asm__ __volatile__("xchg %r15, %r15");
-    pthread_mutex_unlock(&cmtx);
+    pthread_mutex_unlock(&vcmtx);
 }
 
-inline Edge fetchEdge()
+inline Edge hats_va_fetch_edge()
 {
-    pthread_mutex_lock(&fmtx);
+    pthread_mutex_lock(&vfmtx);
     __asm__ __volatile__("xchg %rdx, %rdx");
     Edge edge;
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
@@ -164,7 +155,7 @@ inline Edge fetchEdge()
     memcpy(&edge.u,(char *)address+80,4);
     memcpy(&edge.v,(char *)address+84,4);
     shmdt(address);
-    pthread_mutex_unlock(&fmtx);
+    pthread_mutex_unlock(&vfmtx);
     return edge;
 }
 

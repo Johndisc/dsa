@@ -120,6 +120,9 @@
 		<Unit filename="D:/code/zsim/src/HATS/BDFS.h">
 			<Option target="zsim"/>
 		</Unit>
+		<Unit filename="D:/code/zsim/src/HATS/Edge.h">
+			<Option target="zsim"/>
+		</Unit>
 		<Unit filename="D:/code/zsim/src/HATS/VO.h">
 			<Option target="zsim"/>
 		</Unit>

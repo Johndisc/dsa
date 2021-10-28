@@ -65,7 +65,7 @@ External dependencies: `gcc >=4.6, pin, scons, libconfig, libhdf5, libelfg0`
 
   3.1 libconfig, http://www.hyperrealm.com/libconfig. You may use the system's
       package if it's recent enough, or build your own. To install locally, untar,
-      run `./configure --prefix=<libconfig install path> && make install`.  Then
+      run `./hats_vo_configure --prefix=<libconfig install path> && make install`.  Then
       define the env var `LIBCONFIGPATH=<libconfig install path>`.
 
   3.2 libhdf5, http://www.hdfgroup.org (v1.8.4 path 1 or higher), and libelfg0.
@@ -198,7 +198,7 @@ and the associated scripts repository to see how to use these stats.
 this README, because the simulator options change fairly often. In general,
 *the documentation is the source code*. You should be willing to occasionally
 read the source code to see how different zsim features work. To get familiar
-with the way to configure the simulator, the following three steps usually work
+with the way to hats_vo_configure the simulator, the following three steps usually work
 well when getting started:
 
 1. Check the examples in the `tests/` folder, play around with the settings, and
