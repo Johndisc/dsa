@@ -17,7 +17,7 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-#define MAX_DEPTH 10
+#define BDFS_MAX_DEPTH 10
 
 using namespace std;
 
@@ -31,16 +31,15 @@ private:
     vector<bool> *active_bits;
     vector<T> vertex_data;
     bool isPush;
+    bool is_end;
 
     int current_vid;
     int last_vid;
     int cur_depth;
 
-    stack<int> dfs_stack;
+    stack<Edge> dfs_stack;
     queue<Edge> FIFO;
     mutex fifo_mutex;
-
-    thread threads[THREAD_NUM];
 
 private:
     // 将要以某个节点为u时，将其设置为unactive
@@ -49,45 +48,53 @@ private:
         for (int i = current_vid; i < last_vid; i++) {
             if ((*active_bits)[i]) {
                 (*active_bits)[i] = false;
-                current_vid++;
-                dfs_stack.push(i);
+                dfs_stack.push(Edge(-1, i));
                 return i;
             }
         }
         return -1;
     }
 
-    void fetch_neighbors()
+    void bdfs()
     {
-        int vid, start_offset, end_offset, last_level = -1;
+        int start_offset, end_offset;
         bool depin;
+        Edge edge;
         cur_depth = 0;
         while (!dfs_stack.empty())
         {
-            vid = dfs_stack.top();
-            start_offset = offset[vid];
-            end_offset = offset[vid + 1];
+            edge = dfs_stack.top();
+            start_offset = offset[edge.v];
+            end_offset = offset[edge.v + 1];
+            dfs_stack.pop();
             depin = false;
-            for (int i = start_offset; i < end_offset; ++i) {
-                while (this->FIFO.size() > MAX_DEPTH)
+            if (edge.u != -1)
+            {
+                while (this->FIFO.size() > BDFS_MAX_DEPTH)
                     this_thread::yield();               //fifo满时HATS停止
                 lock_guard<mutex> lock(fifo_mutex);
-                FIFO.push(Edge(vid, neighbor[i]));
+                FIFO.push(edge);
+            }
+            for (int i = start_offset; i < end_offset; ++i) {
                 pthread_mutex_lock(&amtx);
-                if (cur_depth < MAX_DEPTH && (*active_bits)[neighbor[i]]) {
+                if (cur_depth < BDFS_MAX_DEPTH && (*active_bits)[neighbor[i]]) {     //只入队，不遍历
                     (*active_bits)[neighbor[i]] = false;
-                    dfs_stack.push(neighbor[i]);
+                    dfs_stack.push(Edge(edge.v, neighbor[i]));
                     depin = true;
+                }
+                else
+                {
+                    while (this->FIFO.size() > BDFS_MAX_DEPTH)
+                        this_thread::yield();               //fifo满时HATS停止
+                    lock_guard<mutex> lock(fifo_mutex);
+                    FIFO.push(Edge(edge.v, neighbor[i]));
                 }
                 pthread_mutex_unlock(&amtx);
             }
             if (depin)
                 cur_depth++;
             else
-            {
-                dfs_stack.pop();
                 cur_depth--;
-            }
         }
     }
 
@@ -96,31 +103,23 @@ private:
         return vertex_data[vid];
     }
 
-    void bdfs()
-    {
-        int top_id;
-        while (dfs_stack.size() <= MAX_DEPTH) {
-            top_id = dfs_stack.top();
-
-        }
-    }
-
 public:
     void start()
     {
-        int vid, start_offset, end_offset;
-        vector <Edge> edges;
-        while (current_vid < last_vid) {
+        is_end = false;
+        int vid = scan();
+        while (vid != -1) {
+            bdfs();
             vid = scan();
-            edges = fetch_neighbors(vid);
         }
-        current_vid++;
+        is_end = true;
         cout << "traverse end" << endl;
     }
 
-    VO(){};
-    ~VO()= default;
+    BDFS(){};
+    ~BDFS()= default;
 
+    // zsim端接口
     void configure(vector<int> _offset, vector<int> _neighbor, vector<bool> *_active, vector<T> _vertex_data, bool _isPush,
                    int _start_v, int _end_v)
     {
@@ -134,9 +133,10 @@ public:
 //        cout << offset.size() << " " << neighbor.size() << " " << current_vid << " " << last_vid << endl;
     }
 
+    // zsim端接口
     void fetchEdges(Edge &edge)
     {
-        while (this->FIFO.empty() && current_vid <= last_vid)
+        while (this->FIFO.empty() && !is_end)
             this_thread::yield();           //fifo为空时fetch停止
         lock_guard<mutex> lock(fifo_mutex);
         if (!FIFO.empty())
@@ -149,6 +149,7 @@ public:
     }
 };
 
+//主程序端接口
 inline void hats_bdfs_configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, bool _isPush, int _start_v, int _end_v)
 {
     int temp = (int) _isPush;
@@ -175,6 +176,7 @@ inline void hats_bdfs_configure(vector<int> *_offset, vector<int> *_neighbor, ve
     pthread_mutex_unlock(&bcmtx);
 }
 
+//主程序端接口
 inline Edge hats_bdfs_fetch_edge()
 {
     pthread_mutex_lock(&bfmtx);

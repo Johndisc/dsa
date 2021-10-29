@@ -3,10 +3,13 @@
 //
 
 #include "../src/HATS/VO.h"
+#include "../src/HATS/BDFS.h"
 #include <cstdlib>
 #include <thread>
 #include <iostream>
 #include <ctime>
+
+#define VEX_NUM 50
 
 using namespace std;
 
@@ -17,7 +20,7 @@ pthread_mutex_t pmutex;
 void generate()
 {
     srand((int) (time(NULL)));
-    int vnum = 20, cnt = 0;
+    int vnum = VEX_NUM, cnt = 0;
     double r;
     offsets.push_back(0);
     for (int i = 0; i < vnum; ++i) {
@@ -60,11 +63,11 @@ void traverse(vector<bool> *active, vector<int> vertex_data, bool isPush, int st
 
 void newTraverse(vector<bool> *active, bool isPush, int start_id, int end_id, int tid, int &cnt)
 {
-    hats_vo_configure(&offsets, &neighbors, active, isPush, start_id, end_id);
+    hats_bdfs_configure(&offsets, &neighbors, active, isPush, start_id, end_id);
     Edge edge(0, 0);
     cnt = 0;
     while (edge.u != -1 && edge.v != -1) {
-        edge = hats_va_fetch_edge();
+        edge = hats_bdfs_fetch_edge();
         cnt++;
         pthread_mutex_lock(&pmutex);
         cout << tid << ":" << cnt << ":" << "(" << edge.u << "," << edge.v << ")" << endl;
@@ -91,7 +94,7 @@ int main()
         vertex_data.push_back(100 * i);
     bool isPush = true;
 
-    int tnum = 4, tsize = 20 / tnum;
+    int tnum = 1, tsize = VEX_NUM / tnum;
     thread t[tnum];
     int cnt[tnum], total = 0;
     for (int i = 0; i < tnum; ++i)

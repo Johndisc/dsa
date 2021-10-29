@@ -15,7 +15,7 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-#define MAX_DEPTH 10
+#define VO_MAX_DEPTH 10
 
 using namespace std;
 
@@ -59,7 +59,7 @@ private:
     {
         vector <Edge> neighbors;
         for (int i = start_offset; i < end_offset; ++i) {
-            while (this->FIFO.size() > MAX_DEPTH)
+            while (this->FIFO.size() > VO_MAX_DEPTH)
                 this_thread::yield();               //fifo满时HATS停止
             lock_guard<mutex> lock(fifo_mutex);
             FIFO.push(Edge(vid, neighbor[i]));
@@ -83,13 +83,13 @@ public:
             fetch_offsets(vid, start_offset, end_offset);
             edges = fetch_neighbors(vid, start_offset, end_offset);
         }
-        current_vid++;
         cout << "traverse end" << endl;
     }
 
     VO(){};
     ~VO()= default;
 
+    //zsim端接口
     void configure(vector<int> _offset, vector<int> _neighbor, vector<bool> *_active, vector<T> _vertex_data, bool _isPush,
                    int _start_v, int _end_v)
     {
@@ -103,6 +103,7 @@ public:
 //        cout << offset.size() << " " << neighbor.size() << " " << current_vid << " " << last_vid << endl;
     }
 
+    //zsim端接口
     void fetchEdges(Edge &edge)
     {
         while (this->FIFO.empty() && current_vid <= last_vid)
@@ -118,6 +119,7 @@ public:
     }
 };
 
+//主程序端接口
 inline void hats_vo_configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, bool _isPush, int _start_v, int _end_v)
 {
     int temp = (int) _isPush;
@@ -144,7 +146,8 @@ inline void hats_vo_configure(vector<int> *_offset, vector<int> *_neighbor, vect
     pthread_mutex_unlock(&vcmtx);
 }
 
-inline Edge hats_va_fetch_edge()
+//主程序端接口
+inline Edge hats_vo_fetch_edge()
 {
     pthread_mutex_lock(&vfmtx);
     __asm__ __volatile__("xchg %rdx, %rdx");

@@ -34,6 +34,7 @@
 #include "pad.h"
 #include "unordered_map"
 #include "HATS/VO.h"
+#include "HATS/BDFS.h"
 
 class Core;
 class Scheduler;

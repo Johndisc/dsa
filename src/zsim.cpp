@@ -95,7 +95,7 @@ INT32 Usage() {
     return -1;
 }
 
-std::unordered_map<uint32_t, VO<int>*> va_map;
+std::unordered_map<uint32_t, BDFS<int>*> va_map;
 
 /* Global Variables */
 
@@ -1144,14 +1144,14 @@ VOID SimEnd() {
 
 void * StartTraverse(void *pVoid)
 {
-    auto *sva = (VO<int> *) pVoid;
+    auto *sva = (BDFS<int> *) pVoid;
     sva->start();
 
     pthread_exit(NULL);
 }
 
 VOID HandleConfig(THREADID tid) {
-    va_map[tid] = new VO<int>();
+    va_map[tid] = new BDFS<int>();
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
