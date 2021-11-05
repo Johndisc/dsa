@@ -9,7 +9,7 @@
 #include <iostream>
 #include <ctime>
 
-#define VEX_NUM 50
+#define VEX_NUM 20
 
 using namespace std;
 

@@ -600,7 +600,7 @@ VOID Instruction(INS ins) {
     }
 
     if (INS_IsXchg(ins) && INS_OperandReg(ins, 0) == REG_R15 && INS_OperandReg(ins, 1) == REG_R15) {
-        info("hats_vo_configure ");
+        info("hats_configure ");
         INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) HandleConfig, IARG_THREAD_ID, IARG_END);
     }
 

@@ -11,13 +11,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.28 lab&#10;写了一部分BDFS">
+    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="10.29 lab&#10;完成BDFS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cpp_test/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_test/test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HATS/BDFS.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/BDFS.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HATS/VO.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/VO.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decoder.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/decoder.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ooo_core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ooo_core.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/zsim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zsim.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,11 +68,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="zsim" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="zsim" TARGET_NAME="zsim" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="zsim" RUN_TARGET_NAME="zsim">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -102,7 +97,8 @@
       <workItem from="1634259194621" duration="76434000" />
       <workItem from="1634895210644" duration="962000" />
       <workItem from="1634896249835" duration="296000" />
-      <workItem from="1635147789716" duration="41521000" />
+      <workItem from="1635147789716" duration="69700000" />
+      <workItem from="1636073745823" duration="8333000" />
     </task>
     <task id="LOCAL-00001" summary="10.8 lab">
       <created>1633686246212</created>
@@ -195,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635415422748</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="10.29 lab&#10;完成BDFS">
+      <created>1635479739119</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1635479739119</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +268,7 @@
     <MESSAGE value="10.28 lab&#10;1.解决在以线程调用情况下无法进行遍历，产生signal 11错误的问题。原因在于zsim.cpp中遍历线程函数参数为tid，换成VA*就好了&#10;2.在少数线程并行时已能完成遍历，多数线程时会出现死锁(？)情况" />
     <MESSAGE value="10.28 lab&#10;现已能正确在多线程情况下并行遍历并获得正确结果。&#10;1.解决多线程死锁问题。原因在于VA.h的configure中将memcpy和xchg指令用unlock分开了，但它们是不可分开的原子操作。&#10;2.解决遍历结果错误的问题。原因在于VA.h的fetch中将xchg和memcpy分开了，原因同上。" />
     <MESSAGE value="10.28 lab&#10;写了一部分BDFS" />
-    <option name="LAST_COMMIT_MESSAGE" value="10.28 lab&#10;写了一部分BDFS" />
+    <MESSAGE value="10.29 lab&#10;完成BDFS" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.29 lab&#10;完成BDFS" />
   </component>
 </project>

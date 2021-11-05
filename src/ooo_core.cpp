@@ -217,7 +217,7 @@ inline void OOOCore::bbl(Address bblAddr, BblInfo* bblInfo) {
 
         // RF read stalls
         // if srcs are not available at issue time, we have to go thru the RF
-        curCycleRFReads += ((c0 < curCycle)? 1 : 0) + ((c1 < curCycle)? 1 : 0);
+        curCycleRFReads += ((c0 < curCycle)? 1 : 0) + ((c1 < curCycle)? 1 : 0);     //判断两个源寄存器是否有效
         if (curCycleRFReads > RF_READS_PER_CYCLE) {
             curCycleRFReads -= RF_READS_PER_CYCLE;
             curCycleIssuedUops = 0;  // or 1? that's probably a 2nd-order detail

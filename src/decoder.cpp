@@ -1345,6 +1345,8 @@ BblInfo* Decoder::decodeBbl(BBL bbl, bool oooDecoding) {
         //optimizing compilers 16B-align most branch targets (and if it doesn't happen, the error introduced is fairly small)
 
         //1. Predecoding
+        //遍历每条指令，如果指令大小超过16字节或数量超过6或超过当前块，就在一个周期内处理掉这一块的指令，predecCycle中
+        //储存每条指令所在的预处理周期
         uint32_t predecCycle[instrs];
         uint32_t pcyc = 0;
         uint32_t psz = 0;

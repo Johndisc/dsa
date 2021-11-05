@@ -538,6 +538,7 @@ static void InitSystem(Config& config) {
         assert(parents);
 
         // Linearize concatenated / interleaved caches from childMap cacheGroups
+        // 把每个child的cache都按行依次加到childCaches中
         CacheGroup childCaches;
 
         for (auto childVec : childMap[grp]) {
@@ -569,9 +570,12 @@ static void InitSystem(Config& config) {
         }
 
         for (uint32_t p = 0; p < parents; p++) {
+            //把parent第p行的每个bank都加到parentsVec中
             g_vector<MemObject*> parentsVec;
             parentsVec.insert(parentsVec.end(), parentCaches[p].begin(), parentCaches[p].end()); //BaseCache* to MemObject* is a safe cast
 
+            //将所有的children cache加起来按parent行数均分，parent的每一行对应一块children cache，
+            //将这些children cache的bank的parent设置为parent的该行
             uint32_t childId = 0;
             g_vector<BaseCache*> childrenVec;
             for (uint32_t c = p*childrenPerParent; c < (p+1)*childrenPerParent; c++) {
@@ -594,6 +598,7 @@ static void InitSystem(Config& config) {
                 info("Hierarchy: %s -> %s", Str(cacheNames).c_str(), parentName.c_str());
             }
 
+            //将parent的该行的children设置为这一块children cache
             for (BaseCache* bank : parentCaches[p]) {
                 bank->setChildren(childrenVec, network);
             }
