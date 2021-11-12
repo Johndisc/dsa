@@ -523,3 +523,9 @@ void OOOCore::BranchFunc(THREADID tid, ADDRINT pc, BOOL taken, ADDRINT takenNpc,
     static_cast<OOOCore*>(cores[tid])->branch(pc, taken, takenNpc, notTakenNpc);
 }
 
+void OOOCore::accessL2(Address vAddr, bool isLoad)
+{
+    l1d->accessL2(vAddr, isLoad);
+//    uint32_t parentId = l1d->cc
+//            getParentId(pLineAddr);
+}

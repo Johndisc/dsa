@@ -82,6 +82,7 @@ struct GlobSimInfo {
 
     //Cores
     Core** cores;
+//    BDFS** bdfss;
 
     PAD();
 

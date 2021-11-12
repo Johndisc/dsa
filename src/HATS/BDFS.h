@@ -14,6 +14,8 @@
 #include <mutex>
 #include <iostream>
 #include "Edge.h"
+#include "../locks.h"
+#include "../filter_cache.h"
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
@@ -40,6 +42,9 @@ private:
     stack<Edge> dfs_stack;
     queue<Edge> FIFO;
     mutex fifo_mutex;
+
+    lock_t b_lock;
+    FilterCache *l1d;
 
 private:
     // 将要以某个节点为u时，将其设置为unactive

@@ -59,6 +59,8 @@ class CC : public GlobAlloc {
         //Repl policy interface
         virtual uint32_t numSharers(uint32_t lineId) = 0;
         virtual bool isValid(uint32_t lineId) = 0;
+
+        virtual void accessL2(Address pLineAddr) = 0;
 };
 
 
@@ -405,6 +407,11 @@ class MESICC : public CC {
         //Repl policy interface
         uint32_t numSharers(uint32_t lineId) {return tcc->numSharers(lineId);}
         bool isValid(uint32_t lineId) {return bcc->isValid(lineId);}
+
+        void accessL2(Address pLineAddr)
+        {
+
+        }
 };
 
 // Terminal CC, i.e., without children --- accepts GETS/X, but not PUTS/X
@@ -493,6 +500,11 @@ class MESITerminalCC : public CC {
         //Repl policy interface
         uint32_t numSharers(uint32_t lineId) {return 0;} //no sharers
         bool isValid(uint32_t lineId) {return bcc->isValid(lineId);}
+
+        void accessL2(Address pLineAddr)
+        {
+
+        }
 };
 
 #endif  // COHERENCE_CTRLS_H_
