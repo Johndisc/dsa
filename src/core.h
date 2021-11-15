@@ -85,6 +85,8 @@ class Core : public GlobAlloc {
         virtual void join() {}
 
         virtual InstrFuncPtrs GetFuncPtrs() = 0;
+
+        virtual void accessL2(uint64_t vAddr, bool isLoad) {};
 };
 
 #endif  // CORE_H_

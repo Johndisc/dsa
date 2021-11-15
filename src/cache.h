@@ -62,7 +62,6 @@ class Cache : public BaseCache {
         void setParents(uint32_t _childId, const g_vector<MemObject*>& parents, Network* network);
         void setChildren(const g_vector<BaseCache*>& children, Network* network);
         void initStats(AggregateStat* parentStat);
-        void accessL2(Address vAddr, bool isLoad);
 
         virtual uint64_t access(MemReq& req);
 

@@ -14,17 +14,14 @@
     <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="11.5 lab&#10;添加部分代码注释">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SConstruct" beforeDir="false" afterPath="$PROJECT_DIR$/SConstruct" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/opt/cache.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp_test/instruction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_test/instruction.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HATS/BDFS.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/HATS/BDFS.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cache.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cache.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cache.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cache.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/coherence_ctrls.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/coherence_ctrls.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/filter_cache.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/filter_cache.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ooo_core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ooo_core.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ooo_core.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ooo_core.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/zsim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zsim.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
