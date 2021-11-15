@@ -13,7 +13,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="11.15 lab&#10;将cache访问控制在filter_cache.h以内">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/coherence_ctrls.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/coherence_ctrls.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/coherence_ctrls.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/coherence_ctrls.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/filter_cache.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/filter_cache.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/zsim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636963894609</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="11.15 lab&#10;将cache访问控制在filter_cache.h以内">
+      <created>1636963988408</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1636963988408</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

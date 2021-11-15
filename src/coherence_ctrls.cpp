@@ -150,6 +150,30 @@ uint64_t MESIBottomCC::processAccess(Address lineAddr, uint32_t lineId, AccessTy
     return respCycle;
 }
 
+void MESIBottomCC::accseeL2(MemReq &req) {
+    switch (req.type) {
+        case GETS:
+        {
+            uint32_t parentId = getParentId(req.lineAddr);
+            info("==========  %d",parentId);
+            MemReq newreq = {req.lineAddr, GETS, selfId, req.state, req.cycle, &ccLock, I, req.srcId, req.flags};
+            parents[parentId]->access(newreq);
+            assert(*newreq.state == S || *newreq.state == E);
+            break;
+        }
+        case GETX:
+        {
+            //Profile before access, state changes
+            profGETXMissIM.inc();
+            uint32_t parentId = getParentId(req.lineAddr);
+            MemReq newreq = {req.lineAddr, GETS, selfId, req.state, req.cycle, &ccLock, I, req.srcId, req.flags};
+            parents[parentId]->access(newreq);
+            break;
+        }
+        default: panic("!?");
+    }
+}
+
 void MESIBottomCC::processWritebackOnAccess(Address lineAddr, uint32_t lineId, AccessType type) {
     MESIState* state = &array[lineId];
     assert(*state == M || *state == E);

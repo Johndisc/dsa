@@ -1173,7 +1173,8 @@ VOID HandleConfig(THREADID tid) {
     _isPush = (bool) temp;
 
     shmdt(address);
-    cores[tid]->accessL2((uint64_t)_offset, true);
+    info("++++++++++++++  %p",address);
+    cores[tid]->accessL2((uint64_t)address, true);
     va_map[tid]->configure(*_offset, *_neighbor, _active, *vertex_data, _isPush, _start_v, _end_v);
     pthread_t pt;
     pthread_create(&pt, NULL, StartTraverse, (void *)va_map[tid]);

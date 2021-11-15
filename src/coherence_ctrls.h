@@ -59,6 +59,8 @@ class CC : public GlobAlloc {
         //Repl policy interface
         virtual uint32_t numSharers(uint32_t lineId) = 0;
         virtual bool isValid(uint32_t lineId) = 0;
+
+        virtual void accseeL2(MemReq &req) = 0;
 };
 
 
@@ -147,6 +149,8 @@ class MESIBottomCC : public GlobAlloc {
         uint64_t processEviction(Address wbLineAddr, uint32_t lineId, bool lowerLevelWriteback, uint64_t cycle, uint32_t srcId);
 
         uint64_t processAccess(Address lineAddr, uint32_t lineId, AccessType type, uint64_t cycle, uint32_t srcId, uint32_t flags);
+
+        void accseeL2(MemReq &req);
 
         void processWritebackOnAccess(Address lineAddr, uint32_t lineId, AccessType type);
 
@@ -405,6 +409,8 @@ class MESICC : public CC {
         //Repl policy interface
         uint32_t numSharers(uint32_t lineId) {return tcc->numSharers(lineId);}
         bool isValid(uint32_t lineId) {return bcc->isValid(lineId);}
+
+        void accseeL2(MemReq &req){}
 };
 
 // Terminal CC, i.e., without children --- accepts GETS/X, but not PUTS/X
@@ -493,6 +499,10 @@ class MESITerminalCC : public CC {
         //Repl policy interface
         uint32_t numSharers(uint32_t lineId) {return 0;} //no sharers
         bool isValid(uint32_t lineId) {return bcc->isValid(lineId);}
+
+        void accseeL2(MemReq &req) {
+            bcc->accseeL2(req);
+        }
 };
 
 #endif  // COHERENCE_CTRLS_H_
