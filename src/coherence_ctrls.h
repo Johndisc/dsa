@@ -500,11 +500,6 @@ class MESITerminalCC : public CC {
         //Repl policy interface
         uint32_t numSharers(uint32_t lineId) {return 0;} //no sharers
         bool isValid(uint32_t lineId) {return bcc->isValid(lineId);}
-
-        void accessL2(Address pLineAddr)
-        {
-
-        }
 };
 
 #endif  // COHERENCE_CTRLS_H_
