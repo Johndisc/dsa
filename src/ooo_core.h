@@ -454,7 +454,7 @@ class OOOCore : public Core {
         void cSimStart();
         void cSimEnd();
 
-        void accessL2(uint64_t vAddr, bool isLoad);
+        void accessL2(uint64_t vAddr, bool isLoad, uint32_t cid);
 
     private:
         inline void load(Address addr);

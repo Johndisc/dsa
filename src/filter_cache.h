@@ -167,18 +167,13 @@ class FilterCache : public Cache {
             futex_unlock(&filterLock);
         }
 
-        void accessL2(Address vAddr, bool isLoad) {
-            lock_t lock1;
-            futex_init(&lock1);
-            futex_lock(&lock1);
+        void accessL2(Address vAddr, bool isLoad, uint32_t cid, uint64_t curCycle) {
             Address vLineAddr = vAddr >> lineBits;
             Address pLineAddr = procMask | vLineAddr;
             info("============   %lx  %lx",vAddr, pLineAddr);
             MESIState dummyState = MESIState::I;
-            uint64_t curCycle = 0;
-            MemReq req = {pLineAddr, isLoad? GETS : GETX, 0, &dummyState, curCycle, &lock1, dummyState, (uint32_t)-1, 0};
+            MemReq req = {pLineAddr, isLoad? GETS : GETX, 0, &dummyState, 0, NULL, dummyState, UINT32_MAX, MemReq::IFETCH | MemReq::NOEXCL};
             cc->accseeL2(req);
-            futex_unlock(&lock1);
         }
 };
 

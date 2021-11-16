@@ -80,7 +80,7 @@ uint64_t Cache::access(MemReq& req) {
         }
         // Enforce single-record invariant: Writeback access may have a timing
         // record. If so, read it.
-        EventRecorder* evRec = zinfo->eventRecorders[req.srcId];
+        EventRecorder *evRec = (req.srcId == UINT32_MAX ? nullptr : zinfo->eventRecorders[req.srcId]);
         TimingRecord wbAcc;
         wbAcc.clear();
         if (unlikely(evRec && evRec->hasRecord())) {

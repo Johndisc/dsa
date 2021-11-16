@@ -261,7 +261,7 @@ uint64_t DDRMemory::access(MemReq& req) {
     } else {
         bool isWrite = (req.type == PUTX);
         uint64_t respCycle = req.cycle + (isWrite? minWrLatency : minRdLatency);
-        if (zinfo->eventRecorders[req.srcId]) {
+        if (req.srcId != UINT32_MAX && zinfo->eventRecorders[req.srcId]) {
             DDRMemoryAccEvent* memEv = new (zinfo->eventRecorders[req.srcId]) DDRMemoryAccEvent(this,
                     isWrite, req.lineAddr, domain, preDelay, isWrite? postDelayWr : postDelayRd);
             memEv->setMinStartCycle(req.cycle);

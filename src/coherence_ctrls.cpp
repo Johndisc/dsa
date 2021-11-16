@@ -155,8 +155,7 @@ void MESIBottomCC::accseeL2(MemReq &req) {
         case GETS:
         {
             uint32_t parentId = getParentId(req.lineAddr);
-            info("==========  %d",parentId);
-            MemReq newreq = {req.lineAddr, GETS, selfId, req.state, req.cycle, &ccLock, I, req.srcId, req.flags};
+            MemReq newreq = {req.lineAddr, GETS, selfId, req.state, req.cycle, NULL, I, req.srcId, req.flags};
             parents[parentId]->access(newreq);
             assert(*newreq.state == S || *newreq.state == E);
             break;
@@ -166,7 +165,7 @@ void MESIBottomCC::accseeL2(MemReq &req) {
             //Profile before access, state changes
             profGETXMissIM.inc();
             uint32_t parentId = getParentId(req.lineAddr);
-            MemReq newreq = {req.lineAddr, GETS, selfId, req.state, req.cycle, &ccLock, I, req.srcId, req.flags};
+            MemReq newreq = {req.lineAddr, GETS, selfId, req.state, req.cycle, NULL, I, req.srcId, req.flags};
             parents[parentId]->access(newreq);
             break;
         }

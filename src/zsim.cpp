@@ -1174,10 +1174,12 @@ VOID HandleConfig(THREADID tid) {
 
     shmdt(address);
     info("++++++++++++++  %p",address);
-    cores[tid]->accessL2((uint64_t)address, true);
+    cores[tid]->accessL2((uint64_t)address, true, getCid(tid));
+info("completed");
     va_map[tid]->configure(*_offset, *_neighbor, _active, *vertex_data, _isPush, _start_v, _end_v);
     pthread_t pt;
     pthread_create(&pt, NULL, StartTraverse, (void *)va_map[tid]);
+info("returned");
 }
 
 VOID HandleFetch(THREADID tid)
