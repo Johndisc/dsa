@@ -11,16 +11,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="11.15 lab&#10;将cache访问控制在filter_cache.h以内">
+    <list default="true" id="d902cc43-b271-42ba-a072-33d00fa1ed8b" name="Changes" comment="11.16 lab&#10;访问顺序：&#10;accessL2(ooo_core.cpp)&#10;accessL2(filter_cache.h)&#10;accseeL2(coherence_ctrls.h MESITerminalCC)&#10;accseeL2(coherence_ctrls.cpp MESIBottomCC)&#10;此外修改文件：cache.cpp(83行) ddr_mem.cpp(264行)&#10;及各个.h文件">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cache.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cache.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/coherence_ctrls.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/coherence_ctrls.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ddr_mem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ddr_mem.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/filter_cache.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/filter_cache.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ooo_core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ooo_core.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ooo_core.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ooo_core.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/zsim.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/zsim.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +96,7 @@
       <workItem from="1634896249835" duration="296000" />
       <workItem from="1635147789716" duration="69700000" />
       <workItem from="1636073745823" duration="42023000" />
-      <workItem from="1637024014936" duration="10315000" />
+      <workItem from="1637024014936" duration="10436000" />
     </task>
     <task id="LOCAL-00001" summary="10.8 lab">
       <created>1633686246212</created>
@@ -231,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636963988408</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="11.16 lab&#10;访问顺序：&#10;accessL2(ooo_core.cpp)&#10;accessL2(filter_cache.h)&#10;accseeL2(coherence_ctrls.h MESITerminalCC)&#10;accseeL2(coherence_ctrls.cpp MESIBottomCC)&#10;此外修改文件：cache.cpp(83行) ddr_mem.cpp(264行)&#10;及各个.h文件">
+      <created>1637046369553</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1637046369553</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,6 +304,7 @@
     <MESSAGE value="10.29 lab&#10;完成BDFS" />
     <MESSAGE value="11.5 lab&#10;添加部分代码注释" />
     <MESSAGE value="11.15 lab&#10;将cache访问控制在filter_cache.h以内" />
-    <option name="LAST_COMMIT_MESSAGE" value="11.15 lab&#10;将cache访问控制在filter_cache.h以内" />
+    <MESSAGE value="11.16 lab&#10;访问顺序：&#10;accessL2(ooo_core.cpp)&#10;accessL2(filter_cache.h)&#10;accseeL2(coherence_ctrls.h MESITerminalCC)&#10;accseeL2(coherence_ctrls.cpp MESIBottomCC)&#10;此外修改文件：cache.cpp(83行) ddr_mem.cpp(264行)&#10;及各个.h文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="11.16 lab&#10;访问顺序：&#10;accessL2(ooo_core.cpp)&#10;accessL2(filter_cache.h)&#10;accseeL2(coherence_ctrls.h MESITerminalCC)&#10;accseeL2(coherence_ctrls.cpp MESIBottomCC)&#10;此外修改文件：cache.cpp(83行) ddr_mem.cpp(264行)&#10;及各个.h文件" />
   </component>
 </project>
