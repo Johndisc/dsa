@@ -1150,8 +1150,12 @@ void * StartTraverse(void *pVoid)
     pthread_exit(NULL);
 }
 
+void accessL2(uint32_t tid, uint64_t address, bool isLoad) {
+    cores[tid]->accessL2((uint64_t) address, isLoad, getCid(tid));
+}
+
 VOID HandleConfig(THREADID tid) {
-    va_map[tid] = new BDFS<int>();
+    va_map[tid] = new BDFS<int>(tid);
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
@@ -1174,7 +1178,8 @@ VOID HandleConfig(THREADID tid) {
 
     shmdt(address);
     cores[tid]->accessL2((uint64_t)address, true, getCid(tid));
-    va_map[tid]->configure(*_offset, *_neighbor, _active, *vertex_data, _isPush, _start_v, _end_v);
+info("completed");
+    va_map[tid]->configure(*_offset, *_neighbor, _active, vertex_data, _isPush, _start_v, _end_v);
     pthread_t pt;
     pthread_create(&pt, NULL, StartTraverse, (void *)va_map[tid]);
 }

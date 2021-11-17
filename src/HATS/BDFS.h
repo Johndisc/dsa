@@ -14,12 +14,15 @@
 #include <mutex>
 #include <iostream>
 #include "Edge.h"
+#include "zsim.h"
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
 #define BDFS_MAX_DEPTH 10
 
 using namespace std;
+
+void accessL2(uint32_t tid, uint64_t address, bool isLoad);
 
 static pthread_mutex_t bcmtx, bfmtx, amtx;
 
@@ -29,7 +32,7 @@ private:
     vector<int> offset;
     vector<int> neighbor;
     vector<bool> *active_bits;
-    vector<T> vertex_data;
+    vector<T> *vertex_data;
     bool isPush;
     bool is_end;
 
@@ -40,6 +43,8 @@ private:
     stack<Edge> dfs_stack;
     queue<Edge> FIFO;
     mutex fifo_mutex;
+
+    uint32_t tid;
 
 private:
     // 将要以某个节点为u时，将其设置为unactive
@@ -100,7 +105,7 @@ private:
 
     T prefetch(int vid)
     {
-        return vertex_data[vid];
+//        return vertex_data->at(vid);
     }
 
 public:
@@ -116,11 +121,11 @@ public:
         cout << "traverse end" << endl;
     }
 
-    BDFS(){};
+    BDFS(uint32_t _tid){ tid = _tid; };
     ~BDFS()= default;
 
     // zsim端接口
-    void configure(vector<int> _offset, vector<int> _neighbor, vector<bool> *_active, vector<T> _vertex_data, bool _isPush,
+    void configure(vector<int> _offset, vector<int> _neighbor, vector<bool> *_active, vector<T> *_vertex_data, bool _isPush,
                    int _start_v, int _end_v)
     {
         offset = _offset;

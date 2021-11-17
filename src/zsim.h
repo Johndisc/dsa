@@ -201,4 +201,6 @@ uint32_t getCid(uint32_t tid);
 uint32_t TakeBarrier(uint32_t tid, uint32_t cid);
 void SimEnd(); //only call point out of zsim.cpp should be watchdog threads
 
+void accessL2(uint32_t tid, uint64_t address, bool isLoad);
+
 #endif  // ZSIM_H_
