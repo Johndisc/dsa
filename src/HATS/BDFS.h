@@ -14,7 +14,7 @@
 #include <mutex>
 #include <iostream>
 #include "Edge.h"
-#include "zsim.h"
+#include "../zsim.h"
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
@@ -29,8 +29,8 @@ static pthread_mutex_t bcmtx, bfmtx, amtx;
 template <typename T>
 class BDFS {
 private:
-    vector<int> offset;
-    vector<int> neighbor;
+    vector<int> *offset;
+    vector<int> *neighbor;
     vector<bool> *active_bits;
     vector<T> *vertex_data;
     bool isPush;
@@ -69,8 +69,10 @@ private:
         while (!dfs_stack.empty())
         {
             edge = dfs_stack.top();
-            start_offset = offset[edge.v];
-            end_offset = offset[edge.v + 1];
+//            accessL2(tid, (uint64_t) & offset->at(edge.v), true);
+            start_offset = (*offset)[edge.v];
+//            accessL2(tid, (uint64_t) & offset->at(edge.v + 1), true);
+            end_offset = (*offset)[edge.v + 1];
             dfs_stack.pop();
             depin = false;
             if (edge.u != -1)
@@ -82,9 +84,10 @@ private:
             }
             for (int i = start_offset; i < end_offset; ++i) {
                 pthread_mutex_lock(&amtx);
-                if (cur_depth < BDFS_MAX_DEPTH && (*active_bits)[neighbor[i]]) {     //只入队，不遍历
-                    (*active_bits)[neighbor[i]] = false;
-                    dfs_stack.push(Edge(edge.v, neighbor[i]));
+//                accessL2(tid, (uint64_t) & neighbor->at(i), true);
+                if (cur_depth < BDFS_MAX_DEPTH && (*active_bits)[(*neighbor)[i]]) {     //只入队，不遍历
+                    (*active_bits)[(*neighbor)[i]] = false;
+                    dfs_stack.push(Edge(edge.v, (*neighbor)[i]));
                     depin = true;
                 }
                 else
@@ -92,7 +95,7 @@ private:
                     while (this->FIFO.size() > BDFS_MAX_DEPTH)
                         this_thread::yield();               //fifo满时HATS停止
                     lock_guard<mutex> lock(fifo_mutex);
-                    FIFO.push(Edge(edge.v, neighbor[i]));
+                    FIFO.push(Edge(edge.v, (*neighbor)[i]));
                 }
                 pthread_mutex_unlock(&amtx);
             }
@@ -103,9 +106,9 @@ private:
         }
     }
 
-    T prefetch(int vid)
+    void prefetch(int vid)
     {
-//        return vertex_data->at(vid);
+        accessL2(tid, (uint64_t) & vertex_data->at(vid), true);
     }
 
 public:
@@ -125,7 +128,7 @@ public:
     ~BDFS()= default;
 
     // zsim端接口
-    void configure(vector<int> _offset, vector<int> _neighbor, vector<bool> *_active, vector<T> *_vertex_data, bool _isPush,
+    void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector<T> *_vertex_data, bool _isPush,
                    int _start_v, int _end_v)
     {
         offset = _offset;
