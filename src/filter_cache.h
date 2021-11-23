@@ -149,6 +149,8 @@ class FilterCache : public Cache {
         }
 
         uint64_t invalidate(const InvReq& req) {
+            if (req.srcId == UINT32_MAX)
+                return 0;
             Cache::startInvalidate();  // grabs cache's downLock
             futex_lock(&filterLock);
             uint32_t idx = req.lineAddr & setMask; //works because of how virtual<->physical is done...
