@@ -362,6 +362,7 @@ class OOOCore : public Core {
     private:
         FilterCache* l1i;
         FilterCache* l1d;
+        lock_t l2_lock;
 
         uint64_t phaseEndCycle; //next stopping point
 

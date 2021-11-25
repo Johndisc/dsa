@@ -1181,7 +1181,7 @@ VOID HandleConfig(THREADID tid) {
 
     shmdt(address);
     cout<<"=========="<<&pInt[1]<<endl;
-    cores[tid]->accessL2((uint64_t)&_offset->at(0), true, getCid(tid));
+//    cores[tid]->accessL2((uint64_t)&_offset->at(0), true, getCid(tid));
     va_map[tid]->configure(_offset, _neighbor, _active, vertex_data, _isPush, _start_v, _end_v);
     pthread_t pt;
     pthread_create(&pt, NULL, StartTraverse, (void *)va_map[tid]);

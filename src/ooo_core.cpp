@@ -70,6 +70,7 @@ OOOCore::OOOCore(FilterCache* _l1i, FilterCache* _l1d, g_string& _name) : Core(_
     curCycleRFReads = 0;
     curCycleIssuedUops = 0;
     branchPc = 0;
+    futex_init(&l2_lock);
 
     instrs = uops = bbls = approxInstrs = mispredBranches = 0;
 
@@ -525,5 +526,8 @@ void OOOCore::BranchFunc(THREADID tid, ADDRINT pc, BOOL taken, ADDRINT takenNpc,
 
 void OOOCore::accessL2(uint64_t vAddr, bool isLoad, uint32_t cid)
 {
+    futex_lock(&l2_lock);
     l1d->accessL2(vAddr, isLoad, cid, curCycle);
+    futex_unlock(&l2_lock);
+    info("l2 complete");
 }

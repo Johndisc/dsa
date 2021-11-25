@@ -155,9 +155,8 @@ void MESIBottomCC::accseeL2(MemReq &req) {
         case GETS:
         {
             uint32_t parentId = getParentId(req.lineAddr);
-            MemReq newreq = {req.lineAddr, GETS, selfId, req.state, req.cycle, NULL, I, req.srcId, req.flags};
+            MemReq newreq = {req.lineAddr, GETS, UINT32_MAX, req.state, req.cycle, NULL, I, req.srcId, req.flags};
             parents[parentId]->access(newreq);
-            assert(*newreq.state == S || *newreq.state == E);
             break;
         }
         case GETX:
@@ -165,7 +164,7 @@ void MESIBottomCC::accseeL2(MemReq &req) {
             //Profile before access, state changes
             profGETXMissIM.inc();
             uint32_t parentId = getParentId(req.lineAddr);
-            MemReq newreq = {req.lineAddr, GETS, selfId, req.state, req.cycle, NULL, I, req.srcId, req.flags};
+            MemReq newreq = {req.lineAddr, GETS, UINT32_MAX, req.state, req.cycle, NULL, I, req.srcId, req.flags};
             parents[parentId]->access(newreq);
             break;
         }
@@ -302,7 +301,7 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
             *childState = I;
             break;
         case GETS:
-            if (e->isEmpty() && haveExclusive && !(flags & MemReq::NOEXCL)) {
+            if (e->isEmpty() && haveExclusive && !(flags & MemReq::NOEXCL) && childId!=UINT32_MAX) {
                 //Give in E state
                 e->exclusive = true;
                 e->sharers[childId] = true;
@@ -310,7 +309,8 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
                 *childState = E;
             } else {
                 //Give in S state
-                assert(e->sharers[childId] == false);
+                if (childId!=UINT32_MAX)
+                    assert(e->sharers[childId] == false);
 
                 if (e->isExclusive()) {
                     //Downgrade the exclusive sharer
@@ -319,10 +319,12 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
 
                 assert_msg(!e->isExclusive(), "Can't have exclusivity here. isExcl=%d excl=%d numSharers=%d", e->isExclusive(), e->exclusive, e->numSharers);
 
-                e->sharers[childId] = true;
-                e->numSharers++;
-                e->exclusive = false; //dsm: Must set, we're explicitly non-exclusive
-                *childState = S;
+                if (childId!=UINT32_MAX){
+                    e->sharers[childId] = true;
+                    e->numSharers++;
+                    e->exclusive = false; //dsm: Must set, we're explicitly non-exclusive
+                    *childState = S;
+                }
             }
             break;
         case GETX:

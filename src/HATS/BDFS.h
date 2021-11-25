@@ -69,9 +69,9 @@ private:
         while (!dfs_stack.empty())
         {
             edge = dfs_stack.top();
-//            accessL2(tid, (uint64_t) & offset->at(edge.v), true);
+            accessL2(tid, (uint64_t) & offset->at(0), true);
             start_offset = (*offset)[edge.v];
-//            accessL2(tid, (uint64_t) & offset->at(edge.v + 1), true);
+            accessL2(tid, (uint64_t) & offset->at(edge.v + 1), true);
             end_offset = (*offset)[edge.v + 1];
             dfs_stack.pop();
             depin = false;
