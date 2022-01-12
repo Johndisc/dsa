@@ -1165,7 +1165,6 @@ VOID HandleConfig(THREADID tid) {
     int temp=0;
     int _start_v=0;
     int _end_v=0;
-    int *pInt;
 
     memcpy(&_offset, (char *)address, 8);
     memcpy(&_neighbor, (char *)address + 8, 8);
@@ -1174,14 +1173,11 @@ VOID HandleConfig(THREADID tid) {
     memcpy(&_start_v, (char *)address + 28, 4);
     memcpy(&_end_v,(char *)address + 32, 4);
     memcpy(&vertex_data,(char *)address + 36, 8);
-    memcpy(&pInt,(char *)address + 44, sizeof(int*));
-    info("===========%d   %d",pInt[0], pInt[1]);
 
     _isPush = (bool) temp;
 
     shmdt(address);
-    cout<<"=========="<<&pInt[1]<<endl;
-    cores[tid]->accessL2((uint64_t)&_offset->at(0), true, getCid(tid));
+//    cores[tid]->accessL2((uint64_t)&_offset->at(0), true, getCid(tid));
     va_map[tid]->configure(_offset, _neighbor, _active, vertex_data, _isPush, _start_v, _end_v);
     pthread_t pt;
     pthread_create(&pt, NULL, StartTraverse, (void *)va_map[tid]);

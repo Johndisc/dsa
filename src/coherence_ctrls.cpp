@@ -94,6 +94,7 @@ uint64_t MESIBottomCC::processAccess(Address lineAddr, uint32_t lineId, AccessTy
             profPUTS.inc();
             break;
         case PUTX: //Dirty writeback
+//            info("%lx  putx state:%d   %d %d",lineAddr,*state,M,E);
             assert(*state == M || *state == E);
             if (*state == E) {
                 //Silent transition, record that block was written to
@@ -155,9 +156,8 @@ void MESIBottomCC::accseeL2(MemReq &req) {
         case GETS:
         {
             uint32_t parentId = getParentId(req.lineAddr);
-            MemReq newreq = {req.lineAddr, GETS, selfId, req.state, req.cycle, NULL, I, req.srcId, req.flags};
+            MemReq newreq = {req.lineAddr, GETS, UINT32_MAX, req.state, req.cycle, NULL, E, req.srcId, req.flags};
             parents[parentId]->access(newreq);
-            assert(*newreq.state == S || *newreq.state == E);
             break;
         }
         case GETX:
@@ -165,7 +165,7 @@ void MESIBottomCC::accseeL2(MemReq &req) {
             //Profile before access, state changes
             profGETXMissIM.inc();
             uint32_t parentId = getParentId(req.lineAddr);
-            MemReq newreq = {req.lineAddr, GETS, selfId, req.state, req.cycle, NULL, I, req.srcId, req.flags};
+            MemReq newreq = {req.lineAddr, GETS, UINT32_MAX, req.state, req.cycle, NULL, E, req.srcId, req.flags};
             parents[parentId]->access(newreq);
             break;
         }
@@ -285,6 +285,7 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
                                   MESIState* childState, bool* inducedWriteback, uint64_t cycle, uint32_t srcId, uint32_t flags) {
     Entry* e = &array[lineId];
     uint64_t respCycle = cycle;
+//    if (lineAddr==0x18a07) info("============= %d  %d  %d %d",e->isEmpty() , haveExclusive,e->isExclusive(),childId==UINT32_MAX);
     switch (type) {
         case PUTX:
             assert(e->isExclusive());
@@ -314,6 +315,7 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
 
                 if (e->isExclusive()) {
                     //Downgrade the exclusive sharer
+                    //numshare恒等于1
                     respCycle = sendInvalidates(lineAddr, lineId, INVX, inducedWriteback, cycle, srcId);
                 }
 
