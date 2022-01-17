@@ -344,7 +344,7 @@ class MESICC : public CC {
         uint64_t processEviction(const MemReq& triggerReq, Address wbLineAddr, int32_t lineId, uint64_t startCycle) {
             bool lowerLevelWriteback = false;
             uint64_t evCycle = startCycle;
-            if (triggerReq.srcId==UINT32_MAX)
+//            if (triggerReq.childId!=UINT32_MAX)
             evCycle = tcc->processEviction(wbLineAddr, lineId, &lowerLevelWriteback, startCycle, triggerReq.srcId); //1. if needed, send invalidates/downgrades to lower level
             evCycle = bcc->processEviction(wbLineAddr, lineId, lowerLevelWriteback, evCycle, triggerReq.srcId); //2. if needed, write back line to upper level
             return evCycle;
@@ -374,7 +374,7 @@ class MESICC : public CC {
                     //At this point, the line is in a good state w.r.t. upper levels
                     bool lowerLevelWriteback = false;
                     //change directory info, invalidate other children if needed, tell requester about its state
-                    if (req.srcId!=UINT32_MAX)
+                    if (req.childId!=UINT32_MAX)
                     respCycle = tcc->processAccess(req.lineAddr, lineId, req.type, req.childId, bcc->isExclusive(lineId), req.state,
                             &lowerLevelWriteback, respCycle, req.srcId, flags);
                     if (lowerLevelWriteback) {
@@ -498,8 +498,7 @@ class MESITerminalCC : public CC {
         }
 
         uint64_t processInv(const InvReq& req, int32_t lineId, uint64_t startCycle) {
-            if (req.srcId != UINT32_MAX && lineId != -1)
-                bcc->processInval(req.lineAddr, lineId, req.type, req.writeback); //adjust our own state
+            bcc->processInval(req.lineAddr, lineId, req.type, req.writeback); //adjust our own state
             bcc->unlock();
             return startCycle; //no extra delay in terminal caches
         }

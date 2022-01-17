@@ -95,6 +95,7 @@ uint64_t MESIBottomCC::processAccess(Address lineAddr, uint32_t lineId, AccessTy
             break;
         case PUTX: //Dirty writeback
 //            info("%lx  putx state:%d   %d %d",lineAddr,*state,M,E);
+            *state = M;
             assert(*state == M || *state == E);
             if (*state == E) {
                 //Silent transition, record that block was written to
@@ -163,9 +164,8 @@ void MESIBottomCC::accseeL2(MemReq &req) {
         case GETX:
         {
             //Profile before access, state changes
-            profGETXMissIM.inc();
             uint32_t parentId = getParentId(req.lineAddr);
-            MemReq newreq = {req.lineAddr, GETS, UINT32_MAX, req.state, req.cycle, NULL, E, req.srcId, req.flags};
+            MemReq newreq = {req.lineAddr, GETX, UINT32_MAX, req.state, req.cycle, NULL, E, req.srcId, req.flags};
             parents[parentId]->access(newreq);
             break;
         }
@@ -295,7 +295,7 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
                 *childState = E; //they don't hold dirty data anymore
                 break; //don't remove from sharer set. It'll keep exclusive perms.
             }
-            //note NO break in general
+            //note NO break in general 这里没有break！！！
         case PUTS:
             assert(e->sharers[childId]);
             e->sharers[childId] = false;

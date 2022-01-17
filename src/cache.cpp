@@ -72,6 +72,12 @@ uint64_t Cache::access(MemReq& req) {
             lineId = array->preinsert(req.lineAddr, &req, &wbLineAddr); //find the lineId to replace
             trace(Cache, "[%s] Evicting 0x%lx", name.c_str(), wbLineAddr);
 
+//            if (req.srcId==UINT32_MAX)
+//            {
+//                info("--------- eviction");
+////                cc->endAccess(req);
+////                return 0;
+//            }
             //Evictions are not in the critical path in any sane implementation -- we do not include their delays
             //NOTE: We might be "evicting" an invalid line for all we know. Coherence controllers will know what to do
             cc->processEviction(req, wbLineAddr, lineId, respCycle); //1. if needed, send invalidates/downgrades to lower level
@@ -86,7 +92,7 @@ uint64_t Cache::access(MemReq& req) {
         if (unlikely(evRec && evRec->hasRecord())) {
             wbAcc = evRec->popRecord();
         }
-        info("%s",name.c_str());
+//        info("%s %d  %d",name.c_str(),lineId,req.type);
         respCycle = cc->processAccess(req, lineId, respCycle);
 
         // Access may have generated another timing record. If *both* access

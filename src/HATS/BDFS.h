@@ -69,7 +69,7 @@ private:
         while (!dfs_stack.empty())
         {
             edge = dfs_stack.top();
-            accessL2(tid, (uint64_t) & offset->at(0), true);
+//            accessL2(tid, (uint64_t) & offset->at(0), true);
             start_offset = (*offset)[edge.v];
             accessL2(tid, (uint64_t) & offset->at(edge.v + 1), true);
             end_offset = (*offset)[edge.v + 1];
@@ -84,7 +84,7 @@ private:
             }
             for (int i = start_offset; i < end_offset; ++i) {
                 pthread_mutex_lock(&amtx);
-//                accessL2(tid, (uint64_t) & neighbor->at(0), true);
+//                accessL2(tid, (uint64_t) & neighbor->at(i), true);
                 if (cur_depth < BDFS_MAX_DEPTH && (*active_bits)[(*neighbor)[i]]) {     //只入队，不遍历
                     (*active_bits)[(*neighbor)[i]] = false;
                     dfs_stack.push(Edge(edge.v, (*neighbor)[i]));
