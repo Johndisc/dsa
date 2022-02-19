@@ -527,7 +527,7 @@ void OOOCore::BranchFunc(THREADID tid, ADDRINT pc, BOOL taken, ADDRINT takenNpc,
 void OOOCore::accessL2(uint64_t vAddr, bool isLoad, uint32_t cid)
 {
     futex_lock(&l2_lock);
+//    l1d->load(vAddr, curCycle);
     l1d->accessL2(vAddr, isLoad, cid, curCycle);
     futex_unlock(&l2_lock);
-    info("l2 complete");
 }

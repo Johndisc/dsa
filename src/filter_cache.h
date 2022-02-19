@@ -172,7 +172,8 @@ class FilterCache : public Cache {
         void accessL2(Address vAddr, bool isLoad, uint32_t cid, uint64_t curCycle) {
             Address vLineAddr = vAddr >> lineBits;
             Address pLineAddr = procMask | vLineAddr;
-            MESIState dummyState = MESIState::I;
+//            info("access L2   %lx",pLineAddr);
+            MESIState dummyState = MESIState::E;
             MemReq req = {pLineAddr, isLoad? GETS : GETX, 0, &dummyState, 0, NULL, dummyState, UINT32_MAX, MemReq::IFETCH | MemReq::NOEXCL};
             cc->accseeL2(req);
         }

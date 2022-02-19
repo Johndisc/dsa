@@ -12,6 +12,7 @@
 #include <mutex>
 #include <iostream>
 #include "Edge.h"
+#include "../zsim.h"
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
@@ -19,15 +20,17 @@
 
 using namespace std;
 
+void accessL2(uint32_t tid, uint64_t address, bool isLoad);
+
 static pthread_mutex_t vcmtx, vfmtx;
 
 template <typename T>
 class VO {
 private:
-    vector<int> offset;
-    vector<int> neighbor;
+    vector<int> *offset;
+    vector<int> *neighbor;
     vector<bool> *active_bits;
-    vector<T> vertex_data;
+    vector<T> *vertex_data;
     bool isPush;
 
     int current_vid;
@@ -35,6 +38,7 @@ private:
 
     queue<Edge> FIFO;
     mutex fifo_mutex;
+    uint32_t tid;
 
 private:
     int scan()
@@ -51,8 +55,10 @@ private:
 
     void fetch_offsets(int vid, int &start_offset, int &end_offset)
     {
-        start_offset = offset[vid];
-        end_offset = offset[vid + 1];
+        start_offset = (*offset)[vid];
+        accessL2(tid, (uint64_t) & offset->at(vid), true);
+        end_offset = (*offset)[vid + 1];
+        accessL2(tid, (uint64_t) &offset->at(vid + 1), true);
     }
 
     vector<Edge> fetch_neighbors(int vid, int start_offset, int end_offset)
@@ -62,7 +68,8 @@ private:
             while (this->FIFO.size() > VO_MAX_DEPTH)
                 this_thread::yield();               //fifo满时HATS停止
             lock_guard<mutex> lock(fifo_mutex);
-            FIFO.push(Edge(vid, neighbor[i]));
+            FIFO.push(Edge(vid, (*neighbor)[i]));
+//            accessL2(tid, (uint64_t) & neighbor->at(i), true);
             neighbors.emplace_back(vid, i);
         }
         return neighbors;
@@ -83,14 +90,15 @@ public:
             fetch_offsets(vid, start_offset, end_offset);
             edges = fetch_neighbors(vid, start_offset, end_offset);
         }
+        current_vid++;
         cout << "traverse end" << endl;
     }
 
-    VO(){};
+    VO(uint32_t _tid){ tid = _tid; };
     ~VO()= default;
 
     //zsim端接口
-    void configure(vector<int> _offset, vector<int> _neighbor, vector<bool> *_active, vector<T> _vertex_data, bool _isPush,
+    void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector<T> *_vertex_data, bool _isPush,
                    int _start_v, int _end_v)
     {
         offset = _offset;

@@ -95,7 +95,10 @@ INT32 Usage() {
     return -1;
 }
 
-std::unordered_map<uint32_t, BDFS<int>*> va_map;
+#define HATS BDFS
+//#define HATS VO
+
+std::unordered_map<uint32_t, HATS<int>*> va_map;
 
 /* Global Variables */
 
@@ -1144,7 +1147,7 @@ VOID SimEnd() {
 
 void * StartTraverse(void *pVoid)
 {
-    auto *sva = (BDFS<int> *) pVoid;
+    auto *sva = (HATS<int> *) pVoid;
     sva->start();
 
     pthread_exit(NULL);
@@ -1155,7 +1158,7 @@ void accessL2(uint32_t tid, uint64_t address, bool isLoad) {
 }
 
 VOID HandleConfig(THREADID tid) {
-    va_map[tid] = new BDFS<int>(tid);
+    va_map[tid] = new HATS<int>(tid);
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
@@ -1165,7 +1168,6 @@ VOID HandleConfig(THREADID tid) {
     int temp=0;
     int _start_v=0;
     int _end_v=0;
-    int *pInt;
 
     memcpy(&_offset, (char *)address, 8);
     memcpy(&_neighbor, (char *)address + 8, 8);
@@ -1174,13 +1176,10 @@ VOID HandleConfig(THREADID tid) {
     memcpy(&_start_v, (char *)address + 28, 4);
     memcpy(&_end_v,(char *)address + 32, 4);
     memcpy(&vertex_data,(char *)address + 36, 8);
-    memcpy(&pInt,(char *)address + 44, sizeof(int*));
-    info("===========%d   %d",pInt[0], pInt[1]);
 
     _isPush = (bool) temp;
 
     shmdt(address);
-    cout<<"=========="<<&pInt[1]<<endl;
 //    cores[tid]->accessL2((uint64_t)&_offset->at(0), true, getCid(tid));
     va_map[tid]->configure(_offset, _neighbor, _active, vertex_data, _isPush, _start_v, _end_v);
     pthread_t pt;

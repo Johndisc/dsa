@@ -1,19 +1,19 @@
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.20)
 project(zsim)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(src/HATS)
 include_directories(misc/hooks)
 include_directories(src)
 include_directories(src/g_std)
+include_directories(src/HATS)
 include_directories(src/virt)
 
 add_executable(zsim
+        cpp_test/instruction.cpp
         cpp_test/multi_thread.cpp
+        cpp_test/test.cpp
         cpp_test/thread.cpp
-        src/HATS/BDFS.h
-        src/HATS/VO.h
         misc/hooks/fortran_hooks.c
         misc/hooks/test.c
         misc/hooks/test.cpp
@@ -27,6 +27,10 @@ add_executable(zsim
         src/g_std/g_unordered_set.h
         src/g_std/g_vector.h
         src/g_std/stl_galloc.h
+        src/HATS/BDFS.h
+        src/HATS/Edge.h
+        src/HATS/VA.h
+        src/HATS/VO.h
         src/virt/common.h
         src/virt/cpu.cpp
         src/virt/fs.cpp
@@ -82,6 +86,7 @@ add_executable(zsim
         src/filter_cache.h
         src/galloc.cpp
         src/galloc.h
+        src/gmutex.h
         src/hash.cpp
         src/hash.h
         src/hdf5_stats.cpp
@@ -99,7 +104,7 @@ add_executable(zsim
         src/memory_hierarchy.h
         src/monitor.cpp
         src/mtrand.h
-        src/gmutex.h
+        src/mutex.h
         src/network.cpp
         src/network.h
         src/null_core.cpp
@@ -155,6 +160,4 @@ add_executable(zsim
         src/weave_md1_mem.h
         src/zsim.cpp
         src/zsim.h
-        src/zsim_harness.cpp
-        cpp_test/test.cpp
-        cpp_test/instruction.cpp src/HATS/Edge.h)
+        src/zsim_harness.cpp)

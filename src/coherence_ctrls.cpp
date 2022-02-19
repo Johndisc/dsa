@@ -94,6 +94,9 @@ uint64_t MESIBottomCC::processAccess(Address lineAddr, uint32_t lineId, AccessTy
             profPUTS.inc();
             break;
         case PUTX: //Dirty writeback
+//            info("%lx  putx state:%d   %d %d",lineAddr,*state,M,E);
+            if(*state != M && *state != E)
+                *state = M;
             assert(*state == M || *state == E);
             if (*state == E) {
                 //Silent transition, record that block was written to
@@ -155,16 +158,15 @@ void MESIBottomCC::accseeL2(MemReq &req) {
         case GETS:
         {
             uint32_t parentId = getParentId(req.lineAddr);
-            MemReq newreq = {req.lineAddr, GETS, UINT32_MAX, req.state, req.cycle, NULL, I, req.srcId, req.flags};
+            MemReq newreq = {req.lineAddr, GETS, UINT32_MAX, req.state, req.cycle, NULL, E, req.srcId, req.flags};
             parents[parentId]->access(newreq);
             break;
         }
         case GETX:
         {
             //Profile before access, state changes
-            profGETXMissIM.inc();
             uint32_t parentId = getParentId(req.lineAddr);
-            MemReq newreq = {req.lineAddr, GETS, UINT32_MAX, req.state, req.cycle, NULL, I, req.srcId, req.flags};
+            MemReq newreq = {req.lineAddr, GETX, UINT32_MAX, req.state, req.cycle, NULL, E, req.srcId, req.flags};
             parents[parentId]->access(newreq);
             break;
         }
@@ -284,6 +286,7 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
                                   MESIState* childState, bool* inducedWriteback, uint64_t cycle, uint32_t srcId, uint32_t flags) {
     Entry* e = &array[lineId];
     uint64_t respCycle = cycle;
+//    if (lineAddr==0x18a07) info("============= %d  %d  %d %d",e->isEmpty() , haveExclusive,e->isExclusive(),childId==UINT32_MAX);
     switch (type) {
         case PUTX:
             assert(e->isExclusive());
@@ -293,7 +296,7 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
                 *childState = E; //they don't hold dirty data anymore
                 break; //don't remove from sharer set. It'll keep exclusive perms.
             }
-            //note NO break in general
+            //note NO break in general 这里没有break！！！
         case PUTS:
             assert(e->sharers[childId]);
             e->sharers[childId] = false;
@@ -301,7 +304,7 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
             *childState = I;
             break;
         case GETS:
-            if (e->isEmpty() && haveExclusive && !(flags & MemReq::NOEXCL) && childId!=UINT32_MAX) {
+            if (e->isEmpty() && haveExclusive && !(flags & MemReq::NOEXCL)) {
                 //Give in E state
                 e->exclusive = true;
                 e->sharers[childId] = true;
@@ -309,22 +312,21 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
                 *childState = E;
             } else {
                 //Give in S state
-                if (childId!=UINT32_MAX)
-                    assert(e->sharers[childId] == false);
+                assert(e->sharers[childId] == false);
 
                 if (e->isExclusive()) {
                     //Downgrade the exclusive sharer
+                    //子级cache1要在父级cache中缓存，但父级cache已经和子级cache2是exclusive，因此需要将状态改为S
+                    //numshare恒等于1
                     respCycle = sendInvalidates(lineAddr, lineId, INVX, inducedWriteback, cycle, srcId);
                 }
 
                 assert_msg(!e->isExclusive(), "Can't have exclusivity here. isExcl=%d excl=%d numSharers=%d", e->isExclusive(), e->exclusive, e->numSharers);
 
-                if (childId!=UINT32_MAX){
-                    e->sharers[childId] = true;
-                    e->numSharers++;
-                    e->exclusive = false; //dsm: Must set, we're explicitly non-exclusive
-                    *childState = S;
-                }
+                e->sharers[childId] = true;
+                e->numSharers++;
+                e->exclusive = false; //dsm: Must set, we're explicitly non-exclusive
+                *childState = S;
             }
             break;
         case GETX:

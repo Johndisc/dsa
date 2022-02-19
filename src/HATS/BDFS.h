@@ -24,7 +24,7 @@ using namespace std;
 
 void accessL2(uint32_t tid, uint64_t address, bool isLoad);
 
-static pthread_mutex_t bcmtx, bfmtx, amtx;
+static pthread_mutex_t bcmtx, bfmtx;
 
 template <typename T>
 class BDFS {
@@ -69,7 +69,7 @@ private:
         while (!dfs_stack.empty())
         {
             edge = dfs_stack.top();
-            accessL2(tid, (uint64_t) & offset->at(0), true);
+            accessL2(tid, (uint64_t) & offset->at(edge.v), true);
             start_offset = (*offset)[edge.v];
             accessL2(tid, (uint64_t) & offset->at(edge.v + 1), true);
             end_offset = (*offset)[edge.v + 1];
@@ -83,8 +83,7 @@ private:
                 FIFO.push(edge);
             }
             for (int i = start_offset; i < end_offset; ++i) {
-                pthread_mutex_lock(&amtx);
-//                accessL2(tid, (uint64_t) & neighbor->at(i), true);
+                accessL2(tid, (uint64_t) & neighbor->at(i), true);
                 if (cur_depth < BDFS_MAX_DEPTH && (*active_bits)[(*neighbor)[i]]) {     //只入队，不遍历
                     (*active_bits)[(*neighbor)[i]] = false;
                     dfs_stack.push(Edge(edge.v, (*neighbor)[i]));
@@ -97,7 +96,6 @@ private:
                     lock_guard<mutex> lock(fifo_mutex);
                     FIFO.push(Edge(edge.v, (*neighbor)[i]));
                 }
-                pthread_mutex_unlock(&amtx);
             }
             if (depin)
                 cur_depth++;
@@ -132,8 +130,9 @@ public:
                    int _start_v, int _end_v)
     {
         offset = _offset;
-//        accessL2(tid, (uint64_t) &offset->at(0), true);
         neighbor = _neighbor;
+//        accessL2(tid, (uint64_t) &offset->at(0), true);
+//        accessL2(tid, (uint64_t) &neighbor->at(0), true);
         active_bits = _active;
         vertex_data = _vertex_data;
         isPush = _isPush;
@@ -147,6 +146,7 @@ public:
     {
         while (this->FIFO.empty() && !is_end)
             this_thread::yield();           //fifo为空时fetch停止
+//        printf("--------------- %d %d %d", current_vid, last_vid, is_end);
         lock_guard<mutex> lock(fifo_mutex);
         if (!FIFO.empty())
         {
@@ -161,10 +161,6 @@ public:
 //主程序端接口
 inline void hats_bdfs_configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, bool _isPush, int _start_v, int _end_v)
 {
-    int *pInt = (int *) malloc(10 * sizeof(int));
-    pInt[0] = 10;
-    pInt[1] = 100;
-    printf("(%d %d)\n", pInt[0], pInt[1]);
     int temp = (int) _isPush;
     vector<int> vertex_data(10, 5), *p = &vertex_data;
 
@@ -184,7 +180,6 @@ inline void hats_bdfs_configure(vector<int> *_offset, vector<int> *_neighbor, ve
     memcpy((char *)addr + 28, &_start_v, 4);
     memcpy((char *)addr + 32, &_end_v, 4);
     memcpy((char *)addr + 36, &p, 8);
-    memcpy((char *)addr + 44, &pInt, sizeof(int*));
     shmdt(addr);
     __asm__ __volatile__("xchg %r15, %r15");
     pthread_mutex_unlock(&bcmtx);
