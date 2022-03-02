@@ -94,9 +94,10 @@ uint64_t MESIBottomCC::processAccess(Address lineAddr, uint32_t lineId, AccessTy
             profPUTS.inc();
             break;
         case PUTX: //Dirty writeback
-//            info("%lx  putx state:%d   %d %d",lineAddr,*state,M,E);
-            if(*state != M && *state != E)
+            if (*state != M && *state != E) {
+//                info("%lx  putx state:%d   %d %d",lineAddr,*state,M,E);
                 *state = M;
+            }
             assert(*state == M || *state == E);
             if (*state == E) {
                 //Silent transition, record that block was written to
@@ -154,6 +155,7 @@ uint64_t MESIBottomCC::processAccess(Address lineAddr, uint32_t lineId, AccessTy
 }
 
 void MESIBottomCC::accseeL2(MemReq &req) {
+//    info("accessL2:  %lx",req.lineAddr);
     switch (req.type) {
         case GETS:
         {
@@ -289,6 +291,12 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
 //    if (lineAddr==0x18a07) info("============= %d  %d  %d %d",e->isEmpty() , haveExclusive,e->isExclusive(),childId==UINT32_MAX);
     switch (type) {
         case PUTX:
+            if (!e->isExclusive())
+            {
+                info("================ %lx  %d",lineAddr,e->numSharers);
+                e->exclusive = true;
+                e->numSharers = 1;
+            }
             assert(e->isExclusive());
             if (flags & MemReq::PUTX_KEEPEXCL) {
                 assert(e->sharers[childId]);
@@ -304,6 +312,7 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
             *childState = I;
             break;
         case GETS:
+            //e->isEmpty():有没有children共享     haveExclusive：自己这层是否为E或M，如果自己为E或M，则child全为E，否则也跟着为S
             if (e->isEmpty() && haveExclusive && !(flags & MemReq::NOEXCL)) {
                 //Give in E state
                 e->exclusive = true;
@@ -312,6 +321,7 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
                 *childState = E;
             } else {
                 //Give in S state
+                if (childId != UINT32_MAX)
                 assert(e->sharers[childId] == false);
 
                 if (e->isExclusive()) {
@@ -323,18 +333,21 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
 
                 assert_msg(!e->isExclusive(), "Can't have exclusivity here. isExcl=%d excl=%d numSharers=%d", e->isExclusive(), e->exclusive, e->numSharers);
 
-                e->sharers[childId] = true;
-                e->numSharers++;
-                e->exclusive = false; //dsm: Must set, we're explicitly non-exclusive
-                *childState = S;
+                if (childId != UINT32_MAX) {
+                    e->sharers[childId] = true;
+                    e->numSharers++;
+                    e->exclusive = false; //dsm: Must set, we're explicitly non-exclusive
+                    *childState = S;
+                }
             }
             break;
         case GETX:
             assert(haveExclusive); //the current cache better have exclusive access to this line
 
             // If child is in sharers list (this is an upgrade miss), take it out
-            if (e->sharers[childId]) {
-                assert_msg(!e->isExclusive(), "Spurious GETX, childId=%d numSharers=%d isExcl=%d excl=%d", childId, e->numSharers, e->isExclusive(), e->exclusive);
+            if (childId != UINT32_MAX && e->sharers[childId]) {
+                assert_msg(!e->isExclusive(), "Spurious GETX, childId=%d numSharers=%d isExcl=%d excl=%d", childId,
+                           e->numSharers, e->isExclusive(), e->exclusive);
                 e->sharers[childId] = false;
                 e->numSharers--;
             }
@@ -342,12 +355,14 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
             // Invalidate all other copies
             respCycle = sendInvalidates(lineAddr, lineId, INV, inducedWriteback, cycle, srcId);
 
-            // Set current sharer, mark exclusive
-            e->sharers[childId] = true;
-            e->numSharers++;
-            e->exclusive = true;
+            if (childId != UINT32_MAX) {
+                // Set current sharer, mark exclusive
+                e->sharers[childId] = true;
+                e->numSharers++;
+                e->exclusive = true;
 
-            assert(e->numSharers == 1);
+                assert(e->numSharers == 1);
+            }
 
             *childState = M; //give in M directly
             break;

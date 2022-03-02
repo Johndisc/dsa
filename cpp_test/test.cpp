@@ -9,8 +9,8 @@
 #include <iostream>
 #include <ctime>
 
-#define VEX_NUM 200
-#define THREAD_NUM 10
+#define VEX_NUM 500
+#define THREAD_NUM 5
 #define BDFS
 
 #ifdef BDFS
