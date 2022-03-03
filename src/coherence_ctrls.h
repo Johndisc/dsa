@@ -352,6 +352,8 @@ class MESICC : public CC {
 
         uint64_t processAccess(const MemReq& req, int32_t lineId, uint64_t startCycle, uint64_t* getDoneCycle = nullptr) {
             uint64_t respCycle = startCycle;
+//            if (req.srcId==UINT32_MAX)
+//                info("address:%lx\naccessL2 cache:%s type:%s childstate :%s",req.lineAddr,name.c_str(), AccessTypeName(req.type), MESIStateName(*req.state));
             //Handle non-inclusive writebacks by bypassing
             //NOTE: Most of the time, these are due to evictions, so the line is not there. But the second condition can trigger in NUCA-initiated
             //invalidations. The alternative with this would be to capture these blocks, since we have space anyway. This is so rare is doesn't matter,
@@ -383,6 +385,7 @@ class MESICC : public CC {
                     }
                 }
             }
+//            if (req.srcId==UINT32_MAX) info("after accessL2 cache:%s childstate :%s\n",name.c_str(), MESIStateName(*req.state));
             return respCycle;
         }
 
@@ -403,10 +406,8 @@ class MESICC : public CC {
 
         uint64_t processInv(const InvReq& req, int32_t lineId, uint64_t startCycle) {
             uint64_t respCycle;
-//            if (req.srcId!=UINT32_MAX)
-                respCycle = tcc->processInval(req.lineAddr, lineId, req.type, req.writeback, startCycle, req.srcId); //send invalidates or downgrades to children
-//            else
-//                respCycle = startCycle;
+//            if (name=="l2-0"&&req.lineAddr==0x186c7) info("L2 receive Inv!!!!!!!!!");
+            respCycle = tcc->processInval(req.lineAddr, lineId, req.type, req.writeback, startCycle, req.srcId); //send invalidates or downgrades to children
             bcc->processInval(req.lineAddr, lineId, req.type, req.writeback); //adjust our own state
 
             bcc->unlock();
@@ -470,6 +471,7 @@ class MESITerminalCC : public CC {
         }
 
         uint64_t processEviction(const MemReq& triggerReq, Address wbLineAddr, int32_t lineId, uint64_t startCycle) {
+//            info("terminal eviction!  wb %lx   line %lx",wbLineAddr,triggerReq.lineAddr);
             bool lowerLevelWriteback = false;
             uint64_t endCycle = bcc->processEviction(wbLineAddr, lineId, lowerLevelWriteback, startCycle, triggerReq.srcId); //2. if needed, write back line to upper level
             return endCycle;  // critical path unaffected, but TimingCache needs it
@@ -498,6 +500,7 @@ class MESITerminalCC : public CC {
         }
 
         uint64_t processInv(const InvReq& req, int32_t lineId, uint64_t startCycle) {
+            if (name=="l1d-0"&&req.lineAddr==0x186c7) info("terminal receive Inv!!!!!!!!!");
             bcc->processInval(req.lineAddr, lineId, req.type, req.writeback); //adjust our own state
             bcc->unlock();
             return startCycle; //no extra delay in terminal caches

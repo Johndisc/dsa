@@ -56,6 +56,7 @@ void MESIBottomCC::init(const g_vector<MemObject*>& _parents, Network* network, 
 uint64_t MESIBottomCC::processEviction(Address wbLineAddr, uint32_t lineId, bool lowerLevelWriteback, uint64_t cycle, uint32_t srcId) {
     MESIState* state = &array[lineId];
     if (lowerLevelWriteback) {
+        if (*state != M && *state != E) info("eviction writeback addr:%lx",wbLineAddr);
         //If this happens, when tcc issued the invalidations, it got a writeback. This means we have to do a PUTX, i.e. we have to transition to M if we are in E
         assert(*state == M || *state == E); //Must have exclusive permission!
         *state = M; //Silent E->M transition (at eviction); now we'll do a PUTX
@@ -95,8 +96,8 @@ uint64_t MESIBottomCC::processAccess(Address lineAddr, uint32_t lineId, AccessTy
             break;
         case PUTX: //Dirty writeback
             if (*state != M && *state != E) {
-//                info("%lx  putx state:%d   %d %d",lineAddr,*state,M,E);
-                *state = M;
+//                info("bcc processAccess  %lx  putx state:%s",lineAddr, MESIStateName(*state));
+//                *state = M;
             }
             assert(*state == M || *state == E);
             if (*state == E) {
@@ -106,6 +107,7 @@ uint64_t MESIBottomCC::processAccess(Address lineAddr, uint32_t lineId, AccessTy
             profPUTX.inc();
             break;
         case GETS:
+//            if (srcId == UINT32_MAX) info("current state %s", MESIStateName(*state));
             if (*state == I) {
                 uint32_t parentId = getParentId(lineAddr);
                 MemReq req = {lineAddr, GETS, selfId, state, cycle, &ccLock, *state, srcId, flags};
@@ -244,6 +246,7 @@ uint64_t MESITopCC::sendInvalidates(Address lineAddr, uint32_t lineId, InvType t
     if (type == INVX && !e->isExclusive()) {
         return cycle;
     }
+//    if (lineAddr==0x186c7) info("sendInv!!!!!!!!!  linId:%d  numshare:%d",lineId,e->numSharers);
 
     uint64_t maxCycle = cycle; //keep maximum cycle only, we assume all invals are sent in parallel
     if (!e->isEmpty()) {
@@ -294,8 +297,6 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
             if (!e->isExclusive())
             {
                 info("================ %lx  %d",lineAddr,e->numSharers);
-                e->exclusive = true;
-                e->numSharers = 1;
             }
             assert(e->isExclusive());
             if (flags & MemReq::PUTX_KEEPEXCL) {
@@ -312,6 +313,7 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
             *childState = I;
             break;
         case GETS:
+//            if (srcId == UINT32_MAX) info("tcc--- isEmpty:%d   exclusive:%d   numShares:%d",e->isEmpty(),e->isExclusive(),e->numSharers);
             //e->isEmpty():有没有children共享     haveExclusive：自己这层是否为E或M，如果自己为E或M，则child全为E，否则也跟着为S
             if (e->isEmpty() && haveExclusive && !(flags & MemReq::NOEXCL)) {
                 //Give in E state
@@ -328,6 +330,7 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
                     //Downgrade the exclusive sharer
                     //子级cache1要在父级cache中缓存，但父级cache已经和子级cache2是exclusive，因此需要将状态改为S
                     //numshare恒等于1
+//                    if (lineAddr==0x186c7) info("send special Inv!!!!!!!!!    %d",lineId);
                     respCycle = sendInvalidates(lineAddr, lineId, INVX, inducedWriteback, cycle, srcId);
                 }
 
@@ -340,6 +343,7 @@ uint64_t MESITopCC::processAccess(Address lineAddr, uint32_t lineId, AccessType 
                     *childState = S;
                 }
             }
+//            if (srcId == UINT32_MAX) info("tcc_after--- isEmpty:%d   exclusive:%d   numShares:%d",e->isEmpty(),e->isExclusive(),e->numSharers);
             break;
         case GETX:
             assert(haveExclusive); //the current cache better have exclusive access to this line

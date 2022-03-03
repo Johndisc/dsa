@@ -10,7 +10,7 @@
 #include <ctime>
 
 #define VEX_NUM 500
-#define THREAD_NUM 5
+#define THREAD_NUM 10
 #define BDFS
 
 #ifdef BDFS

@@ -65,6 +65,7 @@ uint64_t Cache::access(MemReq& req) {
         bool updateReplacement = (req.type == GETS) || (req.type == GETX);
         int32_t lineId = array->lookup(req.lineAddr, &req, updateReplacement);
         respCycle += accLat;
+//        if (req.lineAddr==0x186c7) info("access special [%s]   %d",name.c_str(),lineId);
 
         if (lineId == -1 && cc->shouldAllocate(req)) {
             //Make space for new line

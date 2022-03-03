@@ -129,6 +129,7 @@ class FilterCache : public Cache {
             Address pLineAddr = procMask | vLineAddr;
             MESIState dummyState = MESIState::I;
             futex_lock(&filterLock);
+//            if (pLineAddr==0x186c7) info("L1 insert !!!!!!!!!!");
             MemReq req = {pLineAddr, isLoad? GETS : GETX, 0, &dummyState, curCycle, &filterLock, dummyState, srcId, reqFlags};
             uint64_t respCycle  = access(req);
 
@@ -149,8 +150,6 @@ class FilterCache : public Cache {
         }
 
         uint64_t invalidate(const InvReq& req) {
-            if (req.srcId == UINT32_MAX)
-                return 0;
             Cache::startInvalidate();  // grabs cache's downLock
             futex_lock(&filterLock);
             uint32_t idx = req.lineAddr & setMask; //works because of how virtual<->physical is done...
@@ -172,7 +171,6 @@ class FilterCache : public Cache {
         void accessL2(Address vAddr, bool isLoad, uint32_t cid, uint64_t curCycle) {
             Address vLineAddr = vAddr >> lineBits;
             Address pLineAddr = procMask | vLineAddr;
-//            info("access L2   %lx",pLineAddr);
             MESIState dummyState = MESIState::E;
             MemReq req = {pLineAddr, isLoad? GETS : GETX, 0, &dummyState, 0, NULL, dummyState, UINT32_MAX, MemReq::IFETCH | MemReq::NOEXCL};
             cc->accseeL2(req);
