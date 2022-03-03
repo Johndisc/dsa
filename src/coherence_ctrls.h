@@ -344,7 +344,6 @@ class MESICC : public CC {
         uint64_t processEviction(const MemReq& triggerReq, Address wbLineAddr, int32_t lineId, uint64_t startCycle) {
             bool lowerLevelWriteback = false;
             uint64_t evCycle = startCycle;
-//            if (triggerReq.childId!=UINT32_MAX)
             evCycle = tcc->processEviction(wbLineAddr, lineId, &lowerLevelWriteback, startCycle, triggerReq.srcId); //1. if needed, send invalidates/downgrades to lower level
             evCycle = bcc->processEviction(wbLineAddr, lineId, lowerLevelWriteback, evCycle, triggerReq.srcId); //2. if needed, write back line to upper level
             return evCycle;
@@ -352,8 +351,6 @@ class MESICC : public CC {
 
         uint64_t processAccess(const MemReq& req, int32_t lineId, uint64_t startCycle, uint64_t* getDoneCycle = nullptr) {
             uint64_t respCycle = startCycle;
-//            if (req.srcId==UINT32_MAX)
-//                info("address:%lx\naccessL2 cache:%s type:%s childstate :%s",req.lineAddr,name.c_str(), AccessTypeName(req.type), MESIStateName(*req.state));
             //Handle non-inclusive writebacks by bypassing
             //NOTE: Most of the time, these are due to evictions, so the line is not there. But the second condition can trigger in NUCA-initiated
             //invalidations. The alternative with this would be to capture these blocks, since we have space anyway. This is so rare is doesn't matter,
@@ -376,7 +373,6 @@ class MESICC : public CC {
                     //At this point, the line is in a good state w.r.t. upper levels
                     bool lowerLevelWriteback = false;
                     //change directory info, invalidate other children if needed, tell requester about its state
-//                    if (req.childId!=UINT32_MAX)
                     respCycle = tcc->processAccess(req.lineAddr, lineId, req.type, req.childId, bcc->isExclusive(lineId), req.state,
                             &lowerLevelWriteback, respCycle, req.srcId, flags);
                     if (lowerLevelWriteback) {
@@ -385,7 +381,6 @@ class MESICC : public CC {
                     }
                 }
             }
-//            if (req.srcId==UINT32_MAX) info("after accessL2 cache:%s childstate :%s\n",name.c_str(), MESIStateName(*req.state));
             return respCycle;
         }
 
@@ -406,7 +401,6 @@ class MESICC : public CC {
 
         uint64_t processInv(const InvReq& req, int32_t lineId, uint64_t startCycle) {
             uint64_t respCycle;
-//            if (name=="l2-0"&&req.lineAddr==0x186c7) info("L2 receive Inv!!!!!!!!!");
             respCycle = tcc->processInval(req.lineAddr, lineId, req.type, req.writeback, startCycle, req.srcId); //send invalidates or downgrades to children
             bcc->processInval(req.lineAddr, lineId, req.type, req.writeback); //adjust our own state
 
@@ -471,7 +465,6 @@ class MESITerminalCC : public CC {
         }
 
         uint64_t processEviction(const MemReq& triggerReq, Address wbLineAddr, int32_t lineId, uint64_t startCycle) {
-//            info("terminal eviction!  wb %lx   line %lx",wbLineAddr,triggerReq.lineAddr);
             bool lowerLevelWriteback = false;
             uint64_t endCycle = bcc->processEviction(wbLineAddr, lineId, lowerLevelWriteback, startCycle, triggerReq.srcId); //2. if needed, write back line to upper level
             return endCycle;  // critical path unaffected, but TimingCache needs it

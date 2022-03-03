@@ -129,7 +129,6 @@ class FilterCache : public Cache {
             Address pLineAddr = procMask | vLineAddr;
             MESIState dummyState = MESIState::I;
             futex_lock(&filterLock);
-//            if (pLineAddr==0x186c7) info("L1 insert !!!!!!!!!!");
             MemReq req = {pLineAddr, isLoad? GETS : GETX, 0, &dummyState, curCycle, &filterLock, dummyState, srcId, reqFlags};
             uint64_t respCycle  = access(req);
 
