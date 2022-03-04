@@ -69,15 +69,16 @@ private:
                 this_thread::yield();               //fifo满时HATS停止
             lock_guard<mutex> lock(fifo_mutex);
             FIFO.push(Edge(vid, (*neighbor)[i]));
-//            accessL2(tid, (uint64_t) & neighbor->at(i), true);
+            prefetch((*neighbor)[i]);
+            accessL2(tid, (uint64_t) & neighbor->at(i), true);
             neighbors.emplace_back(vid, i);
         }
         return neighbors;
     }
 
-    T prefetch(int vid)
+    void prefetch(int vid)
     {
-        return vertex_data[vid];
+        accessL2(tid, (uint64_t) & vertex_data->at(vid), true);
     }
 
 public:
@@ -131,7 +132,7 @@ public:
 inline void hats_vo_configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, bool _isPush, int _start_v, int _end_v)
 {
     int temp = (int) _isPush;
-    vector<int> vertex_data(10, 5), *p = &vertex_data;
+    vector<int> vertex_data(_offset->size() - 1, 5), *p = &vertex_data;
 
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *addr = shmat(shmId, NULL, 0); //获取共享内存地址
