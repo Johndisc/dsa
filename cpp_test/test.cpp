@@ -24,8 +24,6 @@
 using namespace std;
 
 vector<int> offsets, neighbors, values;
-mutex sm;
-pthread_mutex_t pmutex;
 
 void generate()
 {
@@ -42,7 +40,6 @@ void generate()
                 neighbors.push_back(j);
                 values.push_back(i);
                 cnt++;
-//                printf("%d,%d\n", i, j);
             }
         }
         offsets.push_back(cnt);
@@ -93,7 +90,7 @@ int main()
     for (int i = 0; i < THREAD_NUM; ++i)
         total += cnt[i];
     cout << "total:" << total << endl;
-    if (total==neighbors.size())
+    if (total == neighbors.size())
         cout << "correct" << endl;
     else
         cout << "wrong " << "total:" << total << " size:" << neighbors.size() << endl;
