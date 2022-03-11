@@ -95,8 +95,8 @@ INT32 Usage() {
     return -1;
 }
 
-#define HATS BDFS
-//#define HATS VO
+//#define HATS BDFS
+#define HATS VO
 
 std::unordered_map<uint32_t, HATS<int>*> va_map;
 

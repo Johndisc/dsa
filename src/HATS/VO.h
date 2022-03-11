@@ -86,6 +86,11 @@ public:
     {
         int vid, start_offset, end_offset;
         vector <Edge> edges;
+        //-------------------
+        for (int i = 0; i < 5; ++i) {
+            printf("%d  in   %d times\n", tid, i);
+        }
+        //-------------------
         while (current_vid < last_vid) {
             vid = scan();
             fetch_offsets(vid, start_offset, end_offset);

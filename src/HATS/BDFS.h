@@ -42,7 +42,8 @@ private:
 
     stack<Edge> dfs_stack;
     queue<Edge> FIFO;
-    mutex fifo_mutex;
+    pthread_mutex_t fifo_mutex;
+//    mutex fifo_mutex;
 
     uint32_t tid;
 
@@ -79,8 +80,10 @@ private:
             {
                 while (this->FIFO.size() > BDFS_MAX_DEPTH)
                     this_thread::yield();               //fifo满时HATS停止
-                lock_guard<mutex> lock(fifo_mutex);
+//                lock_guard<mutex> lock(fifo_mutex);
+                pthread_mutex_lock(&fifo_mutex);
                 FIFO.push(edge);
+                pthread_mutex_unlock(&fifo_mutex);
             }
             for (int i = start_offset; i < end_offset; ++i) {
                 accessL2(tid, (uint64_t) & neighbor->at(i), true);
@@ -93,8 +96,10 @@ private:
                 {
                     while (this->FIFO.size() > BDFS_MAX_DEPTH)
                         this_thread::yield();               //fifo满时HATS停止
-                    lock_guard<mutex> lock(fifo_mutex);
+//                    lock_guard<mutex> lock(fifo_mutex);
+                    pthread_mutex_lock(&fifo_mutex);
                     FIFO.push(Edge(edge.v, (*neighbor)[i]));
+                    pthread_mutex_unlock(&fifo_mutex);
                 }
             }
             if (depin)
@@ -119,7 +124,7 @@ public:
             vid = scan();
         }
         is_end = true;
-        cout << "traverse end" << endl;
+        cout << tid << " thread traverse end" << endl;
     }
 
     BDFS(uint32_t _tid){ tid = _tid; };
@@ -143,7 +148,8 @@ public:
     {
         while (this->FIFO.empty() && !is_end)
             this_thread::yield();           //fifo为空时fetch停止
-        lock_guard<mutex> lock(fifo_mutex);
+//        lock_guard<mutex> lock(fifo_mutex);
+        pthread_mutex_lock(&fifo_mutex);
         if (!FIFO.empty())
         {
             edge = FIFO.front();
@@ -151,6 +157,7 @@ public:
         }
         else
             edge = Edge(-1, -1);
+        pthread_mutex_unlock(&fifo_mutex);
     }
 };
 
