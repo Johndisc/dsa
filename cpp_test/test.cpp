@@ -10,10 +10,10 @@
 #include <ctime>
 #include "omp.h"
 
-#define VEX_NUM 200
+#define VEX_NUM THREAD_NUM*30
 #define THREAD_NUM 16
 #define TSIZE VEX_NUM / THREAD_NUM
-//#define BDFS
+#define BDFS
 
 #ifdef BDFS
 #define hats_config hats_bdfs_configure
@@ -56,12 +56,12 @@ void newTraverse(vector<bool> *active, bool isPush, int start_id, int end_id, in
     Edge edge(0, 0);
     cnt = 0;
     while (edge.u != -1 && edge.v != -1) {
-//        edge = hats_fetch();
+        edge = hats_fetch();
         cnt++;
-        if (cnt == 10) {
-            edge.u = -1;
-            edge.v = -1;
-        }
+//        if (cnt == 10) {
+//            edge.u = -1;
+//            edge.v = -1;
+//        }
 //        pthread_mutex_lock(&pmutex);
 //        cout << tid << ":" << cnt << ":" << "(" << edge.u << "," << edge.v << ")" << endl;
 //        pthread_mutex_unlock(&pmutex);

@@ -22,7 +22,7 @@ using namespace std;
 
 void accessL2(uint32_t tid, uint64_t address, bool isLoad);
 
-static pthread_mutex_t vcmtx, vfmtx;
+static pthread_mutex_t vcmtx, vfmtx, vL2mtx;
 
 template <typename T>
 class VO {
@@ -55,10 +55,12 @@ private:
 
     void fetch_offsets(int vid, int &start_offset, int &end_offset)
     {
+        pthread_mutex_lock(&vL2mtx);
         start_offset = (*offset)[vid];
         accessL2(tid, (uint64_t) & offset->at(vid), true);
         end_offset = (*offset)[vid + 1];
         accessL2(tid, (uint64_t) &offset->at(vid + 1), true);
+        pthread_mutex_unlock(&vL2mtx);
     }
 
     vector<Edge> fetch_neighbors(int vid, int start_offset, int end_offset)
@@ -69,8 +71,10 @@ private:
                 this_thread::yield();               //fifo满时HATS停止
             lock_guard<mutex> lock(fifo_mutex);
             FIFO.push(Edge(vid, (*neighbor)[i]));
+            pthread_mutex_lock(&vL2mtx);
             prefetch((*neighbor)[i]);
             accessL2(tid, (uint64_t) & neighbor->at(i), true);
+            pthread_mutex_unlock(&vL2mtx);
             neighbors.emplace_back(vid, i);
         }
         return neighbors;
@@ -87,9 +91,9 @@ public:
         int vid, start_offset, end_offset;
         vector <Edge> edges;
         //-------------------
-        for (int i = 0; i < 5; ++i) {
-            printf("%d  in   %d times\n", tid, i);
-        }
+//        for (int i = 0; i < 5; ++i) {
+//            printf("%d  in   %d times\n", tid, i);
+//        }
         //-------------------
         while (current_vid < last_vid) {
             vid = scan();
@@ -114,7 +118,6 @@ public:
         isPush = _isPush;
         current_vid = _start_v;
         last_vid = _end_v;
-//        cout << offset.size() << " " << neighbor.size() << " " << current_vid << " " << last_vid << endl;
     }
 
     //zsim端接口
@@ -140,7 +143,7 @@ inline void hats_vo_configure(vector<int> *_offset, vector<int> *_neighbor, vect
     vector<int> vertex_data(_offset->size() - 1, 5), *p = &vertex_data;
 
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
-    void *addr = shmat(shmId, NULL, 0); //获取共享内存地址
+    void *addr = shmat(shmId, NULL, 0); //共享内存地址
     if (!addr)
     {
         printf("failed!!!\n");

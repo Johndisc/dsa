@@ -25,6 +25,7 @@ using namespace std;
 void accessL2(uint32_t tid, uint64_t address, bool isLoad);
 
 static pthread_mutex_t bcmtx, bfmtx;
+static pthread_mutex_t bL2mtx;
 
 template <typename T>
 class BDFS {
@@ -42,8 +43,7 @@ private:
 
     stack<Edge> dfs_stack;
     queue<Edge> FIFO;
-    pthread_mutex_t fifo_mutex;
-//    mutex fifo_mutex;
+    mutex fifo_mutex;
 
     uint32_t tid;
 
@@ -69,10 +69,13 @@ private:
         cur_depth = 0;
         while (!dfs_stack.empty())
         {
+            //accessL2需要加全局锁(?)，否则会导致signal 11错误
+            pthread_mutex_lock(&bL2mtx);
             edge = dfs_stack.top();
             accessL2(tid, (uint64_t) & offset->at(edge.v), true);
             start_offset = (*offset)[edge.v];
             accessL2(tid, (uint64_t) & offset->at(edge.v + 1), true);
+            pthread_mutex_unlock(&bL2mtx);
             end_offset = (*offset)[edge.v + 1];
             dfs_stack.pop();
             depin = false;
@@ -80,13 +83,13 @@ private:
             {
                 while (this->FIFO.size() > BDFS_MAX_DEPTH)
                     this_thread::yield();               //fifo满时HATS停止
-//                lock_guard<mutex> lock(fifo_mutex);
-                pthread_mutex_lock(&fifo_mutex);
+                lock_guard<mutex> lock(fifo_mutex);
                 FIFO.push(edge);
-                pthread_mutex_unlock(&fifo_mutex);
             }
             for (int i = start_offset; i < end_offset; ++i) {
-                accessL2(tid, (uint64_t) & neighbor->at(i), true);
+//                pthread_mutex_lock(&bL2mtx);
+//                accessL2(tid, (uint64_t) & neighbor->at(i), true);
+//                pthread_mutex_unlock(&bL2mtx);
                 if (cur_depth < BDFS_MAX_DEPTH && (*active_bits)[(*neighbor)[i]]) {     //只入队，不遍历
                     (*active_bits)[(*neighbor)[i]] = false;
                     dfs_stack.push(Edge(edge.v, (*neighbor)[i]));
@@ -96,10 +99,8 @@ private:
                 {
                     while (this->FIFO.size() > BDFS_MAX_DEPTH)
                         this_thread::yield();               //fifo满时HATS停止
-//                    lock_guard<mutex> lock(fifo_mutex);
-                    pthread_mutex_lock(&fifo_mutex);
+                    lock_guard<mutex> lock(fifo_mutex);
                     FIFO.push(Edge(edge.v, (*neighbor)[i]));
-                    pthread_mutex_unlock(&fifo_mutex);
                 }
             }
             if (depin)
@@ -148,16 +149,14 @@ public:
     {
         while (this->FIFO.empty() && !is_end)
             this_thread::yield();           //fifo为空时fetch停止
-//        lock_guard<mutex> lock(fifo_mutex);
-        pthread_mutex_lock(&fifo_mutex);
-        if (!FIFO.empty())
+        lock_guard<mutex> lock(fifo_mutex);
+        if (!this->FIFO.empty())
         {
             edge = FIFO.front();
             FIFO.pop();
         }
         else
             edge = Edge(-1, -1);
-        pthread_mutex_unlock(&fifo_mutex);
     }
 };
 
@@ -165,7 +164,7 @@ public:
 inline void hats_bdfs_configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, bool _isPush, int _start_v, int _end_v)
 {
     int temp = (int) _isPush;
-    vector<int> vertex_data(_offset->size() - 1, 5), *p = &vertex_data;
+    vector<int> vertex_data(10, 5), *p = &vertex_data;
 
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *addr = shmat(shmId, NULL, 0); //获取共享内存地址
@@ -197,8 +196,7 @@ inline Edge hats_bdfs_fetch_edge()
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
-    memcpy(&edge.u,(char *)address+80,4);
-    memcpy(&edge.v,(char *)address+84,4);
+    memcpy(&edge,(char *)address+80, sizeof(edge));
     shmdt(address);
     pthread_mutex_unlock(&bfmtx);
     return edge;
