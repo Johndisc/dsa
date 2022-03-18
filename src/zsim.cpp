@@ -1182,6 +1182,7 @@ VOID HandleConfig(THREADID tid) {
     _isPush = (bool) temp;
 
     shmdt(address);
+
     pthread_mutex_unlock(&smutex);
 //    cores[tid]->accessL2((uint64_t)&_offset->at(0), true, getCid(tid));
     va_map[tid]->configure(_offset, _neighbor, _active, vertex_data, _isPush, _start_v, _end_v);
