@@ -99,7 +99,7 @@ INT32 Usage() {
 //#define HATS VO
 
 std::unordered_map<uint32_t, HATS<int>*> va_map;
-static pthread_mutex_t smutex;
+std::unordered_map<uint32_t, Core*> core_map;
 
 /* Global Variables */
 
@@ -1155,10 +1155,11 @@ void * StartTraverse(void *pVoid)
 }
 
 void accessL2(uint32_t tid, uint64_t address, bool isLoad) {
-    cores[tid]->accessL2((uint64_t) address, isLoad, getCid(tid));
+    core_map[tid]->accessL2((uint64_t) address, isLoad, getCid(tid));
 }
 
 VOID HandleConfig(THREADID tid) {
+    core_map[tid] = cores[tid];
     va_map[tid] = new HATS<int>(tid);
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
@@ -1170,7 +1171,6 @@ VOID HandleConfig(THREADID tid) {
     int _start_v=0;
     int _end_v=0;
 
-    pthread_mutex_lock(&smutex);
     memcpy(&_offset, (char *)address, 8);
     memcpy(&_neighbor, (char *)address + 8, 8);
     memcpy(&_active, (char *)address + 16, 8);
@@ -1183,8 +1183,6 @@ VOID HandleConfig(THREADID tid) {
 
     shmdt(address);
 
-    pthread_mutex_unlock(&smutex);
-//    cores[tid]->accessL2((uint64_t)&_offset->at(0), true, getCid(tid));
     va_map[tid]->configure(_offset, _neighbor, _active, vertex_data, _isPush, _start_v, _end_v);
     pthread_t pt;
     pthread_create(&pt, NULL, StartTraverse, (void *)va_map[tid]);
@@ -1198,10 +1196,8 @@ VOID HandleFetch(THREADID tid)
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
-    pthread_mutex_lock(&smutex);
     memcpy((char*)address+80,&edge,sizeof(edge));
     shmdt(address);
-    pthread_mutex_unlock(&smutex);
 }
 
 // Magic ops interface

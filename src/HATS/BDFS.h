@@ -25,7 +25,6 @@ using namespace std;
 void accessL2(uint32_t tid, uint64_t address, bool isLoad);
 
 static pthread_mutex_t bcmtx, bfmtx;
-static pthread_mutex_t bL2mtx;
 
 template <typename T>
 class BDFS {
@@ -69,13 +68,10 @@ private:
         cur_depth = 0;
         while (!dfs_stack.empty())
         {
-            //accessL2需要加全局锁(?)，否则会导致signal 11错误
-            pthread_mutex_lock(&bL2mtx);
             edge = dfs_stack.top();
-            accessL2(tid, (uint64_t) & offset->at(edge.v), true);
             start_offset = (*offset)[edge.v];
             accessL2(tid, (uint64_t) & offset->at(edge.v + 1), true);
-            pthread_mutex_unlock(&bL2mtx);
+            accessL2(tid, (uint64_t) &offset->at(edge.v), true);
             end_offset = (*offset)[edge.v + 1];
             dfs_stack.pop();
             depin = false;
@@ -87,9 +83,7 @@ private:
                 FIFO.push(edge);
             }
             for (int i = start_offset; i < end_offset; ++i) {
-//                pthread_mutex_lock(&bL2mtx);
-//                accessL2(tid, (uint64_t) & neighbor->at(i), true);
-//                pthread_mutex_unlock(&bL2mtx);
+                accessL2(tid, (uint64_t) & neighbor->at(i), true);
                 if (cur_depth < BDFS_MAX_DEPTH && (*active_bits)[(*neighbor)[i]]) {     //只入队，不遍历
                     (*active_bits)[(*neighbor)[i]] = false;
                     dfs_stack.push(Edge(edge.v, (*neighbor)[i]));

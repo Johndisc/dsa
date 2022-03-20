@@ -10,7 +10,7 @@
 #include <ctime>
 #include "omp.h"
 
-#define VEX_NUM THREAD_NUM*30
+#define VEX_NUM THREAD_NUM*20
 #define THREAD_NUM 16
 #define TSIZE VEX_NUM / THREAD_NUM
 #define BDFS

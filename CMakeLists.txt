@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.10)
 project(zsim)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -29,7 +29,6 @@ add_executable(zsim
         src/g_std/stl_galloc.h
         src/HATS/BDFS.h
         src/HATS/Edge.h
-        src/HATS/VA.h
         src/HATS/VO.h
         src/virt/common.h
         src/virt/cpu.cpp
