@@ -45,6 +45,8 @@ private:
     mutex fifo_mutex;
 
     uint32_t tid;
+    int hats_stall;
+    int core_stall;
 
 private:
     // 将要以某个节点为u时，将其设置为unactive
@@ -58,6 +60,27 @@ private:
             }
         }
         return -1;
+    }
+
+    void rebdfs(int cid, int depth) {
+        int start_offset = (*offset)[cid];
+        int end_offset = (*offset)[cid + 1];
+        accessL2(tid, (uint64_t) &offset->at(cid), true);
+        accessL2(tid, (uint64_t) &offset->at(cid + 1), true);
+        for (int i = start_offset; i < end_offset; ++i) {
+            while (this->FIFO.size() > BDFS_MAX_DEPTH) {
+                hats_stall++;
+                this_thread::yield();               //fifo满时HATS停止
+            }
+            fifo_mutex.lock();
+            FIFO.push(Edge(cid, (*neighbor)[i]));
+            fifo_mutex.unlock();
+            accessL2(tid, (uint64_t) &neighbor->at(i), true);
+            if ((*active_bits)[(*neighbor)[i]] && depth < BDFS_MAX_DEPTH) {
+                (*active_bits)[(*neighbor)[i]] = false;
+                rebdfs((*neighbor)[i], depth + 1);
+            }
+        }
     }
 
     void bdfs()
@@ -91,8 +114,10 @@ private:
                 }
                 else
                 {
-                    while (this->FIFO.size() > BDFS_MAX_DEPTH)
+                    while (this->FIFO.size() > BDFS_MAX_DEPTH) {
+                        hats_stall++;
                         this_thread::yield();               //fifo满时HATS停止
+                    }
                     lock_guard<mutex> lock(fifo_mutex);
                     FIFO.push(Edge(edge.v, (*neighbor)[i]));
                 }
@@ -115,11 +140,13 @@ public:
         is_end = false;
         int vid = scan();
         while (vid != -1) {
-            bdfs();
+            rebdfs(vid, 0);
+//            bdfs();
             vid = scan();
         }
         is_end = true;
-        cout << tid << " thread traverse end" << endl;
+        printf("thread %d end, core stall:%d hats stall:%d ratio:%f\n", tid, core_stall, hats_stall,
+               ((float) hats_stall) / core_stall);
     }
 
     BDFS(uint32_t _tid){ tid = _tid; };
@@ -129,6 +156,7 @@ public:
     void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector<T> *_vertex_data, bool _isPush,
                    int _start_v, int _end_v)
     {
+        hats_stall = core_stall = 0;
         offset = _offset;
         neighbor = _neighbor;
         active_bits = _active;
@@ -141,8 +169,11 @@ public:
     // zsim端接口
     void fetchEdges(Edge &edge)
     {
-        while (this->FIFO.empty() && !is_end)
+        while (this->FIFO.empty() && !is_end) {
+//            printf("core %d stall\n", tid);
+            core_stall++;
             this_thread::yield();           //fifo为空时fetch停止
+        }
         lock_guard<mutex> lock(fifo_mutex);
         if (!this->FIFO.empty())
         {
