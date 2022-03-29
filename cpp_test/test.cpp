@@ -7,10 +7,11 @@
 #include <cstdlib>
 #include <thread>
 #include <iostream>
+#include <fstream>
 #include <ctime>
 #include "omp.h"
 
-#define VEX_NUM THREAD_NUM*20
+#define VEX_NUM 128
 #define THREAD_NUM 16
 #define TSIZE VEX_NUM / THREAD_NUM
 #define BDFS
@@ -28,6 +29,35 @@ using namespace std;
 vector<int> offsets, neighbors, values, vertex_data;
 bool isPush;
 pthread_mutex_t pmutex;
+
+void readFromFile()
+{
+    ifstream ifs;
+    ifs.open("/home/jzh/jzh/ligra/inputs/rMatGraph_J_5_100", ios::in);
+
+    string s;
+    int mid, o_size, n_size;
+    getline(ifs, s);
+    getline(ifs, s);
+    o_size = atoi(s.c_str());
+    getline(ifs, s);
+    n_size = atoi(s.c_str());
+    offsets.resize(o_size);
+    neighbors.resize(n_size);
+    values.resize(n_size);
+    for (int i = 0; i < o_size; ++i) {
+        getline(ifs, s);
+        mid = atoi(s.c_str());
+        offsets[i] = mid;
+    }
+    offsets.push_back(o_size);
+    for (int i = 0; i < n_size; ++i) {
+        getline(ifs, s);
+        mid = atoi(s.c_str());
+        neighbors[i] = values[i] = mid;
+    }
+    ifs.close();
+}
 
 void generate()
 {
@@ -50,21 +80,31 @@ void generate()
     }
 }
 
-void newTraverse(vector<bool> *active, bool isPush, int start_id, int end_id, int tid, int &cnt)
+void coreTraverse(vector<bool> *active,int start_id, int end_id, int tid, int &cnt)
 {
-    hats_config(&offsets, &neighbors, active, isPush, start_id, end_id);
+    cnt = 0;
+    int sn, en;
+    Edge edge;
+    for (int i = start_id; i < end_id; ++i) {
+        if (active->at(i)) {
+            sn = offsets[i];
+            en = offsets[i + 1];
+            for (int j = sn; j < en; ++j) {
+                edge = Edge(i, neighbors[j]);
+                cnt++;
+            }
+        }
+    }
+}
+
+void hatsTraverse(vector<bool> *active, int start_id, int end_id, int tid, int &cnt)
+{
+    hats_config(&offsets, &neighbors, &vertex_data, active, isPush, start_id, end_id);
     Edge edge(0, 0);
     cnt = 0;
     while (edge.u != -1 && edge.v != -1) {
         edge = hats_fetch();
         cnt++;
-//        if (cnt == 10) {
-//            edge.u = -1;
-//            edge.v = -1;
-//        }
-//        pthread_mutex_lock(&pmutex);
-//        cout << tid << ":" << cnt << ":" << "(" << edge.u << "," << edge.v << ")" << endl;
-//        pthread_mutex_unlock(&pmutex);
     }
     cnt--;
 }
@@ -73,7 +113,7 @@ void thread_parallel(vector<bool> &active, int *cnt)
 {
     thread t[THREAD_NUM];
     for (int i = 0; i < THREAD_NUM; ++i)
-        t[i] = thread(newTraverse, &active, isPush, i * TSIZE, (i + 1) * TSIZE, i + 1, ref(cnt[i]));
+        t[i] = thread(hatsTraverse, &active, i * TSIZE, (i + 1) * TSIZE, i + 1, ref(cnt[i]));
     printf("\nwaiting...\n");
     for (auto & i : t)
         i.join();
@@ -84,7 +124,7 @@ void omp_parallel(vector<bool> &active, int *cnt)
     omp_set_num_threads(THREAD_NUM);
 #pragma omp parallel for
     for (int i = 0; i < THREAD_NUM; ++i) {
-        newTraverse(&active, isPush, i * TSIZE, (i + 1) * TSIZE, i + 1, cnt[i]);
+        hatsTraverse(&active, i * TSIZE, (i + 1) * TSIZE, i + 1, cnt[i]);
     }
 }
 
@@ -102,15 +142,10 @@ void check_result(int *cnt)
 
 int main()
 {
-    generate();
+//    generate();
+    readFromFile();
 
-    cout << offsets.size() << " : ";
-//    for (int i:offsets)
-//        cout << i << " ";
-    cout << endl;
-    cout << neighbors.size() << " : ";
-//    for (int i:neighbors)
-//        cout << i << " ";
+    cout << offsets.size() << " " << neighbors.size() << endl;
     printf("\n---------------\n");
     vector<bool> active(offsets.size() - 1, true);
     for (int i = 0; i < active.size(); ++i)

@@ -95,10 +95,10 @@ INT32 Usage() {
     return -1;
 }
 
-#define HATS BDFS
+//#define HATS BDFS
 //#define HATS VO
 
-std::unordered_map<uint32_t, HATS<int>*> va_map;
+std::unordered_map<uint32_t, HATS*> va_map;
 std::unordered_map<uint32_t, Core*> core_map;
 
 /* Global Variables */
@@ -152,7 +152,8 @@ VOID SimThreadStart(THREADID tid);
 VOID SimThreadFini(THREADID tid);
 VOID SimEnd();
 
-VOID HandleConfig(THREADID tid);
+VOID BDFSConfig(THREADID tid);
+VOID VOConfig(THREADID tid);
 VOID HandleFetch(THREADID tid);
 VOID HandleMagicOp(THREADID tid, ADDRINT op);
 
@@ -604,8 +605,13 @@ VOID Instruction(INS ins) {
     }
 
     if (INS_IsXchg(ins) && INS_OperandReg(ins, 0) == REG_R15 && INS_OperandReg(ins, 1) == REG_R15) {
-        info("hats_configure ");
-        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) HandleConfig, IARG_THREAD_ID, IARG_END);
+        info("bdfs_hats_configure");
+        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) BDFSConfig, IARG_THREAD_ID, IARG_END);
+    }
+
+    if (INS_IsXchg(ins) && INS_OperandReg(ins, 0) == REG_R14 && INS_OperandReg(ins, 1) == REG_R14) {
+        info("vo_hats_configure");
+        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR) VOConfig, IARG_THREAD_ID, IARG_END);
     }
 
     if (INS_IsXchg(ins) && INS_OperandReg(ins, 0) == REG_RDX && INS_OperandReg(ins, 1) == REG_RDX) {
@@ -1148,7 +1154,7 @@ VOID SimEnd() {
 
 void * StartTraverse(void *pVoid)
 {
-    auto *sva = (HATS<int> *) pVoid;
+    auto *sva = (HATS*) pVoid;
     sva->start();
 
     pthread_exit(NULL);
@@ -1158,9 +1164,9 @@ void accessL2(uint32_t tid, uint64_t address, bool isLoad) {
     core_map[tid]->accessL2((uint64_t) address, isLoad, getCid(tid));
 }
 
-VOID HandleConfig(THREADID tid) {
+void handleConfig(uint32_t tid)
+{
     core_map[tid] = cores[tid];
-    va_map[tid] = new HATS<int>(tid);
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
@@ -1187,6 +1193,18 @@ VOID HandleConfig(THREADID tid) {
     pthread_t pt;
     pthread_create(&pt, NULL, StartTraverse, (void *)va_map[tid]);
     pthread_detach(pt);
+}
+
+VOID BDFSConfig(THREADID tid) {
+    cout<<"BDFS CONFIG"<<endl;
+    va_map[tid] = new BDFS(tid);
+    handleConfig(tid);
+}
+
+VOID VOConfig(THREADID tid) {
+    cout<<"VO CONFIG"<<endl;
+    va_map[tid] = new VO(tid);
+    handleConfig(tid);
 }
 
 VOID HandleFetch(THREADID tid)

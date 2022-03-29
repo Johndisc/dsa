@@ -22,15 +22,14 @@ using namespace std;
 
 void accessL2(uint32_t tid, uint64_t address, bool isLoad);
 
-static pthread_mutex_t vcmtx, vfmtx, vL2mtx;
+static pthread_mutex_t vcmtx, vfmtx;
 
-template <typename T>
-class VO {
+class VO:public HATS {
 private:
     vector<int> *offset;
     vector<int> *neighbor;
     vector<bool> *active_bits;
-    vector<T> *vertex_data;
+    vector<int> *vertex_data;
     bool isPush;
 
     int current_vid;
@@ -55,12 +54,10 @@ private:
 
     void fetch_offsets(int vid, int &start_offset, int &end_offset)
     {
-        pthread_mutex_lock(&vL2mtx);
         start_offset = (*offset)[vid];
         accessL2(tid, (uint64_t) & offset->at(vid), true);
         end_offset = (*offset)[vid + 1];
         accessL2(tid, (uint64_t) &offset->at(vid + 1), true);
-        pthread_mutex_unlock(&vL2mtx);
     }
 
     vector<Edge> fetch_neighbors(int vid, int start_offset, int end_offset)
@@ -71,10 +68,8 @@ private:
                 this_thread::yield();               //fifo满时HATS停止
             lock_guard<mutex> lock(fifo_mutex);
             FIFO.push(Edge(vid, (*neighbor)[i]));
-            pthread_mutex_lock(&vL2mtx);
             prefetch((*neighbor)[i]);
             accessL2(tid, (uint64_t) & neighbor->at(i), true);
-            pthread_mutex_unlock(&vL2mtx);
             neighbors.emplace_back(vid, i);
         }
         return neighbors;
@@ -90,11 +85,6 @@ public:
     {
         int vid, start_offset, end_offset;
         vector <Edge> edges;
-        //-------------------
-//        for (int i = 0; i < 5; ++i) {
-//            printf("%d  in   %d times\n", tid, i);
-//        }
-        //-------------------
         while (current_vid < last_vid) {
             vid = scan();
             fetch_offsets(vid, start_offset, end_offset);
@@ -108,7 +98,7 @@ public:
     ~VO()= default;
 
     //zsim端接口
-    void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector<T> *_vertex_data, bool _isPush,
+    void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector<int> *_vertex_data, bool _isPush,
                    int _start_v, int _end_v)
     {
         offset = _offset;
@@ -137,29 +127,29 @@ public:
 };
 
 //主程序端接口
-inline void hats_vo_configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, bool _isPush, int _start_v, int _end_v)
-{
-    int temp = (int) _isPush;
-    vector<int> vertex_data(_offset->size() - 1, 5), *p = &vertex_data;
+inline void
+hats_vo_configure(vector<int> *_offset, vector<int> *_neighbor, vector<int> *vertex_data, vector<bool> *_active,
+                  bool _isPush, int _start_v, int _end_v) {
 
-    int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
+    int temp = (int) _isPush;
+
+    int shmId = shmget((key_t) 1234, 100, 0666 | IPC_CREAT); //获取共享内存标志符
     void *addr = shmat(shmId, NULL, 0); //共享内存地址
-    if (!addr)
-    {
+    if (!addr) {
         printf("failed!!!\n");
         return;
     }
 
     pthread_mutex_lock(&vcmtx);
-    memcpy((char *)addr, (void*)&_offset, 8);
-    memcpy((char *)addr + 8, &_neighbor, 8);
-    memcpy((char *)addr + 16, &_active, 8);
-    memcpy((char *)addr + 24, &temp, 4);
-    memcpy((char *)addr + 28, &_start_v, 4);
-    memcpy((char *)addr + 32, &_end_v, 4);
-    memcpy((char *)addr + 36, &p, 8);
+    memcpy((char *) addr, (void *) &_offset, 8);
+    memcpy((char *) addr + 8, &_neighbor, 8);
+    memcpy((char *) addr + 16, &_active, 8);
+    memcpy((char *) addr + 24, &temp, 4);
+    memcpy((char *) addr + 28, &_start_v, 4);
+    memcpy((char *) addr + 32, &_end_v, 4);
+    memcpy((char *) addr + 36, &vertex_data, 8);
     shmdt(addr);
-    __asm__ __volatile__("xchg %r15, %r15");
+    __asm__ __volatile__("xchg %r14, %r14");
     pthread_mutex_unlock(&vcmtx);
 }
 
