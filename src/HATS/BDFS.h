@@ -146,8 +146,8 @@ public:
             vid = scan();
         }
         is_end = true;
-        printf("thread %d end, core stall:%d hats stall:%d ratio:%f\n", tid, core_stall, hats_stall,
-               (double) core_stall / hats_stall);
+//        printf("thread %d end, core stall:%d hats stall:%d ratio:%f\n", tid, core_stall, hats_stall,
+//               (double) core_stall / hats_stall);
     }
 
     BDFS(uint32_t _tid){ tid = _tid; };
@@ -160,7 +160,14 @@ public:
         hats_stall = core_stall = 0;
         offset = _offset;
         neighbor = _neighbor;
-        active_bits = _active;
+        if (_active)
+            active_bits = _active;
+        else
+        {
+            vector<bool> active(_offset->size() - 1, true);
+            active_bits = (vector<bool> *) malloc(sizeof(active));
+            memcpy(active_bits, &active, sizeof(active));
+        }
         vertex_data = _vertex_data;
         isPush = _isPush;
         current_vid = _start_v;
@@ -171,7 +178,7 @@ public:
     void fetchEdges(Edge &edge)
     {
         while (this->FIFO.empty() && !is_end) {
-            printf("core %d stall\n", tid);
+//            printf("core %d stall\n", tid);
             core_stall++;
             this_thread::yield();           //fifo为空时fetch停止
         }

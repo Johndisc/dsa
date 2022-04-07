@@ -1196,7 +1196,7 @@ void handleConfig(uint32_t tid)
 }
 
 VOID BDFSConfig(THREADID tid) {
-    cout<<"BDFS CONFIG"<<endl;
+//    cout<<"BDFS CONFIG"<<endl;
     va_map[tid] = new BDFS(tid);
     handleConfig(tid);
 }
