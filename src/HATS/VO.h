@@ -88,10 +88,9 @@ public:
         while (current_vid < last_vid) {
             vid = scan();
             fetch_offsets(vid, start_offset, end_offset);
-            edges = fetch_neighbors(vid, start_offset, end_offset);
+            fetch_neighbors(vid, start_offset, end_offset);
         }
         current_vid++;
-        cout << "traverse end" << endl;
     }
 
     VO(uint32_t _tid){ tid = _tid; };

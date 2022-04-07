@@ -50,7 +50,7 @@ void readFromFile()
         mid = atoi(s.c_str());
         offsets[i] = mid;
     }
-    offsets.push_back(o_size);
+    offsets.push_back(n_size);
     for (int i = 0; i < n_size; ++i) {
         getline(ifs, s);
         mid = atoi(s.c_str());
@@ -155,6 +155,5 @@ int main()
 
     omp_parallel(active, cnt);
     check_result(cnt);
-
     return 0;
 }
