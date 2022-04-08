@@ -1202,7 +1202,7 @@ VOID BDFSConfig(THREADID tid) {
 }
 
 VOID VOConfig(THREADID tid) {
-    cout<<"VO CONFIG"<<endl;
+//    cout<<"VO CONFIG"<<endl;
     va_map[tid] = new VO(tid);
     handleConfig(tid);
 }

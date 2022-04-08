@@ -493,7 +493,6 @@ class MESITerminalCC : public CC {
         }
 
         uint64_t processInv(const InvReq& req, int32_t lineId, uint64_t startCycle) {
-            if (name=="l1d-0"&&req.lineAddr==0x186c7) info("terminal receive Inv!!!!!!!!!");
             bcc->processInval(req.lineAddr, lineId, req.type, req.writeback); //adjust our own state
             bcc->unlock();
             return startCycle; //no extra delay in terminal caches
