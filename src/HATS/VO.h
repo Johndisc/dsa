@@ -99,7 +99,7 @@ public:
 
     //zsim端接口
     void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector<int> *_vertex_data, bool _isPush,
-                   int _start_v, int _end_v)
+                   int _start_v, int _end_v, int _hid)
     {
         offset = _offset;
         neighbor = _neighbor;

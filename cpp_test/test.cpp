@@ -97,13 +97,13 @@ void coreTraverse(vector<bool> *active,int start_id, int end_id, int tid, int &c
     }
 }
 
-void hatsTraverse(vector<bool> *active, int start_id, int end_id, int tid, int &cnt)
+void hatsTraverse(vector<bool> *active, int start_id, int end_id, int hid, int &cnt)
 {
-    hats_config(&offsets, &neighbors, &vertex_data, active, isPush, start_id, end_id);
+    hats_config(&offsets, &neighbors, &vertex_data, active, isPush, start_id, end_id, hid);
     Edge edge(0, 0);
     cnt = 0;
     while (edge.u != -1 && edge.v != -1) {
-        edge = hats_fetch();
+        edge = hats_fetch(hid);
         cnt++;
     }
     cnt--;
@@ -113,7 +113,7 @@ void thread_parallel(vector<bool> &active, int *cnt)
 {
     thread t[THREAD_NUM];
     for (int i = 0; i < THREAD_NUM; ++i)
-        t[i] = thread(hatsTraverse, &active, i * TSIZE, (i + 1) * TSIZE, i + 1, ref(cnt[i]));
+        t[i] = thread(hatsTraverse, &active, i * TSIZE, (i + 1) * TSIZE, i, ref(cnt[i]));
     printf("\nwaiting...\n");
     for (auto & i : t)
         i.join();
@@ -124,7 +124,7 @@ void omp_parallel(vector<bool> &active, int *cnt)
     omp_set_num_threads(THREAD_NUM);
 #pragma omp parallel for
     for (int i = 0; i < THREAD_NUM; ++i) {
-        hatsTraverse(&active, i * TSIZE, (i + 1) * TSIZE, i + 1, cnt[i]);
+        hatsTraverse(&active, i * TSIZE, (i + 1) * TSIZE, i, cnt[i]);
     }
 }
 

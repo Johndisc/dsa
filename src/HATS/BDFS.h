@@ -24,7 +24,7 @@ using namespace std;
 
 void accessL2(uint32_t tid, uint64_t address, bool isLoad);
 
-static pthread_mutex_t bcmtx, bfmtx;
+static pthread_mutex_t bcmtx;
 
 class BDFS:public HATS {
 private:
@@ -71,10 +71,14 @@ private:
                 hats_stall++;
                 this_thread::yield();               //fifo满时HATS停止
             }
+            bool res = prefetch(neighbor->at(i));
             fifo_mutex.lock();
-            FIFO.push(Edge(cid, (*neighbor)[i]));
+            if (res)
+                FIFO.push(Edge(cid, (*neighbor)[i], vertex_data->at(i)));
+            else
+                FIFO.push(Edge(cid, (*neighbor)[i]));
             fifo_mutex.unlock();
-            prefetch(neighbor->at(i));
+
             accessL2(tid, (uint64_t) &neighbor->at(i), true);
             if ((*active_bits)[(*neighbor)[i]] && depth < BDFS_MAX_DEPTH) {
                 (*active_bits)[(*neighbor)[i]] = false;
@@ -129,10 +133,13 @@ private:
         }
     }
 
-    void prefetch(int vid)
+    bool prefetch(int vid)
     {
-        if (vertex_data)
-            accessL2(tid, (uint64_t) & vertex_data->at(vid), true);
+        if (vertex_data) {
+            accessL2(tid, (uint64_t) &vertex_data->at(vid), true);
+            return true;
+        }
+        return false;
     }
 
 public:
@@ -155,7 +162,7 @@ public:
 
     // zsim端接口
     void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector<int> *_vertex_data, bool _isPush,
-                   int _start_v, int _end_v)
+                   int _start_v, int _end_v, int _hid)
     {
         hats_stall = core_stall = 0;
         offset = _offset;
@@ -172,6 +179,7 @@ public:
         isPush = _isPush;
         current_vid = _start_v;
         last_vid = _end_v;
+        hid = _hid;
     }
 
     // zsim端接口
@@ -196,7 +204,7 @@ public:
 //主程序端接口
 inline void
 hats_bdfs_configure(vector<int> *_offset, vector<int> *_neighbor, vector<int> *vertex_data, vector<bool> *_active,
-                    bool _isPush, int _start_v, int _end_v) {
+                    bool _isPush, int _start_v, int _end_v, int _hid) {
 
     int temp = (int) _isPush;
 
@@ -215,23 +223,24 @@ hats_bdfs_configure(vector<int> *_offset, vector<int> *_neighbor, vector<int> *v
     memcpy((char *) addr + 28, &_start_v, 4);
     memcpy((char *) addr + 32, &_end_v, 4);
     memcpy((char *) addr + 36, &vertex_data, 8);
+    memcpy((char *) addr + 44, &_hid, 4);
     shmdt(addr);
     __asm__ __volatile__("xchg %r15, %r15");
     pthread_mutex_unlock(&bcmtx);
 }
 
 //主程序端接口
-inline Edge hats_bdfs_fetch_edge()
+inline Edge hats_bdfs_fetch_edge(int hid)
 {
-    pthread_mutex_lock(&bfmtx);
+//    pthread_mutex_lock(&bfmtx);
     __asm__ __volatile__("xchg %rdx, %rdx");
     Edge edge;
-    int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
+    int shmId = shmget((key_t)5678, 300, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
-    memcpy(&edge,(char *)address+80, sizeof(edge));
+    memcpy(&edge, (char *) address + hid * sizeof(edge), sizeof(edge));
     shmdt(address);
-    pthread_mutex_unlock(&bfmtx);
+//    pthread_mutex_unlock(&bfmtx);
     return edge;
 }
 

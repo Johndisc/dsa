@@ -1173,9 +1173,7 @@ void handleConfig(uint32_t tid)
     vector<int> *_offset, *_neighbor, *vertex_data;
     vector<bool> *_active;
     bool _isPush;
-    int temp=0;
-    int _start_v=0;
-    int _end_v=0;
+    int temp=0, _start_v=0, _end_v=0, _hid=0;
 
     memcpy(&_offset, (char *)address, 8);
     memcpy(&_neighbor, (char *)address + 8, 8);
@@ -1184,12 +1182,13 @@ void handleConfig(uint32_t tid)
     memcpy(&_start_v, (char *)address + 28, 4);
     memcpy(&_end_v,(char *)address + 32, 4);
     memcpy(&vertex_data,(char *)address + 36, 8);
+    memcpy(&_hid, (char *)address + 44, 4);
 
     _isPush = (bool) temp;
 
     shmdt(address);
 
-    va_map[tid]->configure(_offset, _neighbor, _active, vertex_data, _isPush, _start_v, _end_v);
+    va_map[tid]->configure(_offset, _neighbor, _active, vertex_data, _isPush, _start_v, _end_v, _hid);
     pthread_t pt;
     pthread_create(&pt, NULL, StartTraverse, (void *)va_map[tid]);
     pthread_detach(pt);
@@ -1211,10 +1210,10 @@ VOID HandleFetch(THREADID tid)
 {
     Edge edge;
     va_map[tid]->fetchEdges(edge);
-    int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
+    int shmId = shmget((key_t)5678, 300, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
-    memcpy((char*)address+80,&edge,sizeof(edge));
+    memcpy((char*)address + va_map[tid]->hid * sizeof(edge), &edge, sizeof(edge));
     shmdt(address);
 }
 

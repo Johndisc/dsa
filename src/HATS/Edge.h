@@ -11,16 +11,18 @@ using namespace std;
 struct Edge {
     int u;
     int v;
+    int data;
     Edge() {};
     Edge(int _u, int _v):u(_u),v(_v) {};
+    Edge(int _u, int _v, int _data):u(_u),v(_v),data(_data) {};
 };
 
 class HATS {
 public:
+    int hid{0};
     virtual void
-    configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector <int> *_vertex_data,
-              bool _isPush,
-              int _start_v, int _end_v) = 0;
+    configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector<int> *_vertex_data,
+              bool _isPush, int _start_v, int _end_v, int _hid) = 0;
 
     virtual void fetchEdges(Edge &edge) = 0;
 
