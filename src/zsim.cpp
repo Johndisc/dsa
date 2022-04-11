@@ -1170,10 +1170,11 @@ void handleConfig(uint32_t tid)
     int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
-    vector<int> *_offset, *_neighbor, *vertex_data;
+    vector<int> *_offset, *_neighbor, *_weight;
     vector<bool> *_active;
     bool _isPush;
     int temp=0, _start_v=0, _end_v=0, _hid=0;
+    int *_vertex_data;
 
     memcpy(&_offset, (char *)address, 8);
     memcpy(&_neighbor, (char *)address + 8, 8);
@@ -1181,14 +1182,15 @@ void handleConfig(uint32_t tid)
     memcpy(&temp, (char *)address + 24, 4);
     memcpy(&_start_v, (char *)address + 28, 4);
     memcpy(&_end_v,(char *)address + 32, 4);
-    memcpy(&vertex_data,(char *)address + 36, 8);
+    memcpy(&_weight, (char *)address + 36, 8);
     memcpy(&_hid, (char *)address + 44, 4);
+    memcpy(&_vertex_data, (char *)address + 48, 8);
 
     _isPush = (bool) temp;
 
     shmdt(address);
 
-    va_map[tid]->configure(_offset, _neighbor, _active, vertex_data, _isPush, _start_v, _end_v, _hid);
+    va_map[tid]->configure(_offset, _neighbor, _active, _weight, _vertex_data, _isPush, _start_v, _end_v, _hid);
     pthread_t pt;
     pthread_create(&pt, NULL, StartTraverse, (void *)va_map[tid]);
     pthread_detach(pt);

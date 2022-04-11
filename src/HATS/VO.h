@@ -22,21 +22,20 @@ using namespace std;
 
 void accessL2(uint32_t tid, uint64_t address, bool isLoad);
 
-static pthread_mutex_t vcmtx, vfmtx;
+static pthread_mutex_t vcmtx;
 
 class VO:public HATS {
 private:
     vector<int> *offset;
     vector<int> *neighbor;
     vector<bool> *active_bits;
-    vector<int> *vertex_data;
+    vector<int> *weight;
     bool isPush;
 
     int current_vid;
     int last_vid;
 
     queue<Edge> FIFO;
-    mutex fifo_mutex;
     uint32_t tid;
 
 private:
@@ -66,7 +65,6 @@ private:
         for (int i = start_offset; i < end_offset; ++i) {
             while (this->FIFO.size() > VO_MAX_DEPTH)
                 this_thread::yield();               //fifo满时HATS停止
-            lock_guard<mutex> lock(fifo_mutex);
             FIFO.push(Edge(vid, (*neighbor)[i]));
             prefetch((*neighbor)[i]);
             accessL2(tid, (uint64_t) & neighbor->at(i), true);
@@ -77,8 +75,8 @@ private:
 
     void prefetch(int vid)
     {
-        if (vertex_data)
-            accessL2(tid, (uint64_t) & vertex_data->at(vid), true);
+        if (weight)
+            accessL2(tid, (uint64_t) & weight->at(vid), true);
     }
 
 public:
@@ -98,16 +96,17 @@ public:
     ~VO()= default;
 
     //zsim端接口
-    void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector<int> *_vertex_data, bool _isPush,
-                   int _start_v, int _end_v, int _hid)
+    void configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector<int> *_weight,
+                   int *_vertex_data, bool _isPush, int _start_v, int _end_v, int _hid)
     {
         offset = _offset;
         neighbor = _neighbor;
         active_bits = _active;
-        vertex_data = _vertex_data;
+        weight = _weight;
         isPush = _isPush;
         current_vid = _start_v;
         last_vid = _end_v;
+        hid = _hid;
     }
 
     //zsim端接口
@@ -115,7 +114,6 @@ public:
     {
         while (this->FIFO.empty() && current_vid <= last_vid)
             this_thread::yield();           //fifo为空时fetch停止
-        lock_guard<mutex> lock(fifo_mutex);
         if (!FIFO.empty())
         {
             edge = FIFO.front();
@@ -128,8 +126,8 @@ public:
 
 //主程序端接口
 inline void
-hats_vo_configure(vector<int> *_offset, vector<int> *_neighbor, vector<int> *vertex_data, vector<bool> *_active,
-                  bool _isPush, int _start_v, int _end_v) {
+hats_vo_configure(vector<int> *_offset, vector<int> *_neighbor, vector<int> *weight, int *vertex_data,
+                  vector<bool> *_active, bool _isPush, int _start_v, int _end_v, int _hid) {
 
     int temp = (int) _isPush;
 
@@ -147,25 +145,23 @@ hats_vo_configure(vector<int> *_offset, vector<int> *_neighbor, vector<int> *ver
     memcpy((char *) addr + 24, &temp, 4);
     memcpy((char *) addr + 28, &_start_v, 4);
     memcpy((char *) addr + 32, &_end_v, 4);
-    memcpy((char *) addr + 36, &vertex_data, 8);
+    memcpy((char *) addr + 36, &weight, 8);
+    memcpy((char *) addr + 44, &_hid, 4);
     shmdt(addr);
     __asm__ __volatile__("xchg %r14, %r14");
     pthread_mutex_unlock(&vcmtx);
 }
 
 //主程序端接口
-inline Edge hats_vo_fetch_edge()
+inline Edge hats_vo_fetch_edge(int hid)
 {
-    pthread_mutex_lock(&vfmtx);
     __asm__ __volatile__("xchg %rdx, %rdx");
     Edge edge;
-    int shmId = shmget((key_t)1234, 100, 0666|IPC_CREAT); //获取共享内存标志符
+    int shmId = shmget((key_t)5678, 300, 0666|IPC_CREAT); //获取共享内存标志符
     void *address = shmat(shmId, NULL, 0); //获取共享内存地址
 
-    memcpy(&edge.u,(char *)address+80,4);
-    memcpy(&edge.v,(char *)address+84,4);
+    memcpy(&edge, (char *) address + hid * sizeof(edge), sizeof(edge));
     shmdt(address);
-    pthread_mutex_unlock(&vfmtx);
     return edge;
 }
 

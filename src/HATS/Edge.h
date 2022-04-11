@@ -20,9 +20,10 @@ struct Edge {
 class HATS {
 public:
     int hid{0};
+
     virtual void
-    configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector<int> *_vertex_data,
-              bool _isPush, int _start_v, int _end_v, int _hid) = 0;
+    configure(vector<int> *_offset, vector<int> *_neighbor, vector<bool> *_active, vector<int> *_weight,
+              int *_vertex_data, bool _isPush, int _start_v, int _end_v, int _hid) = 0;
 
     virtual void fetchEdges(Edge &edge) = 0;
 
