@@ -54,7 +54,7 @@ private:
         for (int i = current_vid; i < last_vid; i++) {
             if ((*active_bits)[i]) {
                 (*active_bits)[i] = false;
-                dfs_stack.push(Edge(-1, i));
+//                dfs_stack.push(Edge(-1, i));
                 return i;
             }
         }
@@ -72,12 +72,10 @@ private:
                 this_thread::yield();               //fifo满时HATS停止
             }
             bool res = prefetch(neighbor->at(i));
-            fifo_mutex.lock();
             if (res)
                 FIFO.push(Edge(cid, (*neighbor)[i], vertex_data->at(i)));
             else
                 FIFO.push(Edge(cid, (*neighbor)[i]));
-            fifo_mutex.unlock();
 
             accessL2(tid, (uint64_t) &neighbor->at(i), true);
             if ((*active_bits)[(*neighbor)[i]] && depth < BDFS_MAX_DEPTH) {
@@ -190,7 +188,6 @@ public:
             core_stall++;
             this_thread::yield();           //fifo为空时fetch停止
         }
-        lock_guard<mutex> lock(fifo_mutex);
         if (!this->FIFO.empty())
         {
             edge = FIFO.front();
