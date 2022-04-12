@@ -70,7 +70,7 @@ private:
                 hats_stall++;
                 this_thread::yield();               //fifo满时HATS停止
             }
-            prefetch(neighbor->at(i));
+            prefetch(cid);
             if (weight)
                 FIFO.push(Edge(cid, (*neighbor)[i], weight->at(i)));
             else

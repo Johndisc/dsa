@@ -30,6 +30,7 @@ private:
     vector<int> *neighbor;
     vector<bool> *active_bits;
     vector<int> *weight;
+    int *vertex_data;
     bool isPush;
 
     int current_vid;
@@ -54,29 +55,22 @@ private:
     void fetch_offsets(int vid, int &start_offset, int &end_offset)
     {
         start_offset = (*offset)[vid];
-        accessL2(tid, (uint64_t) & offset->at(vid), true);
         end_offset = (*offset)[vid + 1];
-        accessL2(tid, (uint64_t) &offset->at(vid + 1), true);
     }
 
-    vector<Edge> fetch_neighbors(int vid, int start_offset, int end_offset)
+    void fetch_neighbors(int vid, int start_offset, int end_offset)
     {
-        vector <Edge> neighbors;
         for (int i = start_offset; i < end_offset; ++i) {
             while (this->FIFO.size() > VO_MAX_DEPTH)
                 this_thread::yield();               //fifo满时HATS停止
             FIFO.push(Edge(vid, (*neighbor)[i]));
-            prefetch((*neighbor)[i]);
-            accessL2(tid, (uint64_t) & neighbor->at(i), true);
-            neighbors.emplace_back(vid, i);
         }
-        return neighbors;
+        prefetch(vid);
     }
 
     void prefetch(int vid)
     {
-        if (weight)
-            accessL2(tid, (uint64_t) & weight->at(vid), true);
+        accessL2(tid, (uint64_t) &vertex_data[vid], true);
     }
 
 public:
@@ -107,6 +101,7 @@ public:
         current_vid = _start_v;
         last_vid = _end_v;
         hid = _hid;
+        vertex_data = _vertex_data;
     }
 
     //zsim端接口
@@ -147,6 +142,7 @@ hats_vo_configure(vector<int> *_offset, vector<int> *_neighbor, vector<int> *wei
     memcpy((char *) addr + 32, &_end_v, 4);
     memcpy((char *) addr + 36, &weight, 8);
     memcpy((char *) addr + 44, &_hid, 4);
+    memcpy((char *) addr + 48, &vertex_data, 8);
     shmdt(addr);
     __asm__ __volatile__("xchg %r14, %r14");
     pthread_mutex_unlock(&vcmtx);
