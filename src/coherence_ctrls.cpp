@@ -92,7 +92,8 @@ uint64_t MESIBottomCC::processAccess(Address lineAddr, uint32_t lineId, AccessTy
         // A PUTS/PUTX does nothing w.r.t. higher coherence levels --- it dies here
         case PUTS: //Clean writeback, nothing to do (except profiling)
             assert(*state != I);
-            profPUTS.inc();
+            if (srcId != UINT32_MAX)
+                profPUTS.inc();
             break;
         case PUTX: //Dirty writeback
             assert(*state == M || *state == E);
@@ -100,7 +101,8 @@ uint64_t MESIBottomCC::processAccess(Address lineAddr, uint32_t lineId, AccessTy
                 //Silent transition, record that block was written to
                 *state = M;
             }
-            profPUTX.inc();
+            if (srcId != UINT32_MAX)
+                profPUTX.inc();
             break;
         case GETS:
             if (*state == I) {
@@ -108,27 +110,34 @@ uint64_t MESIBottomCC::processAccess(Address lineAddr, uint32_t lineId, AccessTy
                 MemReq req = {lineAddr, GETS, selfId, state, cycle, &ccLock, *state, srcId, flags};
                 uint32_t nextLevelLat = parents[parentId]->access(req) - cycle;
                 uint32_t netLat = parentRTTs[parentId];
-                profGETNextLevelLat.inc(nextLevelLat);
-                profGETNetLat.inc(netLat);
-                respCycle += nextLevelLat + netLat;
-                profGETSMiss.inc();
+                if (srcId != UINT32_MAX) {
+                    profGETNextLevelLat.inc(nextLevelLat);
+                    profGETNetLat.inc(netLat);
+                    respCycle += nextLevelLat + netLat;
+                    profGETSMiss.inc();
+                }
                 assert(*state == S || *state == E);
             } else {
-                profGETSHit.inc();
+                if (srcId != UINT32_MAX)
+                    profGETSHit.inc();
             }
             break;
         case GETX:
             if (*state == I || *state == S) {
                 //Profile before access, state changes
-                if (*state == I) profGETXMissIM.inc();
-                else profGETXMissSM.inc();
+                if (srcId != UINT32_MAX) {
+                    if (*state == I) profGETXMissIM.inc();
+                    else{ profGETXMissSM.inc();}
+                }
                 uint32_t parentId = getParentId(lineAddr);
                 MemReq req = {lineAddr, GETX, selfId, state, cycle, &ccLock, *state, srcId, flags};
                 uint32_t nextLevelLat = parents[parentId]->access(req) - cycle;
                 uint32_t netLat = parentRTTs[parentId];
-                profGETNextLevelLat.inc(nextLevelLat);
-                profGETNetLat.inc(netLat);
-                respCycle += nextLevelLat + netLat;
+                if (srcId != UINT32_MAX) {
+                    profGETNextLevelLat.inc(nextLevelLat);
+                    profGETNetLat.inc(netLat);
+                    respCycle += nextLevelLat + netLat;
+                }
             } else {
                 if (*state == E) {
                     // Silent transition
@@ -140,7 +149,8 @@ uint64_t MESIBottomCC::processAccess(Address lineAddr, uint32_t lineId, AccessTy
                      */
                     *state = M;
                 }
-                profGETXHit.inc();
+                if (srcId != UINT32_MAX)
+                    profGETXHit.inc();
             }
             assert_msg(*state == M, "Wrong final state on GETX, lineId %d numLines %d, finalState %s", lineId, numLines, MESIStateName(*state));
             break;
@@ -187,19 +197,19 @@ void MESIBottomCC::processInval(Address lineAddr, uint32_t lineId, InvType type,
     switch (type) {
         case INVX: //lose exclusivity
             //Hmmm, do we have to propagate loss of exclusivity down the tree? (nah, topcc will do this automatically -- it knows the final state, always!)
-            assert_msg(*state == E || *state == M, "Invalid state %s", MESIStateName(*state));
+        assert_msg(*state == E || *state == M, "Invalid state %s", MESIStateName(*state));
             if (*state == M) *reqWriteback = true;
             *state = S;
             profINVX.inc();
             break;
         case INV: //invalidate
-            assert(*state != I);
+        assert(*state != I);
             if (*state == M) *reqWriteback = true;
             *state = I;
             profINV.inc();
             break;
         case FWD: //forward
-            assert_msg(*state == S, "Invalid state %s on FWD", MESIStateName(*state));
+        assert_msg(*state == S, "Invalid state %s on FWD", MESIStateName(*state));
             profFWD.inc();
             break;
         default: panic("!?");
