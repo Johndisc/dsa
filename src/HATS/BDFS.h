@@ -64,20 +64,16 @@ private:
     void rebdfs(int cid, int depth) {
         int start_offset = (*offset)[cid];
         int end_offset = (*offset)[cid + 1];
-        accessL2(tid, (uint64_t) &offset->at(cid), true);
-        accessL2(tid, (uint64_t) &offset->at(cid + 1), true);
         for (int i = start_offset; i < end_offset; ++i) {
             while (this->FIFO.size() > BDFS_MAX_DEPTH) {
                 hats_stall++;
                 this_thread::yield();               //fifo满时HATS停止
             }
-            bool res = prefetch(neighbor->at(i));
-            if (res)
-                FIFO.push(Edge(cid, (*neighbor)[i], vertex_data->at(i)));
-            else
+//            bool res = prefetch(neighbor->at(i));
+//            if (res)
+//                FIFO.push(Edge(cid, (*neighbor)[i], vertex_data->at(i)));
+//            else
                 FIFO.push(Edge(cid, (*neighbor)[i]));
-
-            accessL2(tid, (uint64_t) &neighbor->at(i), true);
             if ((*active_bits)[(*neighbor)[i]] && depth < BDFS_MAX_DEPTH) {
                 (*active_bits)[(*neighbor)[i]] = false;
                 rebdfs((*neighbor)[i], depth + 1);
