@@ -99,7 +99,7 @@ void coreTraverse(vector<bool> *active,int start_id, int end_id, int tid, int &c
 
 void hatsTraverse(vector<bool> *active, int start_id, int end_id, int hid, int &cnt)
 {
-    hats_config(&offsets, &neighbors, &vertex_data, active, isPush, start_id, end_id, hid);
+    hats_config(&offsets, &neighbors, NULL, NULL, active, isPush, start_id, end_id, hid);
     Edge edge(0, 0);
     cnt = 0;
     while (edge.u != -1 && edge.v != -1) {

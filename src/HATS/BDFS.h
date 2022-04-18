@@ -130,7 +130,8 @@ private:
 
     void prefetch(int vid)
     {
-        accessL2(tid, (uint64_t) &vertex_data[vid], true);
+        if (vertex_data)
+            accessL2(tid, (uint64_t) &vertex_data[vid], true);
     }
 
 public:
