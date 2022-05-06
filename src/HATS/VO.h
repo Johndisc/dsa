@@ -40,16 +40,14 @@ private:
     uint32_t tid;
 
 private:
-    int scan()
+    void scan()
     {
-        for (int i = current_vid; i < last_vid; i++) {
-            if ((*active_bits)[i]) {
-                (*active_bits)[i] = false;
-                current_vid++;
-                return i;
+        for (; current_vid < last_vid; current_vid++) {
+            if ((*active_bits)[current_vid]) {
+                (*active_bits)[current_vid] = false;
+                return;
             }
         }
-        return -1;
     }
 
     void fetch_offsets(int vid, int &start_offset, int &end_offset)
@@ -76,14 +74,15 @@ private:
 public:
     void start()
     {
-        int vid, start_offset, end_offset;
+        int start_offset, end_offset;
         vector <Edge> edges;
-        while (current_vid < last_vid) {
-            vid = scan();
-            fetch_offsets(vid, start_offset, end_offset);
-            fetch_neighbors(vid, start_offset, end_offset);
+        while (true) {
+            scan();
+            if (current_vid == last_vid)
+                break;
+            fetch_offsets(current_vid, start_offset, end_offset);
+            fetch_neighbors(current_vid, start_offset, end_offset);
         }
-        current_vid++;
     }
 
     VO(uint32_t _tid){ tid = _tid; };
@@ -107,7 +106,7 @@ public:
     //zsim端接口
     void fetchEdges(Edge &edge)
     {
-        while (this->FIFO.empty() && current_vid <= last_vid)
+        while (this->FIFO.empty() && current_vid < last_vid)
             this_thread::yield();           //fifo为空时fetch停止
         if (!FIFO.empty())
         {

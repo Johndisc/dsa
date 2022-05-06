@@ -65,16 +65,27 @@ private:
     void rebdfs(int cid, int depth) {
         int start_offset = (*offset)[cid];
         int end_offset = (*offset)[cid + 1];
+
+        while (this->FIFO.size() > BDFS_MAX_DEPTH) {
+            hats_stall++;
+            this_thread::yield();               //fifo满时HATS停止
+        }
+        if (weight)
+            FIFO.push(Edge(cid, (*neighbor)[0], weight->at(0)));
+        else
+            FIFO.push(Edge(cid, (*neighbor)[0]));
+//            for (int i = start_offset; i < end_offset; ++i)
+//            {
+//                while (this->FIFO.size() > BDFS_MAX_DEPTH) {
+//                    hats_stall++;
+//                    this_thread::yield();               //fifo满时HATS停止
+//                }
+//                if (weight)
+//                    FIFO.push(Edge(cid, (*neighbor)[i], weight->at(i)));
+//                else
+//                    FIFO.push(Edge(cid, (*neighbor)[i]));
+//            }
         for (int i = start_offset; i < end_offset; ++i) {
-            while (this->FIFO.size() > BDFS_MAX_DEPTH) {
-                hats_stall++;
-                this_thread::yield();               //fifo满时HATS停止
-            }
-            prefetch(cid);
-            if (weight)
-                FIFO.push(Edge(cid, (*neighbor)[i], weight->at(i)));
-            else
-                FIFO.push(Edge(cid, (*neighbor)[i]));
             if ((*active_bits)[(*neighbor)[i]] && depth < BDFS_MAX_DEPTH) {
                 (*active_bits)[(*neighbor)[i]] = false;
                 rebdfs((*neighbor)[i], depth + 1);
