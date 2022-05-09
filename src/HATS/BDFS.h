@@ -91,6 +91,14 @@ private:
                 rebdfs((*neighbor)[i], depth + 1);
             }
         }
+//        while (this->FIFO.size() > BDFS_MAX_DEPTH) {
+//            hats_stall++;
+//            this_thread::yield();               //fifo满时HATS停止
+//        }
+//        if (weight)
+//            FIFO.push(Edge(cid, (*neighbor)[0], weight->at(0)));
+//        else
+//            FIFO.push(Edge(cid, (*neighbor)[0]));
     }
 
     void bdfs()
