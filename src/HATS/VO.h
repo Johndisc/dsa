@@ -74,14 +74,15 @@ private:
 public:
     void start()
     {
-        int start_offset, end_offset;
-        vector <Edge> edges;
+//        int start_offset, end_offset;
+//        vector <Edge> edges;
         while (true) {
             scan();
             if (current_vid == last_vid)
                 break;
-            fetch_offsets(current_vid, start_offset, end_offset);
-            fetch_neighbors(current_vid, start_offset, end_offset);
+            FIFO.push(Edge(current_vid, 0));
+//            fetch_offsets(current_vid, start_offset, end_offset);
+//            fetch_neighbors(current_vid, start_offset, end_offset);
         }
     }
 
